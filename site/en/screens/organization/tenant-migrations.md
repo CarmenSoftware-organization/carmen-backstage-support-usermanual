@@ -64,7 +64,7 @@ This screen has no create or edit form. The only box with fields is **Resolve a 
 1. Always click **Check all** first, so you know which hotels will be touched.
 2. Click **Deploy N behind**.
 3. The **Deploy migrations to all BUs** box asks you to confirm. Read the number of business units carefully.
-4. Click **Deploy all**. The screen shows the progress while it runs. Do not close this page.
+4. Click **Deploy all**. The screen shows the progress while it runs. Do not close this page. If you close it by mistake, the system does not stop updating the hotel it is working on; that hotel carries on to the end, and the screen only stops showing progress. Hotels whose turn has not come yet are not updated. Do not click **Deploy all** again straight away. Wait a while, open this page again, click **Check all** to see which hotels are still behind, and tell the technical team.
 5. When it finishes, a message says the deploy completed. Check that no row shows **Error**.
 
 ## Cautions

@@ -68,7 +68,7 @@ Some Thai screen labels vary. For example, the Thai menu item for Licenses (**�
 | สิทธิ์ | **Permission** | Being allowed to do one thing on one screen, such as view, create, edit or delete. A role groups many permissions together. |
 | ผู้ใช้, ผู้ใช้ Platform | **Platform Users** | People who have been given a role, so they can use this admin app. See [Platform Users](/en/screens/platform/platform-users). |
 | ผู้ดูแลระบบสูงสุด | **Super Admins** | People who can do everything in the system, with no permission checks. See [Super Admins](/en/screens/platform/super-admins). |
-| สวิตช์ฟีเจอร์ | **Feature Flags** | Controls how each menu item appears: **Active** (works normally), **Coming soon** (visible but cannot be clicked) or **Hide** (not shown at all). See [Feature Flags](/en/screens/platform/feature-flags). |
+| สวิตช์ฟีเจอร์ | **Feature Flags** | Controls how each menu item appears: **Active** (works normally), **Coming soon** (visible but cannot be clicked) or **Hidden** (not shown at all). See [Feature Flags](/en/screens/platform/feature-flags). |
 
 ## Database
 

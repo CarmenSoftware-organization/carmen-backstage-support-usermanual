@@ -42,7 +42,9 @@ Setup (once):
 
 Run:
 
-- `bun run capture:screens` — read-only Screen Reference + Getting Started shots (nothing is saved on DEV).
+- `bun run capture:screens` — Screen Reference + Getting Started shots. No form is ever saved, but the run
+  still changes DEV for a while: it switches every feature flag on (and restores the original states at the
+  end) and sweeps leftover `MANUAL-DEMO-` records at the start and the end.
 - `bun run capture:guides` — How-to Guide shots (these create `MANUAL-DEMO-` records).
 - `bun run capture` — both.
 

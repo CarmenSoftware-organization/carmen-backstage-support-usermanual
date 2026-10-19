@@ -132,7 +132,7 @@ The confirmation box says the action **cannot be undone**. There is no restore b
 :::
 
 ::: warning Removing users from a cluster
-A removed user immediately loses access to the hotels in this cluster. If you remove the wrong person, you must add them back and set their role again yourself.
+Removing a user from the cluster may not stop all of their access to its hotels, because their place in each business unit may remain. To really stop the person using the hotels in this cluster, also remove them from this cluster's business units on the [Users](/en/screens/organization/users) screen, or untick **Active** on their account (they then cannot sign in at all). If you remove the wrong person, you must add them back and set their role again yourself.
 :::
 
 - Changing the **Code** of a cluster that is in use may confuse people who know the old code. Tell your team before you change it.

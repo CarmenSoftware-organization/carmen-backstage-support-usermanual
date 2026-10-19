@@ -15,7 +15,7 @@ The guide also shows how to change the name, and how to switch an account off fo
 
 **What you need first**
 
-- The staff member's email, for example `somchai@grandhotelbangkok.com`
+- The staff member's email, for example `somchai@example.com`
 - Their first name and last name
 - The cluster and business unit they will use, already created. If not, see [Set Up a New Hotel](/en/guides/setup-hotel).
 - At least one free seat (a place for one more user) in that business unit
@@ -36,7 +36,7 @@ The pictures in this guide use sample names and emails that start with `manual-d
 
    ![The empty Add User form](/screenshots/en/guide-add-user-02-form-empty.png)
 
-3. In **Username**, enter the staff member's email, for example `somchai@grandhotelbangkok.com`.
+3. In **Username**, enter the staff member's email, for example `somchai@example.com`.
 4. Enter the same email in **Email**. The system always uses this email, in lower case, as the username for signing in, and it can't be changed once the account exists.
 5. Enter the **First Name** and **Last Name**. **Middle Name** is optional.
 6. **Alias Name** is optional. It is shown instead of the full name where space is tight. If you fill it in, use up to 3 letters or digits, for example `SOM`.
@@ -121,7 +121,7 @@ A user must be in a cluster before they can be given that cluster's business uni
 
 ## Troubleshooting
 
-- **"Username must be a valid email address":** the username must be an email, for example `somchai@grandhotelbangkok.com`.
+- **"Username must be a valid email address":** the username must be an email, for example `somchai@example.com`.
 - **"Alias must be 1-3 alphanumeric characters":** the alias is longer than 3 characters, or has a space or a symbol. Shorten it.
 - **The email was typed wrongly when the account was created:** the username comes from the email and can't be changed after the account exists. Create a new account with the right email, then delete the wrong one. See [Row menu](/en/getting-started/common-actions#row-actions).
 - **The cluster you need isn't offered in Add Business Unit:** the user is not in that cluster yet. Do Part 3 first.

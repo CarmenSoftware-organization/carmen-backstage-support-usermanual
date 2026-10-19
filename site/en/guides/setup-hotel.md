@@ -2,7 +2,7 @@
 
 ## What you'll accomplish
 
-This guide takes a new customer from nothing to a first staff member who can work in the system. When you finish, you will have:
+This guide takes a new customer from nothing to a first staff member who has access to the hotel. Before that staff member can actually work, the technical team must prepare the hotel's database (Part 6). When you finish, you will have:
 
 - a **Cluster** (one customer's group of hotels) with a quota for how many hotels it may create
 - one **Business Unit** (one hotel or branch) in that cluster
@@ -58,7 +58,7 @@ The pictures in this guide use sample names that start with `MANUAL-DEMO-`. When
    ![Hotel name entered and cluster picked](/screenshots/en/guide-setup-hotel-05-bu-form-filled.png)
 
 5. The **Location** and **Formats** tabs hold the hotel's address and display formats. You can fill them in now or later.
-6. The **Technical** tab has a **Database Connection** box, which says where this hotel's data is kept. Leave it as it is. The technical team sets this part.
+6. The **Technical** tab has a **Database Connection** box, which says where this hotel's data is kept. Leave it as it is. The technical team sets this part (see Part 6).
 
    ![The Technical tab, Database Connection box (values hidden in this picture)](/screenshots/en/guide-setup-hotel-06-bu-technical.png)
 
@@ -128,12 +128,25 @@ A user must be in the cluster before they can be added to one of its business un
 
     ![The business unit's user list after adding the user](/screenshots/en/guide-setup-hotel-15-bu-user-added.png)
 
+### Part 6: Have the technical team prepare the hotel's database
+
+Creating a business unit does not create a database for the hotel. Staff can start working only after the technical team has prepared the hotel's database.
+
+1. Tell the technical team the hotel's name and its `BU-` code, so they can set the **Database Connection** on the business unit's **Technical** tab.
+2. The technical team updates the hotel's database on the [Tenant Migrations](/en/screens/organization/tenant-migrations) screen and fills in its starting data on the [Tenant Seed Data](/en/screens/organization/tenant-seeds) screen.
+3. When the technical team says it is done, tell the staff member they can start.
+
+::: tip You can check the status yourself
+Both screens have a **Check** button that changes nothing. You can safely use it to see the hotel's status, but do not update or fill in data yourself unless you have been asked to.
+:::
+
 ## Check that it worked
 
 - On the cluster's page, the top right shows the business units in use against the quota, for example **1 / 2**, and the seats in use.
 - On the cluster's licence page, the summary bar shows the number of seats and contracts, and the **1 BU without seats** warning is gone.
 - The business unit's **Licenses** tab shows the subscription (its number starts with `SUB-`) with **Active** status.
 - The business unit's **Users** tab lists the staff member, with their **BU Role** and **Active** status.
+- After the technical team finishes Part 6, the hotel's row shows **In sync** on **Tenant Migrations** and **Seeded** on **Tenant Seed Data**.
 
 ## Troubleshooting
 

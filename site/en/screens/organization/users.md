@@ -50,7 +50,7 @@ A user's page
 
 | Field | What it means | Example / notes |
 | --- | --- | --- |
-| **Username** (required) | The name used to sign in | Must be an email address, for example `somchai@grandhotelbangkok.com`. Cannot be changed after the account is created |
+| **Username** (required) | The name used to sign in | Must be an email address, for example `somchai@example.com`. Cannot be changed after the account is created |
 | **Email** (required) | The user's email | Use the same email as the username |
 | **First Name** (required) | The user's first name | `Somchai` |
 | **Middle Name** | A middle name, if any | Optional |

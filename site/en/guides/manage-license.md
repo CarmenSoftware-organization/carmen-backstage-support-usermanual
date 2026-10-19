@@ -95,7 +95,11 @@ If a hotel has several seat licences active at the same time, the system adds th
 
 BU quota works differently from seats. The system does not add quota licences up. It uses only one: the one that started most recently. The others show **Superseded**.
 
-Why the new licence in the picture shows **Superseded**: the cluster's first quota licence, made together with the cluster, starts at the exact moment the cluster was created. A licence made with this form starts at the beginning of the day you pick. So if the new licence starts on the day the cluster was created, the first licence counts as the later one and stays in use (quota 2 in the picture). If the new licence starts on the next day or later, it takes over as soon as its start date arrives. If two licences made with this form start on the same day, the one created later is used.
+Why the new licence in the picture shows **Superseded**: the cluster's first quota licence, made together with the cluster, starts at the exact moment the cluster was created. A licence made with this form starts at the beginning of the day you pick.
+
+- If the new licence starts on the day the cluster was created, the first licence counts as the later one, so it stays in use (quota 2 in the picture).
+- If the new licence starts on the next day or later, it takes over as soon as its start date arrives.
+- If two licences made with this form start on the same day, the one created later is used.
 
 ::: warning Cancel license can't be undone
 The **Cancel license** button on a quota licence's row stops that licence from giving any quota. The licence stays in the list so it can be checked later, but it can't be switched back on. Make sure before you click it.

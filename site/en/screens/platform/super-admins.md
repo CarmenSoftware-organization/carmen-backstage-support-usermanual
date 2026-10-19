@@ -8,7 +8,7 @@ Left menu, group **Platform** > **Super Admins**
 This menu item and screen are shown only to Super Admins. Other users do not see the menu item, even if their role has every permission. If they open the link directly, they get the [Access Denied screen](/en/getting-started/common-actions#access-denied).
 :::
 
-**Super Admins** (people who can do everything in the system, with no permission checks) do not need roles, and they see every menu item, including reserved ones such as **Platform Migrations**. Use this screen to see who the Super Admins are, and to add or remove them.
+**Super Admins** (people who can do everything in the system, with no permission checks) do not need roles, and they see every menu item that is not set to **Hidden** on [Feature Flags](/en/screens/platform/feature-flags), including reserved ones such as **Platform Migrations**. Use this screen to see who the Super Admins are, and to add or remove them.
 
 Under the heading, the screen gives the count, for example "2 people on this platform bypass every permission check". Keep this number as small as possible.
 

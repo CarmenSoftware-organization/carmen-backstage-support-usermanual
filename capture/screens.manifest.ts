@@ -5,6 +5,7 @@
 // `<page>-<view>` where <page> is the page slug in site/.vitepress/nav-data.mts.
 // Routes come from carmen-platform src/App.tsx. Labels are matched in both UI languages.
 import type { Page } from '@playwright/test'
+import { scrollToMiddle } from './guides/ui.ts'
 
 export type Shot = {
   slug: string
@@ -30,24 +31,6 @@ export type Shot = {
 const button = (page: Page, name: RegExp) => page.getByRole('button', { name }).first()
 const tab = (page: Page, name: RegExp) => page.getByRole('tab', { name }).first()
 const EDIT = /^(Edit|แก้ไข)$/
-
-/** Scrolls only the element's own scroll container so it sits mid-viewport (the app shell stays put). */
-async function scrollToMiddle(page: Page, selector: string): Promise<void> {
-  await page.locator(selector).first().evaluate((el) => {
-    let box: HTMLElement | null = el.parentElement
-    while (box && !(box.scrollHeight > box.clientHeight && /(auto|scroll)/.test(getComputedStyle(box).overflowY))) {
-      box = box.parentElement
-    }
-    const r = el.getBoundingClientRect()
-    if (box) {
-      const b = box.getBoundingClientRect()
-      box.scrollTop += r.top - b.top - (box.clientHeight - r.height) / 2
-    } else {
-      window.scrollBy(0, r.top - (window.innerHeight - r.height) / 2)
-    }
-  })
-  await page.waitForTimeout(200)
-}
 
 async function openDialog(page: Page, name: RegExp): Promise<void> {
   await button(page, name).click()
