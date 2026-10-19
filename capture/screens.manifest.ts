@@ -237,6 +237,19 @@ export const SHOTS: Shot[] = [
   // ── Database ───────────────────────────────────────────────────────
   { slug: 'platform-migrations-overview', path: '/platform/migrations' },
   { slug: 'sql-workbench', path: '/sql-workbench' },
+  {
+    // Choosing a BU only loads its list of tables; nothing is run (the Run button is never pressed).
+    slug: 'sql-workbench-connected',
+    path: '/sql-workbench',
+    prepare: async (page) => {
+      await button(page, /^(Switch business unit|เปลี่ยนหน่วยธุรกิจ)$/).click()
+      await page.getByRole('dialog').first().waitFor({ state: 'visible' })
+      await page.getByRole('option').first().click()
+      await page.getByRole('dialog').first().waitFor({ state: 'hidden' })
+      await page.getByText(/^(Tables|Table)$/).first().waitFor({ state: 'visible' })
+      await page.waitForTimeout(800)
+    },
+  },
   { slug: 'database-pools-list', path: '/platform/database-pools', mask: POOL_LIST_CONNECTION },
   { slug: 'database-pools-form', path: '/platform/database-pools/new', mask: POOL_FORM_SECRETS },
   { slug: 'database-pools-detail', path: '/platform/database-pools', openFirstRow: true, mask: POOL_DETAIL_CONNECTION },
