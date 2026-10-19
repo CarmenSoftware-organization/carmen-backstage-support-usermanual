@@ -8,7 +8,8 @@ export default async function globalTeardown(): Promise<void> {
     return
   }
   try {
-    await restoreFlags()
+    // If someone changed flags during the run, put back only the keys this run changed.
+    await restoreFlags({ onConflict: 'keep-theirs' })
   } catch (err) {
     console.error('[flags] RESTORE FAILED — run `bun run capture:restore-flags` and check DEV.')
     throw err

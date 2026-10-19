@@ -10,7 +10,7 @@ Style rules: `docs/style-guide.md`. Full README is completed in a later task.
 
 ## Screenshots (capture from DEV)
 
-Screenshots are taken from the live DEV app (`http://dev.blueledgers.com:9902`) with Playwright,
+Screenshots are taken from the live DEV app (`https://dev.blueledgers.com:9902`) with Playwright,
 once with the app in Thai and once in English, into `site/public/screenshots/th/` and `/en/`.
 
 Setup (once):
@@ -38,7 +38,22 @@ next run refuses to start. Put the flags back with:
 bun run capture:restore-flags
 ```
 
-It restores the saved states, verifies them on DEV and only then deletes the saved file.
+It restores the saved states, verifies them on DEV and only then deletes the saved files.
+
+If someone changed flags on DEV while the run had them switched on, the restore lists the
+keys they changed. The automatic restore at the end of a run then puts back only the keys
+the run itself changed and leaves theirs alone. `capture:restore-flags` stops instead, so
+nobody's change is overwritten by accident; after checking with them, either fix the flags
+by hand on the Feature Flags page and delete `.capture-state/`, or overwrite everything with
+the saved original:
+
+```
+bun run capture:restore-flags -- --force
+```
+
+If the restore says the login has expired (HTTP 401), run `bun run capture:screens` once:
+it logs in again and then stops before changing anything, because the saved original is
+still there. Then run `bun run capture:restore-flags` again.
 
 A shot fails instead of saving when the page shows Access Denied, Coming soon, 404 or is
 still loading. Shots that show secrets (app secret, database connection, database pool,

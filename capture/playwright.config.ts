@@ -1,5 +1,5 @@
 import { defineConfig } from '@playwright/test'
-import { CAPTURE, PATHS, extraHeaders } from './env.ts'
+import { CAPTURE, IGNORE_HTTPS_ERRORS, PATHS } from './env.ts'
 import type { CaptureOptions } from './fixtures.ts'
 
 export default defineConfig<CaptureOptions>({
@@ -15,9 +15,9 @@ export default defineConfig<CaptureOptions>({
   use: {
     baseURL: CAPTURE.baseUrl,
     viewport: { width: 1440, height: 900 },
-    ignoreHTTPSErrors: true,
+    ignoreHTTPSErrors: IGNORE_HTTPS_ERRORS,
     storageState: PATHS.authState, // <repo>/.auth/state.json
-    extraHTTPHeaders: extraHeaders(),
+    // The rate-limit bypass header is added per request in fixtures.ts (app + API origins only).
     screenshot: 'only-on-failure',
   },
   projects: [

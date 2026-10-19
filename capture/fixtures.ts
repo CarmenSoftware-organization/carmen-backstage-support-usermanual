@@ -2,7 +2,7 @@
 import { test as base, type Page } from '@playwright/test'
 import { mkdirSync } from 'node:fs'
 import { join } from 'node:path'
-import { PATHS } from './env.ts'
+import { PATHS, addBypassHeaderRoute } from './env.ts'
 
 export type Lang = 'th' | 'en'
 export type CaptureOptions = { lang: Lang }
@@ -11,6 +11,7 @@ export const test = base.extend<CaptureOptions & { uiPrefs: void }>({
   lang: ['th', { option: true }],
   uiPrefs: [
     async ({ context, lang }, use) => {
+      await addBypassHeaderRoute(context)
       await context.addInitScript(
         ([l]) => {
           try {

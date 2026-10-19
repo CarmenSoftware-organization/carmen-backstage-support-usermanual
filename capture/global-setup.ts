@@ -2,13 +2,15 @@
 import { chromium } from '@playwright/test'
 import { mkdirSync } from 'node:fs'
 import { dirname } from 'node:path'
-import { CAPTURE, PATHS, extraHeaders } from './env.ts'
+import { CAPTURE, IGNORE_HTTPS_ERRORS, PATHS, addBypassHeaderRoute } from './env.ts'
 import { restoreFlags, snapshotAndEnableFlags } from './flags.ts'
 
 export default async function globalSetup(): Promise<void> {
   const browser = await chromium.launch()
   try {
-    const page = await browser.newPage({ ignoreHTTPSErrors: true, extraHTTPHeaders: extraHeaders() })
+    const context = await browser.newContext({ ignoreHTTPSErrors: IGNORE_HTTPS_ERRORS })
+    await addBypassHeaderRoute(context)
+    const page = await context.newPage()
     await page.goto(`${CAPTURE.baseUrl}/login`)
     await page.fill('input[name="username"]', CAPTURE.email)
     await page.fill('input[name="password"]', CAPTURE.password)
@@ -26,7 +28,7 @@ export default async function globalSetup(): Promise<void> {
   } catch (err) {
     // Snapshot was saved but enabling failed part-way: put the original back now.
     if (!(err instanceof Error && err.message.startsWith('Flags from a previous run'))) {
-      await restoreFlags().catch((e: unknown) => console.error('[flags] restore after failed enable also failed:', e))
+      await restoreFlags({ onConflict: 'keep-theirs' }).catch((e: unknown) => console.error('[flags] restore after failed enable also failed:', e))
     }
     throw err
   }

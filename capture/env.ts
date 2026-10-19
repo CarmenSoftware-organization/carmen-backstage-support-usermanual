@@ -3,6 +3,7 @@
 import { existsSync, readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import type { BrowserContext } from '@playwright/test'
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url))
 
@@ -50,7 +51,7 @@ function required(key: string, hint: string): string {
 }
 
 export const CAPTURE: { baseUrl: string; apiBase: string; appId: string; email: string; password: string } = {
-  baseUrl: (process.env.CAPTURE_BASE_URL || 'http://dev.blueledgers.com:9902').replace(/\/$/, ''),
+  baseUrl: (process.env.CAPTURE_BASE_URL || 'https://dev.blueledgers.com:9902').replace(/\/$/, ''),
   apiBase: (process.env.CAPTURE_API_BASE || 'https://dev.blueledgers.com:4001').replace(/\/$/, ''),
   appId: required('CAPTURE_APP_ID', 'Copy REACT_APP_API_APP_ID from carmen-platform/.env.dev into this repo\'s .env (see .env.example).'),
   email: required('TEST_USER_EMAIL', 'Set it in carmen-platform-e2e/.env (or the file named by CAPTURE_ENV_FILE).'),
@@ -61,6 +62,23 @@ export const CAPTURE: { baseUrl: string; apiBase: string; appId: string; email: 
 export function extraHeaders(): Record<string, string> {
   const token = process.env.CAPTURE_RATE_LIMIT_BYPASS_TOKEN || process.env.E2E_RATE_LIMIT_BYPASS_TOKEN
   return token ? { 'x-rate-limit-bypass': token } : {}
+}
+
+/** DEV certificates are valid; set CAPTURE_IGNORE_HTTPS_ERRORS=1 only for a host with a bad cert. */
+export const IGNORE_HTTPS_ERRORS = process.env.CAPTURE_IGNORE_HTTPS_ERRORS === '1'
+
+/**
+ * Adds the bypass header only to requests for the app or its API — never to third parties
+ * (fonts, CDNs). No-op when no token is configured.
+ */
+export async function addBypassHeaderRoute(context: BrowserContext): Promise<void> {
+  const headers = extraHeaders()
+  if (!Object.keys(headers).length) return
+  const origins = new Set([new URL(CAPTURE.baseUrl).origin, new URL(CAPTURE.apiBase).origin])
+  await context.route(
+    (url) => origins.has(url.origin),
+    (route) => route.continue({ headers: { ...route.request().headers(), ...headers } }),
+  )
 }
 
 export const PATHS = {
