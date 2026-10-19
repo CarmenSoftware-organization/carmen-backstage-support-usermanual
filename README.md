@@ -1,12 +1,32 @@
 # Carmen Platform User Manual
 
-Bilingual (Thai root, English under `/en/`) VitePress manual for the carmen-platform admin app.
+Bilingual user manual for Carmen Platform superadmins, built with VitePress. Thai is the root
+(`site/`), English lives under `site/en/`. Screenshots are captured automatically from the live
+DEV app. Style rules: [`docs/style-guide.md`](docs/style-guide.md).
 
-- `bun install`
-- `bun run docs:dev` to preview, `bun run docs:build` to build
-- `bun run check` runs typecheck, parity check, plain-language check and the build
+## Quick start
 
-Style rules: `docs/style-guide.md`. Full README is completed in a later task.
+```
+bun install
+bun run docs:dev      # preview at http://localhost:5173 (English: /en/)
+bun run docs:build    # production build
+bun run check         # typecheck + Thai/English parity + plain-language check + build
+```
+
+## Adding a page (both languages)
+
+Every page must exist in Thai and English; `bun run check` fails otherwise.
+
+1. Add the entry (slug, Thai label, English label) to `site/.vitepress/nav-data.mts`. The sidebar
+   and page lists are generated from it. Screen Reference order follows `carmen-platform`
+   `src/components/nav/platformNav.ts`.
+2. Create the Thai page at `site/<slug>.md` and the English page at `site/en/<slug>.md`.
+3. Reference screenshots as `/screenshots/th/<name>.png` in Thai pages and
+   `/screenshots/en/<name>.png` in English pages (the check rejects a mismatched language or a
+   missing file). To capture a new shot, add it to `capture/screens.manifest.ts` (or a guide in
+   `capture/guides/`) and run the capture below.
+4. Follow the style guide (plain language, on-screen labels exactly as in the app), then run
+   `bun run check`.
 
 ## Screenshots (capture from DEV)
 
@@ -25,6 +45,10 @@ Run:
 - `bun run capture:screens` — read-only Screen Reference + Getting Started shots (nothing is saved on DEV).
 - `bun run capture:guides` — How-to Guide shots (these create `MANUAL-DEMO-` records).
 - `bun run capture` — both.
+
+`capture:guides` adds about 18 licence records to DEV per run that cleanup cannot remove
+(see below), so run it only when guide pictures must change. For routine refreshes use
+`capture:screens`. Run `bun run check` afterwards.
 
 What a run does to DEV: it logs in, saves the current feature-flag states to
 `.capture-state/flags-original.json` (also printed in the log), switches every flag to
