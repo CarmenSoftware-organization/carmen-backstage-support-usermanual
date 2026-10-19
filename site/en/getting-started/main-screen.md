@@ -11,8 +11,8 @@ The left menu takes you to every screen in the app. Menu items are grouped. Each
 | Group | What it is for | Items in the group |
 | --- | --- | --- |
 | (no heading) | The first page after sign-in, summarizing recent changes | [Dashboard](/en/screens/dashboard) |
-| **Organization** | Hotel groups, each hotel, each hotel's database, and the people who use them | [Clusters](/en/screens/organization/clusters), [Business Units](/en/screens/organization/business-units), [Tenant Migrations](/en/screens/organization/tenant-migrations), [Tenant Seed Data](/en/screens/organization/tenant-seeds), [Data Import](/en/screens/organization/data-import), [Users](/en/screens/organization/users) |
-| **License Management** | What customers bought, such as the number of hotels, the number of users and the features they can use | [Licenses](/en/screens/license/licenses), [License Feature Groups](/en/screens/license/license-feature-groups), [License Features](/en/screens/license/license-features) |
+| **Organization** | Hotel groups, each hotel, each hotel's database, and the people who use them | [Clusters](/en/screens/organization/clusters), [Business Units](/en/screens/organization/business-units), [Tenant Migrations](/en/screens/organization/tenant-migrations) (updating the structure of each hotel's database), [Tenant Seed Data](/en/screens/organization/tenant-seeds) (the starting data of each hotel's database), [Data Import](/en/screens/organization/data-import), [Users](/en/screens/organization/users) |
+| **License Management** | What customers bought, such as the number of hotels, the number of users and the features they can use | [Licenses](/en/screens/license/licenses), [License Feature Groups](/en/screens/license/license-feature-groups) (bundles of features sold together), [License Features](/en/screens/license/license-features) |
 | **Content** | Report and dashboard templates, news, and notifications sent to users | [Report Templates](/en/screens/content/report-templates), [Form Groups](/en/screens/content/form-groups), [Dashboard Templates](/en/screens/content/dashboard-templates), [News](/en/screens/content/news), [Broadcasts](/en/screens/content/broadcasts) |
 | **Analytics** | How much the system is being used | [Usage Analytics](/en/screens/analytics/usage-analytics), [Activity Events](/en/screens/analytics/activity-events) |
 | **Scheduling** | Jobs the system runs by itself at set times | [Scheduled Jobs](/en/screens/scheduling/scheduled-jobs) |
@@ -22,7 +22,7 @@ The left menu takes you to every screen in the app. Menu items are grouped. Each
 The terms in this table are explained in the [Glossary](../glossary).
 
 ::: tip Why are some menu items missing?
-You only see the items your role allows. **Super Admins** and **Platform Migrations** are shown only to super admins. Items switched off on [Feature Flags](/en/screens/platform/feature-flags) are either not shown at all, or shown faded with a **Coming soon** badge and cannot be clicked.
+You only see the items your role allows. **Super Admins** and **Platform Migrations** are shown only to super admins (people who can do everything in the system). Items switched off on [Feature Flags](/en/screens/platform/feature-flags) (the switches that decide whether each menu item is shown) are either not shown at all, or shown faded with a **Coming soon** badge and cannot be clicked.
 :::
 
 ### Collapse and expand the menu

@@ -49,6 +49,7 @@ Your Google email must match the email of an existing Carmen Platform account. T
 | **Unable to login. Please try again later.** | The system has a temporary problem. | Wait and try again. If it still fails, tell support. |
 | **No Carmen Platform account exists for this Google email address.** | The Google email you chose has no account here. | Ask an administrator to add you first, or choose another Google account. |
 | **This email address conflicts with another account.** | The email clashes with another account. | Contact your administrator. |
+| **Too many sign-in attempts. Please wait a moment and try again.** | Too many Google sign-in tries in a row, so the app paused it for a while. | Wait a moment, then click **Continue with Google** again. |
 | **Google sign-in is turned off.** | An administrator has not turned Google sign-in on. | Sign in with your email and password. |
 | **Google sign-in failed. Please try again.** | Something went wrong on the way to or from Google. | Try again. |
 

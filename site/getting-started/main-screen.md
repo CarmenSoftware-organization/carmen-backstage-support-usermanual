@@ -11,8 +11,8 @@
 | กลุ่ม | ใช้ทำอะไร | เมนูในกลุ่ม |
 | --- | --- | --- |
 | (ไม่มีหัวข้อ) | หน้าแรกหลังเข้าสู่ระบบ สรุปสิ่งที่เพิ่งเปลี่ยนแปลง | [Dashboard](/screens/dashboard) |
-| **องค์กร** | ดูแลกลุ่มโรงแรม โรงแรมแต่ละแห่ง ฐานข้อมูลของแต่ละโรงแรม และผู้ใช้งาน | [Clusters](/screens/organization/clusters), [หน่วยธุรกิจ](/screens/organization/business-units), [Tenant Migrations](/screens/organization/tenant-migrations), [Tenant Seed Data](/screens/organization/tenant-seeds), [นำเข้าข้อมูล](/screens/organization/data-import), [ผู้ใช้งาน](/screens/organization/users) |
-| **จัดการใบอนุญาต** | ดูแลสิ่งที่ลูกค้าซื้อ เช่น จำนวนโรงแรม จำนวนผู้ใช้ และฟีเจอร์ที่ใช้ได้ | [ไลเซนส์](/screens/license/licenses), [กลุ่มสิทธิ์ license](/screens/license/license-feature-groups), [ฟีเจอร์ที่ขายได้](/screens/license/license-features) |
+| **องค์กร** | ดูแลกลุ่มโรงแรม โรงแรมแต่ละแห่ง ฐานข้อมูลของแต่ละโรงแรม และผู้ใช้งาน | [Clusters](/screens/organization/clusters), [หน่วยธุรกิจ](/screens/organization/business-units), [Tenant Migrations](/screens/organization/tenant-migrations) (อัปเดตโครงสร้างฐานข้อมูลของแต่ละโรงแรม), [Tenant Seed Data](/screens/organization/tenant-seeds) (ข้อมูลตั้งต้นของฐานข้อมูลแต่ละโรงแรม), [นำเข้าข้อมูล](/screens/organization/data-import), [ผู้ใช้งาน](/screens/organization/users) |
+| **จัดการใบอนุญาต** | ดูแลสิ่งที่ลูกค้าซื้อ เช่น จำนวนโรงแรม จำนวนผู้ใช้ และฟีเจอร์ที่ใช้ได้ | [ไลเซนส์](/screens/license/licenses), [กลุ่มสิทธิ์ license](/screens/license/license-feature-groups) (ชุดฟีเจอร์ที่ขายรวมกัน), [ฟีเจอร์ที่ขายได้](/screens/license/license-features) |
 | **เนื้อหา** | ดูแลแม่แบบรายงาน แดชบอร์ด ข่าว และประกาศที่ส่งถึงผู้ใช้ | [เทมเพลตรายงาน](/screens/content/report-templates), [กลุ่มฟอร์ม](/screens/content/form-groups), [แม่แบบแดชบอร์ด](/screens/content/dashboard-templates), [ข่าวสาร](/screens/content/news), [ประกาศ](/screens/content/broadcasts) |
 | **การวิเคราะห์** | ดูว่ามีการใช้งานระบบมากน้อยแค่ไหน | [สถิติการใช้งาน](/screens/analytics/usage-analytics), [บันทึกกิจกรรม](/screens/analytics/activity-events) |
 | **งานตามเวลา** | งานที่ระบบทำเองตามเวลาที่ตั้งไว้ | [งานตามเวลา](/screens/scheduling/scheduled-jobs) |
@@ -22,7 +22,7 @@
 คำศัพท์ในตารางนี้อธิบายไว้ที่ [อภิธานศัพท์](../glossary)
 
 ::: tip ทำไมเมนูของฉันมีไม่ครบ
-คุณจะเห็นเฉพาะเมนูที่บทบาทของคุณอนุญาต เมนู **ผู้ดูแลระบบสูงสุด** และ **Migration แพลตฟอร์ม** แสดงเฉพาะผู้ดูแลระบบสูงสุดเท่านั้น ส่วนเมนูที่ถูกปิดด้วย [สวิตช์ฟีเจอร์](/screens/platform/feature-flags) จะไม่แสดงเลย หรือแสดงเป็นสีจางพร้อมป้าย **เร็ว ๆ นี้** และกดไม่ได้
+คุณจะเห็นเฉพาะเมนูที่บทบาทของคุณอนุญาต เมนู **ผู้ดูแลระบบสูงสุด** และ **Migration แพลตฟอร์ม** แสดงเฉพาะผู้ดูแลระบบสูงสุด (Super Admin — ผู้ที่ทำได้ทุกอย่างในระบบ) เท่านั้น ส่วนเมนูที่ถูกปิดด้วย [สวิตช์ฟีเจอร์](/screens/platform/feature-flags) (Feature Flags — ตัวกำหนดว่าแต่ละเมนูจะแสดงหรือไม่) จะไม่แสดงเลย หรือแสดงเป็นสีจางพร้อมป้าย **เร็ว ๆ นี้** และกดไม่ได้
 :::
 
 ### ย่อและขยายเมนู
@@ -70,7 +70,7 @@
 
 ## แถบด้านล่าง
 
-- ด้านซ้าย: เลขรุ่นของระบบ (**แอป** และ **API**) ใช้แจ้งทีมสนับสนุนเมื่อพบปัญหา
+- ด้านซ้าย: เวอร์ชันของระบบ (**แอป** และ **API**) ใช้แจ้งทีมสนับสนุนเมื่อพบปัญหา
 - ด้านขวา: วันที่และเวลาปัจจุบันตามเครื่องของคุณ
 
 ## ปุ่มลัดคีย์บอร์ด

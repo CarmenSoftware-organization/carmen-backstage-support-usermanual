@@ -83,10 +83,10 @@ Some Thai screen labels vary. For example, the Thai menu item for Licenses (**�
 | Thai label | English label | Meaning |
 | --- | --- | --- |
 | ใช้งาน / ไม่ใช้งาน | **Active** / **Inactive** | In use / switched off for now. The data is all still there and it can be switched back on. |
-| ลบ, ลบแล้ว, ลบชั่วคราว | **Delete**, **Deleted** | The record is hidden from the table, but you can still see it with the **Deleted** filter. On some screens it can be restored. |
+| ลบ, ลบแล้ว, ลบชั่วคราว, ถูกลบชั่วคราว | **Delete**, **Deleted**, soft-deleted | The record is hidden from the table, but you can still see it with the **Deleted** filter. On some screens it can be restored. <!-- plain-ok --> |
 | ลบถาวร | **Delete permanently**, **Hard Delete** | Removed from the system completely. It cannot be restored. <!-- plain-ok --> |
 | กู้คืน | **Restore** | Bring a deleted record back into use. |
-| เก็บถาวร, เก็บถาวรแล้ว | **Archive**, **Archived** | Move a record you no longer use out of the main list, without deleting it. |
+| เก็บถาวร, เก็บถาวรแล้ว | **Archive**, **Archived** | Move a record you no longer use out of the main list, without deleting it. Exception: in the summary box on the **Users** screen, the **Archived** count is the number of deleted users. |
 | เร็ว ๆ นี้, กำลังพัฒนา | **Coming soon** | A menu item or screen that is not open for use yet. |
 | ไม่มีสิทธิ์เข้าถึง | **Access Denied** | Your role does not allow you to open this screen. |
 | ส่งออก, ส่งออก CSV | **Export**, **Export CSV** | Download the list as a file you can open in Excel. |

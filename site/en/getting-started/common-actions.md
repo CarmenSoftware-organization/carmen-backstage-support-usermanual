@@ -2,7 +2,7 @@
 
 Most screens in the app work the same way. This page explains the shared parts once. The Screen Reference pages link back here instead of repeating them.
 
-The examples on this page use the [Users](/en/screens/organization/users) screen, but other screens work the same way. You may see more or fewer buttons, depending on the screen and your role.
+The examples on this page use the [Users](/en/screens/organization/users) screen, but other screens work the same way. You may see more or fewer buttons, depending on the screen and your role (Platform Role — the set of permissions that says what you can do).
 
 ## List screens {#lists}
 
@@ -36,7 +36,7 @@ Filters let you see only the records you want, for example only **Active** ones.
 Common filters:
 
 - **Status**: **Active** (in use) or **Inactive** (switched off for now, not deleted).
-- **Deleted**: tick this to also show records that were deleted. Deleted records are normally hidden from the table.
+- **Deleted**: tick the box under the **Deleted** heading (on the Users screen it reads **Show soft-deleted users**) to also show records that were deleted. Deleted records are normally hidden from the table. <!-- plain-ok -->
 
 The filters you chose appear as tags above the table, after **Filters:**. Click the **×** on a tag to remove that filter, or click **Clear all** to remove them all.
 
@@ -69,7 +69,7 @@ After a permanent delete the data is gone for good and cannot be restored. The a
 
 ## Select several records at once {#bulk-select}
 
-Some screens let you act on several records at once.
+Some screens let you act on several records at once. On some screens, such as [Users](/en/screens/organization/users), the tick boxes and this action bar are shown only to super admins.
 
 1. Tick the box at the start of each row you want, or tick the box in the table heading to select every row on this page.
 2. A bar above the table shows **N selected** with action buttons, such as **Delete** or **Hard Delete**. <!-- plain-ok -->
