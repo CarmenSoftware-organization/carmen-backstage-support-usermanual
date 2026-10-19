@@ -55,6 +55,28 @@ If the restore says the login has expired (HTTP 401), run `bun run capture:scree
 it logs in again and then stops before changing anything, because the saved original is
 still there. Then run `bun run capture:restore-flags` again.
 
+### How-to Guide shots write to DEV
+
+`bun run capture:guides` drives the real forms and saves them, in Thai and in English
+(`capture/guides/*.capture.ts`). Every record it creates is named
+`MANUAL-DEMO-<kind>-<th|en>-<yyyyMMddHHmm>` (users: the same in lower case, `@example.com`),
+so runs never collide. Shot names are `guide-<guide>-<NN>-<step>.png`.
+
+At the end of every run (and at the start, for leftovers of a killed run) all users,
+business units, clusters and licence feature groups whose name starts with `MANUAL-DEMO`
+are deleted — from any run, never anything without the prefix. Users are deleted
+permanently (with their sign-in account). Licence records of the demo clusters (BU quota,
+seats, interface licences, subscriptions) are not removed; the log lists them under
+`left`. To sweep by hand:
+
+```
+bun run capture:cleanup-demo
+```
+
+Business units are created without a database connection (Database Pool stays "Not set");
+saving a business unit only stores the record — no database is created and no migration runs.
+Typed passwords are masked in the shots.
+
 A shot fails instead of saving when the page shows Access Denied, Coming soon, 404 or is
 still loading. Shots that show secrets (app secret, database connection, database pool,
 SMTP password) declare masks in `capture/screens.manifest.ts`; a required mask that matches

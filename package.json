@@ -13,7 +13,8 @@
     "capture:screens": "playwright test -c capture/playwright.config.ts --project=screens-th --project=screens-en",
     "capture:guides": "playwright test -c capture/playwright.config.ts --project=guides-th --project=guides-en",
     "capture": "playwright test -c capture/playwright.config.ts",
-    "capture:restore-flags": "bun capture/flags.ts restore"
+    "capture:restore-flags": "bun capture/flags.ts restore",
+    "capture:cleanup-demo": "bun capture/demo-data.ts cleanup"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",

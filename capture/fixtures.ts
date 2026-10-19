@@ -67,7 +67,9 @@ export async function settle(page: Page): Promise<void> {
         const statusLoading = [...document.querySelectorAll('main [role="status"]')].some(
           (el) => re.test(el.getAttribute('aria-label') ?? el.textContent ?? ''),
         )
-        return !statusLoading && ![...document.querySelectorAll(sel)].some(shown)
+        // The save bar's pulsing "Unsaved changes" dot is a status light, not a loading placeholder.
+        const loading = [...document.querySelectorAll(sel)].filter((el) => !el.closest('.unsaved-bar'))
+        return !statusLoading && !loading.some(shown)
       },
       [LOADING, LOADING_LABEL.source] as const,
       { timeout: 15_000 },

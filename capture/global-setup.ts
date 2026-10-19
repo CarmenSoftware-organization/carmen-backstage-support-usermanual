@@ -3,6 +3,7 @@ import { chromium } from '@playwright/test'
 import { mkdirSync } from 'node:fs'
 import { dirname } from 'node:path'
 import { CAPTURE, IGNORE_HTTPS_ERRORS, PATHS, addBypassHeaderRoute } from './env.ts'
+import { cleanupDemoData } from './demo-data.ts'
 import { restoreFlags, snapshotAndEnableFlags } from './flags.ts'
 
 export default async function globalSetup(): Promise<void> {
@@ -34,4 +35,8 @@ export default async function globalSetup(): Promise<void> {
   }
   // Only a run that took the snapshot may restore it in teardown — never a stale file.
   process.env.CAPTURE_FLAGS_OWNED = '1'
+  // Leftover MANUAL-DEMO records of an earlier run that never reached teardown (killed run).
+  // Runs only after the flag step passed, so a refused start still changes nothing.
+  // Never throws; licence records it cannot remove are only listed.
+  await cleanupDemoData()
 }
