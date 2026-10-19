@@ -9,7 +9,11 @@
     "typecheck": "tsc --noEmit",
     "check:parity": "bun scripts/check-parity.ts",
     "check:plain": "bun scripts/check-plain-language.ts",
-    "check": "bun run typecheck && bun run check:parity && bun run check:plain && bun run docs:build"
+    "check": "bun run typecheck && bun run check:parity && bun run check:plain && bun run docs:build",
+    "capture:screens": "playwright test -c capture/playwright.config.ts --project=screens-th --project=screens-en",
+    "capture:guides": "playwright test -c capture/playwright.config.ts --project=guides-th --project=guides-en",
+    "capture": "playwright test -c capture/playwright.config.ts",
+    "capture:restore-flags": "bun capture/flags.ts restore"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",
