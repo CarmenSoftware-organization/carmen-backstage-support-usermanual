@@ -19,4 +19,7 @@ features:
   - title: คู่มือรายหน้าจอ
     details: อธิบายทุกเมนูและทุกช่องข้อมูล
     link: /screens/dashboard
+  - title: อภิธานศัพท์
+    details: ความหมายของคำที่ใช้ในระบบ เช่น Cluster หน่วยธุรกิจ และไลเซนส์
+    link: /glossary
 ---

@@ -19,4 +19,7 @@ features:
   - title: Screen Reference
     details: Every menu and every field explained
     link: /en/screens/dashboard
+  - title: Glossary
+    details: What the words in the app mean, such as Cluster, Business Unit and License
+    link: /en/glossary
 ---

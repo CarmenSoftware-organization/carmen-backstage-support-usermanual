@@ -109,6 +109,34 @@ export const SHOTS: Shot[] = [
       await page.getByRole('dialog').first().waitFor({ state: 'visible' })
     },
   },
+  {
+    slug: 'list-row-actions',
+    path: '/users',
+    prepare: async (page) => {
+      await button(page, /^(Actions for|การกระทำสำหรับ)/).click()
+      await page.getByRole('menu').first().waitFor({ state: 'visible' })
+    },
+  },
+  {
+    slug: 'list-bulk-selected',
+    path: '/users',
+    prepare: async (page) => {
+      // Selecting rows only shows the bulk bar; nothing is deleted.
+      const rows = page.locator('table tbody tr')
+      await rows.nth(0).getByRole('checkbox').click()
+      await rows.nth(1).getByRole('checkbox').click()
+      await page.waitForTimeout(300)
+    },
+  },
+  {
+    slug: 'activity-trail',
+    path: '/users',
+    openFirstRow: true,
+    prepare: async (page) => {
+      await openDialog(page, /^(Change history|ประวัติการเปลี่ยนแปลง)$/)
+      await page.waitForLoadState('networkidle', { timeout: 15_000 }).catch(() => {})
+    },
+  },
 
   // ── Dashboard / Profile ────────────────────────────────────────────
   { slug: 'dashboard-overview', path: '/dashboard' },
