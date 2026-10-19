@@ -86,8 +86,6 @@ still there. Then run `bun run capture:restore-flags` again.
 `MANUAL-DEMO-<kind>-<th|en>-<yyyyMMddHHmm>` (users: the same in lower case, `@example.com`),
 so runs never collide. Shot names are `guide-<guide>-<NN>-<step>.png`.
 
-Every capture run — `capture:screens` too — sweeps leftover `MANUAL-DEMO-` records at its start and end.
-
 At the end of every run (and at the start, for leftovers of a killed run) all users,
 business units, clusters and licence feature groups whose name starts with `MANUAL-DEMO`
 are deleted — from any run, never anything without the prefix (names must start with
