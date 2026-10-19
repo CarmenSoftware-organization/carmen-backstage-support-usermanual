@@ -8,11 +8,20 @@ import { test } from '@playwright/test'
 import { api } from './api.ts'
 
 export const DEMO_PREFIX = 'MANUAL-DEMO'
-const PREFIX_LOWER = DEMO_PREFIX.toLowerCase()
+const NAME_PREFIX = `${DEMO_PREFIX}-`
+const DEMO_EMAIL_DOMAIN = 'example.com'
+/** Exactly what demoEmail() produces: manual-demo-<kind>-<th|en|xx>-<yyyyMMddHHmm>@example.com */
+const DEMO_EMAIL_RE = /^manual-demo-[a-z0-9]+(?:-[a-z0-9]+)*-(?:th|en|xx)-\d{12}@example\.com$/
 
-/** True when `value` starts with MANUAL-DEMO (any case: user names are e-mail addresses). */
-export function isDemo(value: unknown): boolean {
-  return typeof value === 'string' && value.toLowerCase().startsWith(PREFIX_LOWER)
+/** A cluster / business unit / feature group name made by demoName(): starts with `MANUAL-DEMO-` (case-sensitive). */
+export function isDemoName(value: unknown): boolean {
+  return typeof value === 'string' && value.startsWith(NAME_PREFIX)
+}
+
+/** A user made by createDemoUser() / the guides: username AND e-mail both have demoEmail()'s exact shape. */
+export function isDemoUser(u: { username?: string; email?: string }): boolean {
+  return typeof u.username === 'string' && typeof u.email === 'string' &&
+    DEMO_EMAIL_RE.test(u.username) && DEMO_EMAIL_RE.test(u.email)
 }
 
 const pad = (n: number): string => String(n).padStart(2, '0')
@@ -43,7 +52,7 @@ export function demoName(kind: string): string {
 
 /** Lower-case e-mail form of demoName(kind), for user names (the platform wants an e-mail). */
 export function demoEmail(kind: string): string {
-  return `${demoName(kind).toLowerCase()}@example.com`
+  return `${demoName(kind).toLowerCase()}@${DEMO_EMAIL_DOMAIN}`
 }
 
 /**
@@ -161,11 +170,13 @@ const MAX_PAGES = 50
 async function listAll(path: string): Promise<Row[]> {
   const out: Row[] = []
   const sep = path.includes('?') ? '&' : '?'
+  // Page until an empty page: a short page is not proof of the end (some lists filter rows
+  // after paging), and a missed page would leave demo records behind.
   for (let page = 1; page <= MAX_PAGES; page++) {
     const rows = await api<Row[] | { data?: Row[] }>('GET', `${path}${sep}page=${page}&perpage=${PER_PAGE}`)
     const list = Array.isArray(rows) ? rows : (rows.data ?? [])
+    if (list.length === 0) break
     out.push(...list)
-    if (list.length < PER_PAGE) break
   }
   return out
 }
@@ -192,7 +203,7 @@ const errText = (e: unknown): string => (e instanceof Error ? e.message : String
  * removed this way and are reported in `left`, as is anything whose delete failed.
  * Never touches a record without the prefix. Never throws: problems are logged and listed.
  */
-export async function cleanupDemoData(): Promise<{ deleted: string[]; left: string[] }> {
+export async function cleanupDemoData(opts: { dryRun?: boolean } = {}): Promise<{ deleted: string[]; left: string[] }> {
   const deleted: string[] = []
   const left: string[] = []
 
@@ -215,10 +226,34 @@ export async function cleanupDemoData(): Promise<{ deleted: string[]; left: stri
     }
   }
 
-  const users = await find('user', '/api-system/user', (u) => isDemo(u.username) || isDemo(u.email))
-  const bus = await find('business unit', '/api-system/business-units', (b) => isDemo(b.name))
-  const clusters = await find('cluster', '/api-system/clusters', (c) => isDemo(c.name))
-  const groups = await find('feature group', '/api-system/platform/license-feature-groups', (g) => isDemo(g.name) || isDemo(g.code))
+  const users = await find('user', '/api-system/user', isDemoUser)
+  const bus = await find('business unit', '/api-system/business-units', (b) => isDemoName(b.name))
+  const clusters = await find('cluster', '/api-system/clusters', (c) => isDemoName(c.name))
+  const groups = await find('feature group', '/api-system/platform/license-feature-groups', (g) => isDemoName(g.name))
+
+  if (opts.dryRun) {
+    // Log what would be deleted, plus near misses (mention manual-demo in any case but do not
+    // match the strict rule) so the filter can be checked against DEV without deleting anything.
+    const loose = (v: unknown): boolean => typeof v === 'string' && v.toLowerCase().includes('manual-demo')
+    const report = async (kind: string, path: string, rows: Row[], fields: (keyof Row)[]): Promise<void> => {
+      for (const r of rows) console.log(`[demo-data] dry-run WOULD DELETE ${kind}: ${fields.map((f) => r[f]).join(' / ')}`)
+      try {
+        const ids = new Set(rows.map((r) => r.id))
+        for (const r of (await listAll(path)).filter(alive)) {
+          if (!ids.has(r.id) && fields.some((f) => loose(r[f]))) {
+            console.log(`[demo-data] dry-run near miss (kept) ${kind}: ${fields.map((f) => r[f]).join(' / ')}`)
+          }
+        }
+      } catch {
+        /* listing already reported by find() */
+      }
+    }
+    await report('user', '/api-system/user', users, ['username', 'email'])
+    await report('business unit', '/api-system/business-units', bus, ['name'])
+    await report('cluster', '/api-system/clusters', clusters, ['name'])
+    await report('feature group', '/api-system/platform/license-feature-groups', groups, ['name', 'code'])
+    return { deleted: [], left }
+  }
 
   // Licence records hang off the demo clusters / business units and stay behind. List them
   // before the owners are deleted (afterwards their lists may no longer be readable).
@@ -258,6 +293,7 @@ export async function cleanupDemoData(): Promise<{ deleted: string[]; left: stri
 }
 
 // `bun capture/demo-data.ts cleanup` — run the cleanup by hand (e.g. after a killed run).
+// `bun capture/demo-data.ts cleanup --dry-run` only lists what would be deleted.
 if (process.argv[1]?.endsWith('demo-data.ts') && process.argv[2] === 'cleanup') {
-  await cleanupDemoData()
+  await cleanupDemoData({ dryRun: process.argv.includes('--dry-run') })
 }

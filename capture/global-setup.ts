@@ -37,6 +37,10 @@ export default async function globalSetup(): Promise<void> {
   process.env.CAPTURE_FLAGS_OWNED = '1'
   // Leftover MANUAL-DEMO records of an earlier run that never reached teardown (killed run).
   // Runs only after the flag step passed, so a refused start still changes nothing.
-  // Never throws; licence records it cannot remove are only listed.
-  await cleanupDemoData()
+  // Licence records it cannot remove are only listed; a failure never stops the run.
+  try {
+    await cleanupDemoData()
+  } catch (err) {
+    console.error('[demo-data] LEFTOVER SWEEP FAILED — run `bun run capture:cleanup-demo` and check DEV:', err)
+  }
 }

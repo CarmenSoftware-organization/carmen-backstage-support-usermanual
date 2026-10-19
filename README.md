@@ -62,15 +62,20 @@ still there. Then run `bun run capture:restore-flags` again.
 `MANUAL-DEMO-<kind>-<th|en>-<yyyyMMddHHmm>` (users: the same in lower case, `@example.com`),
 so runs never collide. Shot names are `guide-<guide>-<NN>-<step>.png`.
 
+Every capture run — `capture:screens` too — sweeps leftover `MANUAL-DEMO-` records at its start and end.
+
 At the end of every run (and at the start, for leftovers of a killed run) all users,
 business units, clusters and licence feature groups whose name starts with `MANUAL-DEMO`
-are deleted — from any run, never anything without the prefix. Users are deleted
+are deleted — from any run, never anything without the prefix (names must start with
+`MANUAL-DEMO-`; users only when both username and e-mail have the exact generated
+`manual-demo-<kind>-<th|en>-<yyyyMMddHHmm>@example.com` shape). Users are deleted
 permanently (with their sign-in account). Licence records of the demo clusters (BU quota,
 seats, interface licences, subscriptions) are not removed; the log lists them under
 `left`. To sweep by hand:
 
 ```
-bun run capture:cleanup-demo
+bun run capture:cleanup-demo              # delete
+bun run capture:cleanup-demo -- --dry-run # only list what would be deleted
 ```
 
 Business units are created without a database connection (Database Pool stays "Not set");
