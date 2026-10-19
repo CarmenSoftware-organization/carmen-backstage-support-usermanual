@@ -36,8 +36,8 @@ The pictures in this guide use sample names and emails that start with `manual-d
 
    ![The empty Add User form](/screenshots/en/guide-add-user-02-form-empty.png)
 
-3. In **Username**, enter the staff member's email. They sign in with this username, and it can't be changed once the account exists.
-4. Enter the **Email**. Usually this is the same as the username.
+3. In **Username**, enter the staff member's email, for example `somchai@grandhotelbangkok.com`.
+4. Enter the same email in **Email**. The system always uses this email, in lower case, as the username for signing in, and it can't be changed once the account exists.
 5. Enter the **First Name** and **Last Name**. **Middle Name** is optional.
 6. **Alias Name** is optional. It is shown instead of the full name where space is tight. If you fill it in, use up to 3 letters or digits, for example `SOM`.
 7. Leave **Active** ticked.
@@ -54,60 +54,63 @@ The pictures in this guide use sample names and emails that start with `manual-d
 
 Do this part when you need to fix a name, or stop someone from signing in.
 
-9. On the user's page, click **Edit** at the top right. See also [View mode and edit mode](/en/getting-started/common-actions#view-edit).
-10. Change the name as needed, for example add a **Middle Name**.
-11. To switch the account off for a while, untick **Active**. An inactive user keeps every assignment but cannot sign in. Tick it again to switch the account back on.
+1. On the user's page, click **Edit** at the top right. See also [View mode and edit mode](/en/getting-started/common-actions#view-edit).
+2. Change the name as needed, for example add a **Middle Name**.
+3. To switch the account off for a while, untick **Active**. An inactive user keeps every assignment but cannot sign in. Tick it again to switch the account back on.
 
-    ![Edit mode, showing Active and Save Changes](/screenshots/en/guide-add-user-05-edit-status.png)
+   ![Edit mode, showing Active and Save Changes](/screenshots/en/guide-add-user-05-edit-status.png)
 
-12. Click **Save Changes**. The message **Changes saved successfully** appears.
+4. Click **Save Changes**. The message **Changes saved successfully** appears.
 
-    ![The user's page after saving](/screenshots/en/guide-add-user-06-saved.png)
+   ![The user's page after saving](/screenshots/en/guide-add-user-06-saved.png)
 
 ### Part 3: Put the user in a cluster
 
 A user must be in a cluster before they can be given that cluster's business units.
 
-13. In the left menu, click **Clusters**, then click the hotel's cluster.
-14. Click the **Users** tab, then click **Add User**. The **Add User to Cluster** box opens.
-15. Type the user's name or email, then click their name in the results.
-16. Under **Cluster Role**, choose **User** (can only use the system) or **Admin** (can manage other users in the cluster).
+1. In the left menu, click **Clusters**.
+2. Click the hotel's cluster.
+3. Click the **Users** tab.
+4. Click **Add User**. The **Add User to Cluster** box opens.
+5. Type the user's name or email, then click their name in the results.
+6. Under **Cluster Role**, choose **User** (can only use the system) or **Admin** (can manage other users in the cluster).
 
-    ![The Add User to Cluster box](/screenshots/en/guide-add-user-07-cluster-add-user-dialog.png)
+   ![The Add User to Cluster box](/screenshots/en/guide-add-user-07-cluster-add-user-dialog.png)
 
-17. Click **Add User**. The message **User added to cluster** appears, and the user is in the cluster's list.
+7. Click **Add User**. The message **User added to cluster** appears, and the user is in the cluster's list.
 
-    ![The cluster's user list after adding the user](/screenshots/en/guide-add-user-08-cluster-user-added.png)
+   ![The cluster's user list after adding the user](/screenshots/en/guide-add-user-08-cluster-user-added.png)
 
 ### Part 4: Give the user a business unit
 
-18. Go back to the user's page (**Users**, then click the user's name).
-19. In the **Access** box, click **Add BU**. The **Add Business Unit** box opens.
-20. Pick the **Cluster** first, then the **Business Unit**.
-21. Under **BU Role**, pick the user's role in this hotel, for example **Admin**.
+1. Go back to the user's page (**Users**, then click the user's name).
+2. In the **Access** box, click **Add BU**. The **Add Business Unit** box opens.
+3. Pick the **Cluster**.
+4. Pick the **Business Unit** in that cluster.
+5. Under **BU Role**, pick the user's role in this hotel, for example **Admin**.
 
-    ![The Add Business Unit box with cluster, business unit and role picked](/screenshots/en/guide-add-user-09-add-bu-dialog.png)
+   ![The Add Business Unit box with cluster, business unit and role picked](/screenshots/en/guide-add-user-09-add-bu-dialog.png)
 
-22. Click **Add**. The message **Business unit assigned successfully** appears. The **Access** box now shows the cluster with its role, and the business unit with its role and **Active** status.
+6. Click **Add**. The message **Business unit assigned successfully** appears. The **Access** box now shows the cluster with its role, and the business unit with its role and **Active** status.
 
-    ![The Access box showing the cluster and the business unit](/screenshots/en/guide-add-user-10-bu-assigned.png)
+   ![The Access box showing the cluster and the business unit](/screenshots/en/guide-add-user-10-bu-assigned.png)
 
 ### Part 5: Set a password
 
-23. On the user's page, click **Change password** at the top right.
+1. On the user's page, click **Change password** at the top right.
 
-    ![The change password box](/screenshots/en/guide-add-user-11-password-dialog.png)
+   ![The change password box](/screenshots/en/guide-add-user-11-password-dialog.png)
 
-24. Type a password in **New Password**. It must have at least 6 characters.
-25. Type the same password again in **Confirm Password**.
+2. Type a password in **New Password**. It must have at least 6 characters.
+3. Type the same password again in **Confirm Password**.
 
-    ![Passwords typed in (hidden in this picture)](/screenshots/en/guide-add-user-12-password-filled.png)
+   ![Passwords typed in (hidden in this picture)](/screenshots/en/guide-add-user-12-password-filled.png)
 
-26. Click **Update Password**. The message **Password changed successfully** appears.
+4. Click **Update Password**. The message **Password changed successfully** appears.
 
-    ![The user's page after the password was changed](/screenshots/en/guide-add-user-13-password-changed.png)
+   ![The user's page after the password was changed](/screenshots/en/guide-add-user-13-password-changed.png)
 
-27. Give the username and password to the staff member in a safe way, for example in person, and never both in the same email.
+5. Give the username and password to the staff member in a safe way, for example in person, and never both in the same email.
 
 ## Check that it worked
 
@@ -120,7 +123,7 @@ A user must be in a cluster before they can be given that cluster's business uni
 
 - **"Username must be a valid email address":** the username must be an email, for example `somchai@grandhotelbangkok.com`.
 - **"Alias must be 1-3 alphanumeric characters":** the alias is longer than 3 characters, or has a space or a symbol. Shorten it.
-- **The username was typed wrongly:** a username can't be changed after the account exists. Create a new account with the right username, then delete the wrong one. See [Row menu](/en/getting-started/common-actions#row-actions).
+- **The email was typed wrongly when the account was created:** the username comes from the email and can't be changed after the account exists. Create a new account with the right email, then delete the wrong one. See [Row menu](/en/getting-started/common-actions#row-actions).
 - **The cluster you need isn't offered in Add Business Unit:** the user is not in that cluster yet. Do Part 3 first.
 - **You can't add the business unit because the seats are full:** the hotel has used all its seats. Add a seat licence, see [Manage a License](/en/guides/manage-license), or take users who no longer work there out of that business unit.
 - **"Passwords do not match":** both fields in the change password box must be exactly the same.

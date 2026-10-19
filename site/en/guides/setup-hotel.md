@@ -7,6 +7,7 @@ This guide takes a new customer from nothing to a first staff member who can wor
 - a **Cluster** (one customer's group of hotels) with a quota for how many hotels it may create
 - one **Business Unit** (one hotel or branch) in that cluster
 - **Seats** (how many users the hotel may have) for that hotel
+- a **Subscription** (the hotel's usage contract, which says which features it may use) for that hotel
 - one staff member in the cluster and in the business unit, each with a role
 
 **Who can do this:** a super admin, or someone whose Platform Role (the set of permissions that says what you may do) lets them manage Clusters, Business Units and Licenses.
@@ -17,6 +18,7 @@ This guide takes a new customer from nothing to a first staff member who can wor
 - The hotel's name, for example "Grand Hotel Bangkok"
 - How many hotels the customer bought, and when that quota expires (if it does)
 - How many users the customer bought, and the contract dates
+- The contract's start and end dates, and the feature bundles the customer bought, for example **Full Access**
 - An account for the staff member. If there isn't one yet, create it first with [Add a User](/en/guides/add-user).
 
 ::: tip Names in the pictures
@@ -39,85 +41,98 @@ The pictures in this guide use sample names that start with `MANUAL-DEMO-`. When
 
    ![The completed form, with the preview card on the right](/screenshots/en/guide-setup-hotel-02-cluster-form-filled.png)
 
-7. Click **Create cluster**. A message confirms that the cluster was created, and the new cluster's page opens. The top right shows how many more business units it can have.
+7. Click **Create cluster**. A message confirms that the cluster was created, and the new cluster's page opens. The top right shows how many more business units it can have. The subscriptions box still says there are no subscriptions; you create one in Part 4.
 
    ![The new cluster's page after it was created](/screenshots/en/guide-setup-hotel-03-cluster-created.png)
 
 ### Part 2: Create the business unit (the hotel)
 
-8. In the left menu, click **Business Units**, then click **Add Business Unit**. The bar at the bottom tells you what is still missing, for example **Still needed: Name, Cluster**.
+1. In the left menu, click **Business Units**.
+2. Click **Add Business Unit**. The bar at the bottom tells you what is still missing, for example **Still needed: Name, Cluster**.
 
    ![The new business unit form, General tab](/screenshots/en/guide-setup-hotel-04-bu-form-empty.png)
 
-9. Click the heading **(unnamed business unit)** and type the hotel's name, for example "Grand Hotel Bangkok".
-10. On the **Cluster** row, click **Set cluster…** and pick the cluster you created in Part 1.
+3. Click the heading **(unnamed business unit)** and type the hotel's name, for example "Grand Hotel Bangkok".
+4. On the **Cluster** row, click **Set cluster…** and pick the cluster you created in Part 1.
 
-    ![Hotel name entered and cluster picked](/screenshots/en/guide-setup-hotel-05-bu-form-filled.png)
+   ![Hotel name entered and cluster picked](/screenshots/en/guide-setup-hotel-05-bu-form-filled.png)
 
-11. The **Location** and **Formats** tabs hold the hotel's address and display formats. You can fill them in now or later.
-12. The **Technical** tab has a **Database Connection** box, which says where this hotel's data is kept. Leave it as it is. The technical team sets this part.
+5. The **Location** and **Formats** tabs hold the hotel's address and display formats. You can fill them in now or later.
+6. The **Technical** tab has a **Database Connection** box, which says where this hotel's data is kept. Leave it as it is. The technical team sets this part.
 
-    ![The Technical tab, Database Connection box (values hidden in this picture)](/screenshots/en/guide-setup-hotel-06-bu-technical.png)
+   ![The Technical tab, Database Connection box (values hidden in this picture)](/screenshots/en/guide-setup-hotel-06-bu-technical.png)
 
-    ::: warning Don't change the database connection yourself
-    If this box is set wrongly, the hotel may not be able to open its own data, or may be connected to a database that isn't its own. If you are not sure, leave it empty and tell the technical team.
-    :::
+   ::: warning Don't change the database connection yourself
+   If this box is set wrongly, the hotel may not be able to open its own data, or may be connected to a database that isn't its own. If you are not sure, leave it empty and tell the technical team.
+   :::
 
-13. Click **Create Business Unit** in the bottom bar. The message **Business unit created successfully** appears. The business unit gets a code that starts with `BU-`, and the **Users** and **Licenses** tabs appear.
+7. Click **Create Business Unit** in the bottom bar. The message **Business unit created successfully** appears. The business unit gets a code that starts with `BU-`, and the **Users** and **Licenses** tabs appear.
 
-    ![The new business unit's page after it was created](/screenshots/en/guide-setup-hotel-07-bu-created.png)
+   ![The new business unit's page after it was created](/screenshots/en/guide-setup-hotel-07-bu-created.png)
 
 ### Part 3: Give the hotel its seats
 
-14. Open the cluster's page (**Clusters**, then click the cluster's name) and click **Manage licences**. The cluster's licence page opens on the **BU quota** tab. You see the quota licence created with the cluster, and the hotels in the cluster.
+1. Open the cluster's page (**Clusters**, then click the cluster's name).
+2. Click **Manage licences**. The cluster's licence page opens on the **BU quota** tab. You see the quota licence created with the cluster, and the hotels in the cluster.
 
-    ![The cluster's licence page, BU quota tab](/screenshots/en/guide-setup-hotel-08-license-center.png)
+   ![The cluster's licence page, BU quota tab](/screenshots/en/guide-setup-hotel-08-license-center.png)
 
-15. Click the **Seats** tab. The new hotel's row says **No seat license**.
+3. Click the **Seats** tab. The new hotel's row says **No seat license**.
 
-    ![Seats tab: the new hotel has no seats yet](/screenshots/en/guide-setup-hotel-09-seats-tab-empty.png)
+   ![Seats tab: the new hotel has no seats yet](/screenshots/en/guide-setup-hotel-09-seats-tab-empty.png)
 
-16. Click **Add seat license** on the hotel's row.
-17. In **Seats**, enter how many users the customer bought, for example `5`.
-18. Pick the start and end dates from the contract. **Reference No.** is optional; you can use it for the purchase order number. The licence number is given automatically when you save.
+4. Click **Add seat license** on the hotel's row.
+5. In **Seats**, enter how many users the customer bought, for example `5`.
+6. Pick the start and end dates from the contract. **Reference No.** is optional; you can use it for the purchase order number. The licence number is given automatically when you save.
 
-    ![The completed Add seat license form](/screenshots/en/guide-setup-hotel-10-seat-form-filled.png)
+   ![The completed Add seat license form](/screenshots/en/guide-setup-hotel-10-seat-form-filled.png)
 
-19. Click **Create License**.
-20. Go back to the cluster's licence page and click the **Seats** tab. The hotel's row shows the number of seats, with a licence in **Active** status.
+7. Click **Create License**.
+8. Go back to the cluster's licence page.
+9. Click the **Seats** tab. The hotel's row shows the number of seats, with a licence in **Active** status.
 
-    ![Seats tab after the seat licence was added](/screenshots/en/guide-setup-hotel-11-seat-license-added.png)
+   ![Seats tab after the seat licence was added](/screenshots/en/guide-setup-hotel-11-seat-license-added.png)
 
-### Part 4: Put the staff member in the cluster and the hotel
+### Part 4: Create the subscription
+
+This part is required. The subscription says which Carmen features the hotel may use. If the hotel has no active subscription, then once licence checking is switched on, the hotel's users are refused when they use those features.
+
+1. Create a subscription for the hotel and tick the feature bundles the customer bought, following [Manage a License, Part 2: Create a subscription and pick its feature bundles](/en/guides/manage-license#subscription).
+2. Come back and continue with Part 5.
+
+### Part 5: Put the staff member in the cluster and the hotel
 
 A user must be in the cluster before they can be added to one of its business units.
 
-21. Open the cluster's page and click the **Users** tab.
-22. Click **Add User**. The **Add User to Cluster** box opens.
-23. Type the staff member's name or email, then click their name in the results.
-24. Under **Cluster Role**, choose **User** (can only use the system) or **Admin** (can manage other users in the cluster). The line below shows how many seats are already in use.
+1. Open the cluster's page.
+2. Click the **Users** tab.
+3. Click **Add User**. The **Add User to Cluster** box opens.
+4. Type the staff member's name or email, then click their name in the results.
+5. Under **Cluster Role**, choose **User** (can only use the system) or **Admin** (can manage other users in the cluster). The line below shows how many seats are already in use.
 
-    ![The Add User to Cluster box with a user picked](/screenshots/en/guide-setup-hotel-12-cluster-add-user-dialog.png)
+   ![The Add User to Cluster box with a user picked](/screenshots/en/guide-setup-hotel-12-cluster-add-user-dialog.png)
 
-25. Click **Add User**. The message **User added to cluster** appears and the staff member is in the list. The account of the person who created the cluster is in the list from the start.
+6. Click **Add User**. The message **User added to cluster** appears and the staff member is in the list. The account of the person who created the cluster is in the list from the start.
 
-    ![The cluster's user list after adding the user](/screenshots/en/guide-setup-hotel-13-cluster-user-added.png)
+   ![The cluster's user list after adding the user](/screenshots/en/guide-setup-hotel-13-cluster-user-added.png)
 
-26. Open the business unit's page (**Business Units**, then click the hotel's name) and click the **Users** tab.
-27. Click **Add User**. The **Add User to Business Unit** box opens. It only lists people who are already in the cluster.
-28. Type the name or email, then click the name in the results.
-29. Under **BU Role**, choose **Admin** or **User**.
+7. Open the business unit's page (**Business Units**, then click the hotel's name).
+8. Click the **Users** tab.
+9. Click **Add User**. The **Add User to Business Unit** box opens. It only lists people who are already in the cluster.
+10. Type the name or email, then click the name in the results.
+11. Under **BU Role**, choose **Admin** or **User**.
 
     ![The Add User to Business Unit box with the Admin role](/screenshots/en/guide-setup-hotel-14-bu-add-user-dialog.png)
 
-30. Click **Add User**. The message **User added to business unit** appears.
+12. Click **Add User**. The message **User added to business unit** appears.
 
     ![The business unit's user list after adding the user](/screenshots/en/guide-setup-hotel-15-bu-user-added.png)
 
 ## Check that it worked
 
 - On the cluster's page, the top right shows the business units in use against the quota, for example **1 / 2**, and the seats in use.
-- On the cluster's licence page, the summary bar shows the number of seats, and the **1 BU without seats** warning is gone.
+- On the cluster's licence page, the summary bar shows the number of seats and contracts, and the **1 BU without seats** warning is gone.
+- The business unit's **Licenses** tab shows the subscription (its number starts with `SUB-`) with **Active** status.
 - The business unit's **Users** tab lists the staff member, with their **BU Role** and **Active** status.
 
 ## Troubleshooting
@@ -125,10 +140,11 @@ A user must be in the cluster before they can be added to one of its business un
 - **Red text under Code:** the code must be 2–20 English letters, digits, `-` or `_`, with no spaces.
 - **Red text under the cluster's Alias:** the alias may have at most 3 characters, letters or digits only.
 - **Create Business Unit can't be clicked and the bottom bar says something is still needed:** enter the hotel's name and pick the cluster.
-- **You can't create the business unit because the cluster has used its whole quota:** add a BU quota licence, see [Manage a License](/en/guides/manage-license).
+- **You can't create the business unit because the cluster has used its whole quota:** add a BU quota licence, see [Manage a License](/en/guides/manage-license#bu-quota).
 - **The staff member can't be found in Add User to Cluster:** the account may not exist yet. Create it first with [Add a User](/en/guides/add-user).
-- **The staff member can't be found in Add User to Business Unit:** add them to the cluster first (steps 21–25).
+- **The staff member can't be found in Add User to Business Unit:** add them to the cluster first (Part 5, steps 1–6).
 - **You can't add the user to the business unit because there are no free seats:** add a seat licence for the hotel first (Part 3).
+- **The hotel's users are refused when they use a feature:** check that the hotel has an active subscription that includes the feature bundle they need (Part 4).
 - **A menu or button in this guide is missing, or you see Access Denied:** your role may not cover this work. See [Access Denied screen](/en/getting-started/common-actions#access-denied).
 
 ## Related screens
