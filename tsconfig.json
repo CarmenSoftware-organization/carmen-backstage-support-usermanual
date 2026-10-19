@@ -10,5 +10,5 @@
     "allowImportingTsExtensions": true,
     "types": ["node"]
   },
-  "include": ["scripts/**/*.ts", "capture/**/*.ts", "site/.vitepress/*.mts"]
+  "include": ["scripts/**/*.ts", "capture/**/*.ts", "site/.vitepress/*.mts", "site/.vitepress/theme/*.ts"]
 }

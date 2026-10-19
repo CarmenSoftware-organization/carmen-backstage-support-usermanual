@@ -1,4 +1,5 @@
 import { defineConfig, type DefaultTheme } from 'vitepress'
+import { miniSearchOptions } from './search-options.mts'
 import { dashboard, gettingStarted, guides, profile, screenGroups, type Lang, type PageDef } from './nav-data.mts'
 
 const link = (lang: Lang, slug: string) => (lang === 'th' ? `/${slug}` : `/en/${slug}`)
@@ -28,7 +29,7 @@ export default defineConfig({
   title: 'Carmen Platform คู่มือการใช้งาน',
   cleanUrls: true,
   themeConfig: {
-    search: { provider: 'local' },
+    search: { provider: 'local', options: { miniSearch: { options: miniSearchOptions } } },
   },
   locales: {
     root: {
@@ -47,6 +48,7 @@ export default defineConfig({
         search: {
           provider: 'local',
           options: {
+            miniSearch: { options: miniSearchOptions },
             translations: {
               button: { buttonText: 'ค้นหา', buttonAriaLabel: 'ค้นหา' },
               modal: {
