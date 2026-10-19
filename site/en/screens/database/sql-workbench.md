@@ -8,7 +8,7 @@ Use this screen to give commands **directly to one hotel's database**, by typing
 
 SQL commands come in two kinds:
 
-- **Commands that only look at data** start with `SELECT` (or `WITH`). They only read data and show it. They change nothing in the database. <!-- plain-ok -->
+- **Commands that only look at data** start with `SELECT` (or `WITH`). Normally they only read data and show it, and change nothing in the database. But a command that starts this way can also hide a part that changes data inside it. See the cautions. <!-- plain-ok -->
 - **Commands that change data**, such as `INSERT` (add), `UPDATE` (change), `DELETE` (remove rows), `TRUNCATE` (empty a whole table), `CREATE` / `ALTER` / `DROP` (create, change or remove structure). These change the hotel's real data straight away. <!-- plain-ok -->
 
 **Who uses this screen, and when:** it is a tool for the technical team, used to find the cause when a hotel reports that its data looks wrong, or when the technical team needs to build a special report. For everyday work, such as changing a user or a business unit, use the screen for that job, not this one: the normal screens check that your changes are valid, and this screen does not.
@@ -99,6 +99,8 @@ When you click **Run**, a command that changes data changes the hotel's real dat
 
 ::: warning The system does not ask before every command
 The system asks you to confirm only commands that start with `DROP`, `TRUNCATE`, `DELETE`, `UPDATE`, `ALTER`, `GRANT` or `REVOKE`. Other commands that change data, such as `INSERT` (add data) or `CREATE` (create), run at once without asking. <!-- plain-ok -->
+
+The system looks only at the **first word** of each command. A command that starts with `WITH` or `SELECT` but changes data inside it, or a command that starts with `CALL` or `DO` (runs a saved set of commands, or one written into the command), also runs at once without asking. The system not asking does not mean the command is safe. <!-- plain-ok -->
 :::
 
 ::: warning A DELETE or UPDATE without WHERE affects every row
@@ -114,7 +116,7 @@ If a view, procedure or function with the same name already exists, **Save** ove
 :::
 
 - **Running several commands at once:** if any command in the set fails, the system cancels the whole set. None of the commands in it take effect.
-- **Long-running commands:** each command may run for about 30 seconds at most. After that, the system stops it and shows an error.
+- **Long-running commands:** each run (all the commands you run together) may take about 30 seconds at most. If it goes over, the system stops it and shows an error, and nothing in that run takes effect.
 - **Closing the screen while a command runs:** the command keeps running in the hotel's database until it finishes or runs out of time, but you will not see the result. Do not run it again to see the result; use a command that only looks at data to check whether the data has changed.
 - If the screen shows the word **schema**, for example in the message after saving, it means the part of the database that belongs to this hotel. <!-- plain-ok -->
 

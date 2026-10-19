@@ -43,6 +43,7 @@ Besides updating the structure, this screen also loads **starting data** (the ba
 - If a row shows the label **Not in this build**, its **Run** button cannot be clicked.
 - **Run console:** the panel at the bottom of the screen shows the messages from every job you start on this screen, and whether each one succeeded. Click **Copy all**, or the copy icon of one job, to send it to the technical team. Click **Clear** to empty the console.
 - While one job is running, the other buttons on this screen cannot be clicked until it finishes.
+- If the system cannot read the status (the **Status** card shows an error message with a retry button), **Apply migrations**, **Resolve** and every **Run** button cannot be clicked until the status loads.
 
 ## Fields explained
 
