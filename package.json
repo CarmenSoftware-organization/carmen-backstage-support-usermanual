@@ -1,0 +1,20 @@
+{
+  "name": "carmen-platform-usermanual",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "docs:dev": "vitepress dev site",
+    "docs:build": "vitepress build site",
+    "docs:preview": "vitepress preview site",
+    "typecheck": "tsc --noEmit",
+    "check:parity": "bun scripts/check-parity.ts",
+    "check:plain": "bun scripts/check-plain-language.ts",
+    "check": "bun run typecheck && bun run check:parity && bun run check:plain && bun run docs:build"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^20",
+    "typescript": "^5.9.3",
+    "vitepress": "1.6.3"
+  }
+}
