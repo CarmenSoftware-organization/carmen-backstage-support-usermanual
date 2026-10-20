@@ -84,6 +84,11 @@ type Row = {
   email?: string
   license_number?: string
   subscription_number?: string
+  cluster_id?: string
+  cluster_name?: string
+  business_unit_id?: string
+  business_unit_name?: string
+  bu_name?: string
   deleted_at?: string | null
   audit?: { deleted?: { at?: string } }
 }
@@ -181,27 +186,43 @@ async function listAll(path: string): Promise<Row[]> {
   return out
 }
 
-/** Child records of a list endpoint that may not be paged (licence lists per cluster/BU). */
-async function listPlain(path: string): Promise<Row[]> {
-  const rows = await api<Row[] | { data?: Row[] }>('GET', path)
-  return Array.isArray(rows) ? rows : (rows.data ?? [])
-}
-
 const label = (r: Row): string =>
   r.name ?? r.username ?? r.email ?? r.license_number ?? r.subscription_number ?? r.code ?? r.id
 /** The cluster list also returns clusters that were already deleted (marked in `audit.deleted`). */
 const alive = (r: Row): boolean => !r.deleted_at && !r.audit?.deleted?.at
 const errText = (e: unknown): string => (e instanceof Error ? e.message : String(e)).slice(0, 160)
 
+/** Platform-wide licence lists (each has a `/deleted` twin and a `/:id/hard` delete). */
+const LICENCE_KINDS = [
+  { kind: 'BU quota licence', path: 'cluster-licenses' },
+  { kind: 'seat licence', path: 'business-unit-licenses' },
+  { kind: 'interface licence', path: 'interface-licenses' },
+  { kind: 'subscription', path: 'subscriptions' },
+] as const
+
+/** A licence row owned by a demo cluster (and demo business unit, when the row names one). */
+const isDemoLicence = (r: Row): boolean => {
+  const bu = r.business_unit_name ?? r.bu_name
+  return isDemoName(r.cluster_name) && (bu === undefined || bu === null || isDemoName(bu))
+}
+
+/** The app's (soft) delete for a licence row; the hard delete only takes rows already soft-deleted. */
+const softDeletePath = (path: string, r: Row): string =>
+  path === 'cluster-licenses' ? `/api-system/clusters/${r.cluster_id}/licenses/${r.id}` :
+  path === 'business-unit-licenses' ? `/api-system/business-units/${r.business_unit_id}/licenses/${r.id}` :
+  path === 'interface-licenses' ? `/api-system/business-units/${r.business_unit_id}/interface-licenses/${r.id}` :
+  `/api-system/platform/subscriptions/${r.id}`
+
 /**
  * Deletes every user, business unit, cluster and licence feature group whose name (users:
  * username or e-mail) starts with MANUAL-DEMO — from this run and any earlier one —
- * children first: users → business units → clusters → feature groups.
+ * children first: licences → users → business units → clusters → feature groups.
+ * Licence records (quota, seats, interface, subscriptions) count as demo when their cluster
+ * (and business unit, if named) starts with MANUAL-DEMO-; they are soft-deleted, then deleted
+ * permanently, as are demo licences an earlier run left soft-deleted.
  * Users are deleted permanently (this also removes their sign-in account); business units
  * and clusters are deleted the way the app deletes them.
- * Licence records (quota, seats, interface, subscriptions) of the demo clusters cannot be
- * removed this way and are reported in `left`, as is anything whose delete failed.
- * Never touches a record without the prefix. Never throws: problems are logged and listed.
+ * Never touches a record without the prefix. Never throws: problems are logged and listed in `left`.
  */
 export async function cleanupDemoData(opts: { dryRun?: boolean } = {}): Promise<{ deleted: string[]; left: string[] }> {
   const deleted: string[] = []
@@ -230,6 +251,19 @@ export async function cleanupDemoData(opts: { dryRun?: boolean } = {}): Promise<
   const bus = await find('business unit', '/api-system/business-units', (b) => isDemoName(b.name))
   const clusters = await find('cluster', '/api-system/clusters', (c) => isDemoName(c.name))
   const groups = await find('feature group', '/api-system/platform/license-feature-groups', (g) => isDemoName(g.name))
+  const licences: { kind: string; path: string; live: Row[]; dead: Row[] }[] = []
+  for (const { kind, path } of LICENCE_KINDS) {
+    const base = `/api-system/platform/${path}`
+    const live = await find(kind, base, isDemoLicence)
+    const liveIds = new Set(live.map((r) => r.id))
+    let dead: Row[] = []
+    try {
+      dead = (await listAll(`${base}/deleted`)).filter((r) => !liveIds.has(r.id) && isDemoLicence(r))
+    } catch (e) {
+      left.push(`${kind} (soft-deleted): could not list (${errText(e)}) — check DEV by hand`)
+    }
+    licences.push({ kind, path, live, dead })
+  }
 
   if (opts.dryRun) {
     // Log what would be deleted, plus near misses (mention manual-demo in any case but do not
@@ -252,36 +286,22 @@ export async function cleanupDemoData(opts: { dryRun?: boolean } = {}): Promise<
     await report('business unit', '/api-system/business-units', bus, ['name'])
     await report('cluster', '/api-system/clusters', clusters, ['name'])
     await report('feature group', '/api-system/platform/license-feature-groups', groups, ['name', 'code'])
+    for (const { kind, path, live, dead } of licences) {
+      await report(kind, `/api-system/platform/${path}`, live, ['license_number', 'subscription_number', 'cluster_name'])
+      for (const r of dead) console.log(`[demo-data] dry-run WOULD DELETE ${kind} (soft-deleted): ${label(r)} / ${r.cluster_name}`)
+    }
     return { deleted: [], left }
   }
 
-  // Licence records hang off the demo clusters / business units and stay behind. List them
-  // before the owners are deleted (afterwards their lists may no longer be readable).
-  for (const c of clusters) {
-    for (const [what, path] of [
-      ['BU quota licence', `/api-system/clusters/${c.id}/licenses`],
-      ['subscription', `/api-system/clusters/${c.id}/subscriptions?page=1&perpage=100`],
-    ] as const) {
-      try {
-        for (const l of await listPlain(path)) left.push(`${what} ${label(l)} (cluster ${c.name})`)
-      } catch {
-        /* not readable: nothing to report */
-      }
-    }
+  // Licences first: they hang off the demo clusters / business units.
+  for (const { kind, path, live, dead } of licences) {
+    const hard = (r: Row) => api('DELETE', `/api-system/platform/${path}/${r.id}/hard`)
+    await sweep(kind, live, async (r) => {
+      await api('DELETE', softDeletePath(path, r))
+      await hard(r)
+    })
+    await sweep(`${kind} (soft-deleted)`, dead, hard)
   }
-  for (const b of bus) {
-    for (const [what, path] of [
-      ['seat licence', `/api-system/business-units/${b.id}/licenses`],
-      ['interface licence', `/api-system/business-units/${b.id}/interface-licenses`],
-    ] as const) {
-      try {
-        for (const l of await listPlain(path)) left.push(`${what} ${label(l)} (business unit ${b.name})`)
-      } catch {
-        /* not readable: nothing to report */
-      }
-    }
-  }
-
   await sweep('user', users, (u) => api('DELETE', `/api-system/user/${u.id}/hard`))
   await sweep('business unit', bus, (b) => api('DELETE', `/api-system/business-units/${b.id}`))
   await sweep('cluster', clusters, (c) => api('DELETE', `/api-system/clusters/${c.id}`))

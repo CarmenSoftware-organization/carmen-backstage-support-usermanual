@@ -48,9 +48,9 @@ Run:
 - `bun run capture:guides` — How-to Guide shots (these create `MANUAL-DEMO-` records).
 - `bun run capture` — both.
 
-`capture:guides` adds about 18 licence records to DEV per run that cleanup cannot remove
-(see below), so run it only when guide pictures must change. For routine refreshes use
-`capture:screens`. Run `bun run check` afterwards.
+`capture:guides` creates records on DEV (removed again by cleanup, see below), so run it only
+when guide pictures must change. For routine refreshes use `capture:screens`. Run
+`bun run check` afterwards.
 
 What a run does to DEV: it logs in, saves the current feature-flag states to
 `.capture-state/flags-original.json` (also printed in the log), switches every flag to
@@ -93,9 +93,10 @@ business units, clusters and licence feature groups whose name starts with `MANU
 are deleted — from any run, never anything without the prefix (names must start with
 `MANUAL-DEMO-`; users only when both username and e-mail have the exact generated
 `manual-demo-<kind>-<th|en>-<yyyyMMddHHmm>@example.com` shape). Users are deleted
-permanently (with their sign-in account). Licence records of the demo clusters (BU quota,
-seats, interface licences, subscriptions) are not removed; the log lists them under
-`left`. To sweep by hand:
+permanently (with their sign-in account). Licence records (BU quota, seats, interface
+licences, subscriptions) whose cluster — and business unit, when the row names one — starts
+with `MANUAL-DEMO-` are deleted first, permanently (soft delete, then hard delete; licence
+numbers are never reissued). Anything that fails is listed under `left`. To sweep by hand:
 
 ```
 bun run capture:cleanup-demo              # delete
