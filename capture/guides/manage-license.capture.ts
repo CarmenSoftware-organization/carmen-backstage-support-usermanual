@@ -1,7 +1,7 @@
 // Guide: manage licences — the licence center of one cluster, a new subscription, seats,
 // BU quota, an interface licence, and a licence feature group.
-// WRITES TO DEV. Every record is named MANUAL-DEMO-…; licence records cannot be removed and
-// are reported by teardown; the cluster, business unit and feature group are deleted.
+// WRITES TO DEV. Every record is named MANUAL-DEMO-…; teardown deletes the licence records,
+// the cluster, business unit and feature group.
 import { expect, test } from '../fixtures.ts'
 import { createDemoBusinessUnit, createDemoCluster, demoCode, demoName, isoDate } from '../demo-data.ts'
 import { L, button, expectWrite, go, main, openTab, scrollToMiddle, selectsLoaded, snap, successToast, toastsGone } from './ui.ts'

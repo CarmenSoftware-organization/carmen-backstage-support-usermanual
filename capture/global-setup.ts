@@ -37,7 +37,7 @@ export default async function globalSetup(): Promise<void> {
   process.env.CAPTURE_FLAGS_OWNED = '1'
   // Leftover MANUAL-DEMO records of an earlier run that never reached teardown (killed run).
   // Runs only after the flag step passed, so a refused start still changes nothing.
-  // Licence records it cannot remove are only listed; a failure never stops the run.
+  // Anything it cannot remove is only listed; a failure never stops the run.
   try {
     await cleanupDemoData()
   } catch (err) {
