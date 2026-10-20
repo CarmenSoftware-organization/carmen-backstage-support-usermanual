@@ -8,3 +8,6 @@ capture/results/
 .superpowers/
 /graft/
 .remember/
+.claude/
+.ignore
+.mcp.json
