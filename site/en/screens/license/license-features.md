@@ -4,7 +4,7 @@
 
 Left menu, group **License Management** > **License Features**. The **License Catalog** screen opens on the **Features** tab.
 
-A **feature** (one capability of Carmen, such as the accounts payable page or the accounts receivable page) is the smallest thing that can be sold. The system builds the feature list itself from the program, so you cannot add or delete features here. The only thing you set is each feature's **state**: still sellable, closed to new sales, or hidden.
+A **feature** (one capability of Carmen Blue, such as the accounts payable page or the accounts receivable page) is the smallest thing that can be sold. The system builds the feature list itself from the program, so you cannot add or delete features here. The only thing you set is each feature's **state**: still sellable, closed to new sales, or hidden.
 
 Features are sold to customers through [License Feature Groups](/en/screens/license/license-feature-groups) (ready-made bundles), not one at a time.
 

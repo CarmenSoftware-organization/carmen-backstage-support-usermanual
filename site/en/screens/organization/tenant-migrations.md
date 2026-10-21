@@ -6,7 +6,7 @@ Left menu, group **Organization** > **Tenant Migrations**. The screen's heading 
 
 A **tenant** is each hotel's own database: every **business unit** (one hotel or branch) has its own. A **migration** is an update to the database structure so that it matches the latest version of the system.
 
-When Carmen releases a new version, each hotel's database may need new fields or tables before the hotel can use the new features. Use this screen to check which hotels are **behind** (not yet updated), then update them one hotel at a time or all at once.
+When Carmen Blue releases a new version, each hotel's database may need new fields or tables before the hotel can use the new features. Use this screen to check which hotels are **behind** (not yet updated), then update them one hotel at a time or all at once.
 
 **Who uses this screen:** it is normally the technical team's job, after a new release, or when a hotel reports that a screen stopped working after a system update. Any administrator can safely **check** the status here, but do not run updates yourself unless you have been asked to.
 

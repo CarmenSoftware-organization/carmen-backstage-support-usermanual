@@ -18,7 +18,7 @@ Each menu item has three states:
 | **Coming soon** | The menu item is faded with a **Coming soon** label and cannot be clicked. Opening the link directly shows the [Coming soon screen](/en/getting-started/common-actions#coming-soon). |
 | **Hidden** | The menu item is not shown at all. Opening the link directly shows [Page not found](/en/getting-started/common-actions#not-found). |
 
-These switches change only what this admin app shows. They do not stop anything running in the background, and do not affect the Carmen website the hotels use.
+These switches change only what this admin app shows. They do not stop anything running in the background, and do not affect the Carmen Blue website the hotels use.
 
 ## Screenshot
 

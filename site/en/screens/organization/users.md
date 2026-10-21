@@ -4,7 +4,7 @@
 
 Left menu, group **Organization** > **Users**. The screen's heading reads **User Management**.
 
-This screen holds the account of everyone who uses Carmen, such as hotel staff. Use it to create accounts, change names, switch accounts off for a while, set a user's password, and decide which **business units** (a business unit is one hotel or branch) a user can access.
+This screen holds the account of everyone who uses Carmen Blue, such as hotel staff. Use it to create accounts, change names, switch accounts off for a while, set a user's password, and decide which **business units** (a business unit is one hotel or branch) a user can access.
 
 A user must be in a **cluster** (one customer's hotel group) before they can be given that cluster's business units. Adding a user to a cluster is done on [Clusters](/en/screens/organization/clusters).
 

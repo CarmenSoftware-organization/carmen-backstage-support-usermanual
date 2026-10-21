@@ -35,7 +35,7 @@ Who can change what:
 
 **Email links & lifetimes**
 
-The links in these emails take recipients to the Carmen website the hotels use, not to this admin app. Enter only the page address. The system adds each person's own code to the end by itself. The address must start with `https://` or `http://`.
+The links in these emails take recipients to the Carmen Blue website the hotels use, not to this admin app. Enter only the page address. The system adds each person's own code to the end by itself. The address must start with `https://` or `http://`.
 
 | Card | Field | What it means | Example / notes |
 | --- | --- | --- | --- |
@@ -82,14 +82,14 @@ The defaults are high on purpose, because opening a new hotel and inviting 30–
 
 | Field | What it means | Example / notes |
 | --- | --- | --- |
-| **Carmen Platform** | Tick **Allow Google sign-in** on the sign-in page of this admin app | If off, the Google button is still shown but cannot be clicked. |
-| **App** | Tick to allow it in the hotels' Carmen website and every other program | The button works only once the technical team has fully set up the Google connection. |
+| **Carmen Blue Platform** | Tick **Allow Google sign-in** on the sign-in page of this admin app | If off, the Google button is still shown but cannot be clicked. |
+| **App** | Tick to allow it in the hotels' Carmen Blue website and every other program | The button works only once the technical team has fully set up the Google connection. |
 
 **External API**
 
 | Field | What it means | Example / notes |
 | --- | --- | --- |
-| **Base URL** | The main address that outside systems (such as a hotel's accounting system) use to connect to Carmen with a business unit's connection key | Enter the main address only. Do not add `/api/ext` to the end. Leave blank to use the server's default. <!-- plain-ok --> |
+| **Base URL** | The main address that outside systems (such as a hotel's accounting system) use to connect to Carmen Blue with a business unit's connection key | Enter the main address only. Do not add `/api/ext` to the end. Leave blank to use the server's default. <!-- plain-ok --> |
 
 **Platform migration API**
 
