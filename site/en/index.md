@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: "Carmen Platform User Manual"
+  name: "Carmen Blue Platform User Manual"
   tagline: "A plain-language manual for platform administrators"
   actions:
     - theme: brand

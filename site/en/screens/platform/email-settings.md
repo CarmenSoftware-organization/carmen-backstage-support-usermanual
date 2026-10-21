@@ -56,7 +56,7 @@ The test email box
 | --- | --- | --- |
 | **Profile name** (required) | The profile's name on this screen | For example "No-reply", "Support" |
 | **From email** (required) | The address recipients see as the sender | For example `no-reply@yourhotel.com` |
-| **From name** | The name recipients see next to the sender address | For example "Carmen" |
+| **From name** | The name recipients see next to the sender address | For example "Carmen Blue" |
 | **SMTP host** (required) | The email server's address, from your email provider | For example `smtp.gmail.com` |
 | **SMTP port** | The server's connection number, from your email provider | 1–65535. Usually 587 or 465. |
 | **SMTP username** | The user name for signing in to the email server | Often the sender account's email address |

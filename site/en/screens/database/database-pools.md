@@ -48,7 +48,7 @@ The form for a new pool:
 | **Host** (required) | The address of the machine that holds the databases | Given by the technical team. Secret. |
 | **Port** (required) | The number of the entry point on that machine | A number from 1 to 65535. A common value is `5432`. If it is wrong, you see **Port must be a number between 1 and 65535**. |
 | **Database** (required) | The name of the database on that machine | For example `carmen_tenant` |
-| **Username** (required) | The account name the system uses to get into the database | Not the user name of a person in Carmen. Secret. |
+| **Username** (required) | The account name the system uses to get into the database | Not the user name of a person in Carmen Blue. Secret. |
 | **Password** (required when creating) | The password of the account above | When editing, leave it blank to keep the current password. Click the eye icon to see what you typed. The system stores it encrypted and never shows a saved password again. |
 | **Note** | Any extra note | Optional. Shown under the address in the list. |
 

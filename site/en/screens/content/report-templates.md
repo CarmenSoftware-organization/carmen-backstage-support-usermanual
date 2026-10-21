@@ -4,7 +4,7 @@
 
 Left menu, group **Content** > **Report Templates**
 
-A **report template** (the layout of a report or document that hotels view or print from Carmen) comes in two types:
+A **report template** (the layout of a report or document that hotels view or print from Carmen Blue) comes in two types:
 
 - **Form:** the printed layout of a document, such as a purchase request (PR) or a purchase order (PO). Each document can have several layouts and one default. See [Form Groups](/en/screens/content/form-groups).
 - **List:** a report that hotel users open from their report list.

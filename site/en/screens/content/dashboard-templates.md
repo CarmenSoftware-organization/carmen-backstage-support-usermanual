@@ -4,7 +4,7 @@
 
 Left menu, group **Content** > **Dashboard Templates**
 
-Hotel users see a dashboard (a page of summary numbers and charts) in each part of Carmen, such as Procurement or Inventory. Each box of numbers or chart is a **widget**. This screen defines those widgets. It has three tabs:
+Hotel users see a dashboard (a page of summary numbers and charts) in each part of Carmen Blue, such as Procurement or Inventory. Each box of numbers or chart is a **widget**. This screen defines those widgets. It has three tabs:
 
 - **System widgets:** widgets shown on every module's dashboard (a module is one part of the program) in every business unit (hotel), within the scope you set.
 - **BU default:** the starting set of widgets for the "BU dashboard", which each hotel can customise. This set does not reach any hotel until it is deployed.

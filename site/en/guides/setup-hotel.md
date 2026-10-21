@@ -95,7 +95,7 @@ The pictures in this guide use sample names that start with `MANUAL-DEMO-`. When
 
 ### Part 4: Create the subscription
 
-This part is required. The subscription says which Carmen features the hotel may use. If the hotel has no active subscription, then once licence checking is switched on, the hotel's users are refused when they use those features.
+This part is required. The subscription says which Carmen Blue features the hotel may use. If the hotel has no active subscription, then once licence checking is switched on, the hotel's users are refused when they use those features.
 
 1. Create a subscription for the hotel and tick the feature bundles the customer bought, following [Manage a License, Part 2: Create a subscription and pick its feature bundles](/en/guides/manage-license#subscription).
 2. Come back and continue with Part 5.

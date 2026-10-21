@@ -34,7 +34,7 @@ This screen has no form to fill in. The **Event Details** panel shows:
 | **Type** | **Page view** or **Click** |
 | **User**, **Email** | Who did it |
 | **Business Unit** | The hotel the user was working in. Shows `-` if none. |
-| **Application** | The program used, such as the Carmen website |
+| **Application** | The program used, such as the Carmen Blue website |
 | **Domain** | The web address the user had open |
 | **Page** | The path of the page the user was on |
 | **Element**, **Element text** | The button or link clicked, and the text on it (click events only) |

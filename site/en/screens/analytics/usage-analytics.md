@@ -4,7 +4,7 @@
 
 Left menu, group **Analytics** > **Usage Analytics**
 
-This screen sums up how much people use the Carmen programs. The system counts what users do on screen, such as opening pages and clicking buttons, and shows it as totals, a daily chart and a ranking of the most-opened pages. The screen is view-only. There is nothing to edit.
+This screen sums up how much people use the Carmen Blue programs. The system counts what users do on screen, such as opening pages and clicking buttons, and shows it as totals, a daily chart and a ranking of the most-opened pages. The screen is view-only. There is nothing to edit.
 
 Words this screen uses:
 

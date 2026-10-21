@@ -26,7 +26,7 @@ function sidebar(lang: Lang): DefaultTheme.Sidebar {
 }
 
 export default defineConfig({
-  title: 'Carmen Platform คู่มือการใช้งาน',
+  title: 'Carmen Blue Platform คู่มือการใช้งาน',
   cleanUrls: true,
   themeConfig: {
     search: { provider: 'local', options: { miniSearch: { options: miniSearchOptions } } },
@@ -35,8 +35,8 @@ export default defineConfig({
     root: {
       label: 'ไทย',
       lang: 'th-TH',
-      title: 'Carmen Platform คู่มือการใช้งาน',
-      description: 'คู่มือการใช้งาน Carmen Platform สำหรับผู้ดูแลระบบ',
+      title: 'Carmen Blue Platform คู่มือการใช้งาน',
+      description: 'คู่มือการใช้งาน Carmen Blue Platform สำหรับผู้ดูแลระบบ',
       themeConfig: {
         sidebar: sidebar('th'),
         outlineTitle: 'ในหน้านี้',
@@ -65,8 +65,8 @@ export default defineConfig({
       label: 'English',
       lang: 'en-US',
       link: '/en/',
-      title: 'Carmen Platform User Manual',
-      description: 'User manual for the Carmen Platform admin app',
+      title: 'Carmen Blue Platform User Manual',
+      description: 'User manual for the Carmen Blue Platform admin app',
       themeConfig: { sidebar: sidebar('en') },
     },
   },
