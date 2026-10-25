@@ -82,8 +82,8 @@ The defaults are high on purpose, because opening a new hotel and inviting 30–
 
 | Field | What it means | Example / notes |
 | --- | --- | --- |
-| **Carmen Blue Platform** | Tick **Allow Google sign-in** on the sign-in page of this admin app | If off, the Google button is still shown but cannot be clicked. |
-| **App** | Tick to allow it in the hotels' Carmen Blue website and every other program | The button works only once the technical team has fully set up the Google connection. |
+| **Carmen Blue Backstage** | Tick **Allow Google sign-in** on the sign-in page of this admin app | If off, the Google button is still shown but cannot be clicked. |
+| **Carmen Blue Platform** | Tick to allow it in the hotels' main Carmen Blue Platform website and every other program | The button works only once the technical team has fully set up the Google connection. |
 
 **External API**
 
