@@ -8,7 +8,7 @@ import type { BrowserContext } from '@playwright/test'
 const ROOT = fileURLToPath(new URL('..', import.meta.url))
 
 /** Parses dotenv text: `KEY=VALUE`, optional `export`, quotes, `#` comments.
- *  Copied from carmen-platform-e2e/scripts/lib/parse-env.mjs (not imported on purpose). */
+ *  Copied from carmen-backstage-e2e/scripts/lib/parse-env.mjs (not imported on purpose). */
 export function parseEnv(contents: string): Record<string, string> {
   const out: Record<string, string> = {}
   for (const raw of String(contents ?? '').split('\n')) {
@@ -42,7 +42,7 @@ function loadFile(path: string): void {
 }
 
 loadFile(resolve(ROOT, '.env'))
-loadFile(resolve(ROOT, process.env.CAPTURE_ENV_FILE ?? '../carmen-platform-e2e/.env'))
+loadFile(resolve(ROOT, process.env.CAPTURE_ENV_FILE ?? '../carmen-backstage-e2e/.env'))
 
 function required(key: string, hint: string): string {
   const value = process.env[key]
@@ -53,9 +53,9 @@ function required(key: string, hint: string): string {
 export const CAPTURE: { baseUrl: string; apiBase: string; appId: string; email: string; password: string } = {
   baseUrl: (process.env.CAPTURE_BASE_URL || 'https://dev.blueledgers.com:9902').replace(/\/$/, ''),
   apiBase: (process.env.CAPTURE_API_BASE || 'https://dev.blueledgers.com:4001').replace(/\/$/, ''),
-  appId: required('CAPTURE_APP_ID', 'Copy REACT_APP_API_APP_ID from carmen-platform/.env.dev into this repo\'s .env (see .env.example).'),
-  email: required('TEST_USER_EMAIL', 'Set it in carmen-platform-e2e/.env (or the file named by CAPTURE_ENV_FILE).'),
-  password: required('TEST_USER_PASSWORD', 'Set it in carmen-platform-e2e/.env (or the file named by CAPTURE_ENV_FILE).'),
+  appId: required('CAPTURE_APP_ID', 'Copy REACT_APP_API_APP_ID from carmen-backstage/.env.dev into this repo\'s .env (see .env.example).'),
+  email: required('TEST_USER_EMAIL', 'Set it in carmen-backstage-e2e/.env (or the file named by CAPTURE_ENV_FILE).'),
+  password: required('TEST_USER_PASSWORD', 'Set it in carmen-backstage-e2e/.env (or the file named by CAPTURE_ENV_FILE).'),
 }
 
 /** Optional gateway rate-limit bypass header (same token the e2e suite uses). Empty when unset. */

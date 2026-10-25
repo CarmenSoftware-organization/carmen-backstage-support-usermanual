@@ -1,5 +1,5 @@
-// Single source for page slugs and on-screen labels (from carmen-platform src/i18n th.ts / en.ts).
-// Screen Reference order follows carmen-platform src/components/nav/platformNav.ts.
+// Single source for page slugs and on-screen labels (from carmen-backstage src/i18n th.ts / en.ts).
+// Screen Reference order follows carmen-backstage src/components/nav/platformNav.ts.
 
 export type Lang = 'th' | 'en'
 export type Kind = 'guide' | 'screen' | 'info'

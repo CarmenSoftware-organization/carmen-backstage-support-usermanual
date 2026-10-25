@@ -1,5 +1,5 @@
 // Small UI helpers shared by the guide captures. Labels are matched in both UI languages
-// (TH from carmen-platform src/i18n/th.ts, EN from en.ts).
+// (TH from carmen-backstage src/i18n/th.ts, EN from en.ts).
 import { expect, type Locator, type Page, type Response } from '@playwright/test'
 import { shoot } from '../fixtures.ts'
 

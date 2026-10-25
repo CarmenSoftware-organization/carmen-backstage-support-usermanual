@@ -3,7 +3,7 @@
 //
 // Slug = file name under site/public/screenshots/<lang>/. Screen Reference shots are
 // `<page>-<view>` where <page> is the page slug in site/.vitepress/nav-data.mts.
-// Routes come from carmen-platform src/App.tsx. Labels are matched in both UI languages.
+// Routes come from carmen-backstage src/App.tsx. Labels are matched in both UI languages.
 import type { Page } from '@playwright/test'
 import { scrollToMiddle } from './guides/ui.ts'
 

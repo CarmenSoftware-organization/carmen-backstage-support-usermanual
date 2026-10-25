@@ -18,7 +18,7 @@ bun run check         # typecheck + Thai/English parity + plain-language check +
 Every page must exist in Thai and English; `bun run check` fails otherwise.
 
 1. Add the entry (slug, Thai label, English label) to `site/.vitepress/nav-data.mts`. The sidebar
-   and page lists are generated from it. Screen Reference order follows `carmen-platform`
+   and page lists are generated from it. Screen Reference order follows `carmen-backstage`
    `src/components/nav/platformNav.ts`.
 2. Create the Thai page at `site/<slug>.md` and the English page at `site/en/<slug>.md`.
 3. Reference screenshots as `/screenshots/th/<name>.png` in Thai pages and
@@ -35,8 +35,8 @@ once with the app in Thai and once in English, into `site/public/screenshots/th/
 
 Setup (once):
 
-1. `cp .env.example .env` and set `CAPTURE_APP_ID` (copy `REACT_APP_API_APP_ID` from `carmen-platform/.env.dev`).
-2. Put a DEV Super Admin in `../carmen-platform-e2e/.env` as `TEST_USER_EMAIL` / `TEST_USER_PASSWORD`
+1. `cp .env.example .env` and set `CAPTURE_APP_ID` (copy `REACT_APP_API_APP_ID` from `carmen-backstage/.env.dev`).
+2. Put a DEV Super Admin in `../carmen-backstage-e2e/.env` as `TEST_USER_EMAIL` / `TEST_USER_PASSWORD`
    (or point `CAPTURE_ENV_FILE` at another file). Never commit these.
 3. `bunx playwright install chromium` if Playwright has no browser yet.
 

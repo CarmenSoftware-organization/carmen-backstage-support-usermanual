@@ -45,7 +45,7 @@ const LOADING = '[data-slot="skeleton"], .animate-pulse, [aria-busy="true"], .lo
 const LOADING_LABEL = /loading|กำลังโหลด/i
 
 // Status screens render IN PLACE (the URL does not change), so they are detected by text.
-// Texts from carmen-platform src/i18n th.ts / en.ts: pages.statusPage.*, pages.comingSoon.*
+// Texts from carmen-backstage src/i18n th.ts / en.ts: pages.statusPage.*, pages.comingSoon.*
 const WRONG_SCREEN: { what: string; text: RegExp }[] = [
   { what: 'Access Denied', text: /You don't have permission to access this page\.|คุณไม่มีสิทธิ์เข้าถึงหน้านี้/ },
   { what: 'Coming soon', text: /This feature is still being built\.|ฟีเจอร์นี้ยังพัฒนาไม่เสร็จ/ },

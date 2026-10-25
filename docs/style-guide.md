@@ -12,7 +12,7 @@ Rules for everyone who writes or edits pages in this manual. Thai and English pa
 
 ## Terminology rule (agreed)
 
-- Use the **exact label shown on screen** in that language. The Thai manual uses the Thai UI labels (from `carmen-platform/src/i18n/th.ts` — e.g. `หน่วยธุรกิจ`, `ไลเซนส์`, `ผู้ใช้งาน`; some stay English on screen, e.g. `Clusters`, `Tenant Migrations`, `SQL Workbench`). The English manual uses `src/i18n/en.ts`.
+- Use the **exact label shown on screen** in that language. The Thai manual uses the Thai UI labels (from `carmen-backstage/src/i18n/th.ts` — e.g. `หน่วยธุรกิจ`, `ไลเซนส์`, `ผู้ใช้งาน`; some stay English on screen, e.g. `Clusters`, `Tenant Migrations`, `SQL Workbench`). The English manual uses `src/i18n/en.ts`.
 - On a term's **first appearance on a page**, add a plain-language explanation in parentheses, e.g. "หน่วยธุรกิจ (Business Unit — โรงแรมหรือสาขาหนึ่งแห่ง)".
 - A **Glossary** page in each language lists every domain term (Cluster, Business Unit, License, Feature Group, Tenant, Migration, Seed Data, Broadcast, Platform Role, Super Admin, Feature Flag, Database Pool, …) with the TH label, EN label and a one-line plain explanation.
 - Note: the Thai UI is itself inconsistent in places (e.g. sidebar item `ไลเซนส์` under group `จัดการใบอนุญาต`). The manual follows the screen as-is and the glossary links both forms.
