@@ -2,7 +2,7 @@
 // WRITES TO DEV. Every record is named MANUAL-DEMO-…; global teardown removes what it can.
 //
 // Business unit guardrail: saving a business unit only stores a record (checked in
-// carmen-platform BusinessUnitEdit.tsx and the backend's createBusinessUnit — no database is
+// carmen-backstage BusinessUnitEdit.tsx and the backend's createBusinessUnit — no database is
 // created and no migration runs). The Database connection is still left "Not set" here, so the
 // demo record never points at a real database.
 import { test } from '../fixtures.ts'

@@ -1,7 +1,7 @@
 // Demo records for the How-to Guide captures (written to DEV) and their cleanup.
 // Every record a guide creates is named `MANUAL-DEMO-<kind>-<lang>-<yyyyMMddHHmm>`, so runs never
 // collide and cleanup can find every one of them, from this run or an earlier one.
-// Endpoints come from carmen-platform src/services/{userService,businessUnitService,clusterService,
+// Endpoints come from carmen-backstage src/services/{userService,businessUnitService,clusterService,
 // licenseFeatureGroupService,clusterLicenseService,businessUnitLicenseService,
 // businessUnitInterfaceLicenseService,subscriptionService}.ts.
 import { test } from '@playwright/test'
