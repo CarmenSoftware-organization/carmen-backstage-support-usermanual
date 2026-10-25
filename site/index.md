@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: "Carmen Blue Platform คู่มือการใช้งาน"
+  name: "Carmen Blue Backstage คู่มือการใช้งาน"
   tagline: "คู่มือสำหรับผู้ดูแลระบบ อธิบายเป็นภาษาที่เข้าใจง่าย"
   actions:
     - theme: brand

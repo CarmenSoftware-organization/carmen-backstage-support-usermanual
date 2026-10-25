@@ -1,6 +1,6 @@
-# Carmen Blue Platform User Manual
+# Carmen Blue Backstage User Manual
 
-Bilingual user manual for Carmen Blue Platform superadmins, built with VitePress. Thai is the root
+Bilingual user manual for Carmen Blue Backstage superadmins, built with VitePress. Thai is the root
 (`site/`), English lives under `site/en/`. Screenshots are captured automatically from the live
 DEV app. Style rules: [`docs/style-guide.md`](docs/style-guide.md).
 
