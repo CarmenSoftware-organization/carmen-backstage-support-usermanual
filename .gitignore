@@ -11,3 +11,5 @@ capture/results/
 .claude/
 .ignore
 .mcp.json
+.vercel
+.env*
