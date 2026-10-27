@@ -16,10 +16,10 @@ export interface PageDef {
 const page = (slug: string, kind: Kind, th: string, en: string): PageDef => ({ slug, kind, th, en })
 
 export const gettingStarted: PageDef[] = [
-  // page('getting-started/sign-in', 'info', 'เข้าสู่ระบบ', 'Sign In'),
-  // page('getting-started/choose-cluster', 'info', 'เลือก Cluster', 'Choose a Cluster'),
-  // page('getting-started/main-screen', 'info', 'รู้จักหน้าจอหลัก', 'The Main Screen'),
-  // page('glossary', 'info', 'อภิธานศัพท์', 'Glossary'),
+  page('getting-started/sign-in', 'info', 'เข้าสู่ระบบ', 'Sign In'),
+  page('getting-started/choose-cluster', 'info', 'เลือก Cluster', 'Choose a Cluster'),
+  page('getting-started/main-screen', 'info', 'รู้จักหน้าจอหลัก', 'The Main Screen'),
+  page('glossary', 'info', 'อภิธานศัพท์', 'Glossary'),
   page('getting-help', 'info', 'ติดต่อ support', 'Getting Help'),
 ]
 
@@ -32,12 +32,12 @@ export const guides: PageDef[] = [
 ]
 
 export const screens: PageDef[] = [
-  // page('screens/cluster', 'screen', 'Cluster', 'Cluster'),
-  // page('screens/business-units', 'screen', 'หน่วยธุรกิจ', 'Business Units'),
-  // page('screens/business-unit-detail', 'screen', 'หน้าหน่วยธุรกิจ', 'A Business Unit'),
-  // page('screens/users', 'screen', 'ผู้ใช้งาน', 'Users'),
-  // page('screens/licences', 'screen', 'ไลเซนส์', 'Licenses'),
-  // page('screens/profile', 'screen', 'โปรไฟล์', 'Profile'),
+  page('screens/cluster', 'screen', 'Cluster', 'Cluster'),
+  page('screens/business-units', 'screen', 'หน่วยธุรกิจ', 'Business Units'),
+  page('screens/business-unit-detail', 'screen', 'หน้าหน่วยธุรกิจ', 'A Business Unit'),
+  page('screens/users', 'screen', 'ผู้ใช้งาน', 'Users'),
+  page('screens/licences', 'screen', 'ไลเซนส์', 'Licenses'),
+  page('screens/profile', 'screen', 'โปรไฟล์', 'Profile'),
 ]
 
 export const allPages: PageDef[] = [...gettingStarted, ...guides, ...screens]
