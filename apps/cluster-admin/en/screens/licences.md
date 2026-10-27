@@ -47,6 +47,8 @@ You cannot add, renew or change a license on any screen of this manual. Carmen d
 
 ## Related guides
 
+- [Check Licenses and Expiry](/en/guides/licences)
+- [Manage Seats](/en/guides/manage-seats)
 - [A Business Unit](/en/screens/business-unit-detail)
 - [Users](/en/screens/users)
 - [Glossary](/en/glossary)

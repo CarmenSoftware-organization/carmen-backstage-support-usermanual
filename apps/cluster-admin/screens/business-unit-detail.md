@@ -128,6 +128,9 @@
 
 ## คู่มือที่เกี่ยวข้อง
 
+- [ดูค่าตั้งค่าหน่วยธุรกิจ](/guides/bu-settings)
+- [จัดการคนในหน่วยธุรกิจ](/guides/manage-bu-people)
+- [ดูไลเซนส์และวันหมดอายุ](/guides/licences)
 - [หน่วยธุรกิจ](/screens/business-units)
 - [ผู้ใช้งาน](/screens/users)
 - [ไลเซนส์](/screens/licences)

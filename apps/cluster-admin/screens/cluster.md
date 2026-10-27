@@ -51,6 +51,8 @@
 
 ## คู่มือที่เกี่ยวข้อง
 
+- [เชิญผู้ใช้เข้าหน่วยธุรกิจ](/guides/invite-user)
+- [จัดการที่นั่ง (Seat)](/guides/manage-seats)
 - [หน่วยธุรกิจ](/screens/business-units)
 - [ผู้ใช้งาน](/screens/users)
 - [ไลเซนส์](/screens/licences)

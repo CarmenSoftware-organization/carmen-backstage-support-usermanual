@@ -48,6 +48,8 @@
 
 ## คู่มือที่เกี่ยวข้อง
 
+- [ดูค่าตั้งค่าหน่วยธุรกิจ](/guides/bu-settings)
+- [จัดการคนในหน่วยธุรกิจ](/guides/manage-bu-people)
 - [หน้าหน่วยธุรกิจ](/screens/business-unit-detail)
 - [Cluster](/screens/cluster)
 - [ไลเซนส์](/screens/licences)

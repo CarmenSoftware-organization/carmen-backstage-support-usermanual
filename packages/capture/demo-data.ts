@@ -177,6 +177,38 @@ export async function addDemoUserToBusinessUnit(userId: string, buId: string, ro
 }
 
 /**
+ * Takes demo user `userId` out of `clusterId` again — every business-unit membership and the
+ * cluster membership — and deletes the user, which is what frees the seat. For guides that borrow a seat in the real test cluster.
+ * Only ever called with a user the guide created itself.
+ */
+export async function removeDemoMember(clusterId: string, userId: string): Promise<void> {
+  const r = await api<Row[] | { data?: Row[] }>('GET', `/api-system/user/clusters/${clusterId}`)
+  const m = (Array.isArray(r) ? r : (r.data ?? [])).find((x) => (x as Row & { user_id?: string }).user_id === userId)
+  const user = await api<Row>('GET', `/api-system/user/${userId}`)
+  if (!isDemoUser(user)) throw new Error(`refusing to remove non-demo user ${user.email}`)
+  for (const l of m?.seat?.links ?? []) await api('DELETE', `/api-system/user/business-units/${l.id}`)
+  if (m) await api('DELETE', `/api-system/user/clusters/${m.id}`)
+  // The cluster's seat count only drops once the user is gone for good (observed on DEV:
+  // removed memberships still counted until the hard delete).
+  await api('DELETE', `/api-system/user/${userId}/hard`)
+}
+
+/** Revokes the pending invitation to demo e-mail `email` in `clusterId` (a pending invitation holds a seat). */
+export async function revokeDemoInvitation(clusterId: string, email: string): Promise<void> {
+  if (!DEMO_EMAIL_RE.test(email)) throw new Error(`refusing to revoke non-demo invitation ${email}`)
+  const inv = (await listAll(`/api-system/clusters/${clusterId}/invitations`)).find((i) => i.email === email)
+  if (inv) await api('DELETE', `/api-system/clusters/${clusterId}/invitations/${inv.id}`)
+}
+
+/** The business unit named `name` in `clusterId` (a real one in the test cluster, looked up with the Super Admin login). */
+export async function findBusinessUnit(clusterId: string, name: string): Promise<{ id: string; name: string }> {
+  const rows = await listAll(`/api-system/business-units?search=${encodeURIComponent(name)}`)
+  const bu = rows.find((b) => b.cluster_id === clusterId && b.name === name && alive(b))
+  if (!bu) throw new Error(`business unit "${name}" not found in cluster ${clusterId}`)
+  return { id: bu.id, name }
+}
+
+/**
  * The cluster with `code` among the clusters the cluster-admin login administers.
  * Refuses a login that administers every cluster (a Super Admin): its Cluster Admin view lists
  * every customer's cluster, which must never reach the hotel-group manual.
@@ -208,7 +240,11 @@ async function listAll(path: string): Promise<Row[]> {
     const rows = await api<Row[] | { data?: Row[] }>('GET', `${path}${sep}page=${page}&perpage=${PER_PAGE}`)
     const list = Array.isArray(rows) ? rows : (rows.data ?? [])
     if (list.length === 0) break
-    out.push(...list)
+    // Some lists (e.g. cluster invitations) ignore paging and return everything on every page.
+    const seen = new Set(out.map((r) => r.id))
+    const fresh = list.filter((r) => !seen.has(r.id))
+    if (fresh.length === 0) break
+    out.push(...fresh)
   }
   return out
 }

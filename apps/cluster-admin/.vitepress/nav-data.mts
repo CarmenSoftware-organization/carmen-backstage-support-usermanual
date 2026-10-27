@@ -24,11 +24,11 @@ export const gettingStarted: PageDef[] = [
 ]
 
 export const guides: PageDef[] = [
-  // page('guides/invite-user', 'guide', 'เชิญผู้ใช้เข้าหน่วยธุรกิจ', 'Invite a User to a Business Unit'),
-  // page('guides/manage-bu-people', 'guide', 'จัดการคนในหน่วยธุรกิจ', 'Manage People in a Business Unit'),
-  // page('guides/manage-seats', 'guide', 'จัดการที่นั่ง (Seat)', 'Manage Seats'),
-  // page('guides/licences', 'guide', 'ดูไลเซนส์และวันหมดอายุ', 'Check Licenses and Expiry'),
-  // page('guides/bu-settings', 'guide', 'ดูค่าตั้งค่าหน่วยธุรกิจ', 'View Business Unit Settings'),
+  page('guides/invite-user', 'guide', 'เชิญผู้ใช้เข้าหน่วยธุรกิจ', 'Invite a User to a Business Unit'),
+  page('guides/manage-bu-people', 'guide', 'จัดการคนในหน่วยธุรกิจ', 'Manage People in a Business Unit'),
+  page('guides/manage-seats', 'guide', 'จัดการที่นั่ง (Seat)', 'Manage Seats'),
+  page('guides/licences', 'guide', 'ดูไลเซนส์และวันหมดอายุ', 'Check Licenses and Expiry'),
+  page('guides/bu-settings', 'guide', 'ดูค่าตั้งค่าหน่วยธุรกิจ', 'View Business Unit Settings'),
 ]
 
 export const screens: PageDef[] = [

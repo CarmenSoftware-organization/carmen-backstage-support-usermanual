@@ -51,6 +51,8 @@ The name and logo you save here are shown to every person in the Cluster, in the
 
 ## Related guides
 
+- [Invite a User to a Business Unit](/en/guides/invite-user)
+- [Manage Seats](/en/guides/manage-seats)
 - [Business Units](/en/screens/business-units)
 - [Users](/en/screens/users)
 - [Licenses](/en/screens/licences)

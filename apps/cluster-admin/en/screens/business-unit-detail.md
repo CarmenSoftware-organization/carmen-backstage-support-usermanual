@@ -128,6 +128,9 @@ To bring a person who is **not yet** in the Cluster, use **Invite user** on the 
 
 ## Related guides
 
+- [View Business Unit Settings](/en/guides/bu-settings)
+- [Manage People in a Business Unit](/en/guides/manage-bu-people)
+- [Check Licenses and Expiry](/en/guides/licences)
 - [Business Units](/en/screens/business-units)
 - [Users](/en/screens/users)
 - [Licenses](/en/screens/licences)

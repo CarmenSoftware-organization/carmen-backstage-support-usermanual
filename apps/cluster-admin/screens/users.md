@@ -91,6 +91,9 @@
 
 ## คู่มือที่เกี่ยวข้อง
 
+- [เชิญผู้ใช้เข้าหน่วยธุรกิจ](/guides/invite-user)
+- [จัดการคนในหน่วยธุรกิจ](/guides/manage-bu-people)
+- [จัดการที่นั่ง (Seat)](/guides/manage-seats)
 - [หน้าหน่วยธุรกิจ](/screens/business-unit-detail)
 - [ไลเซนส์](/screens/licences)
 - [อภิธานศัพท์](/glossary)

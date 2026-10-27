@@ -48,6 +48,8 @@ At the bottom you can pick how many rows to show (**10**, **25**, **50** or **10
 
 ## Related guides
 
+- [View Business Unit Settings](/en/guides/bu-settings)
+- [Manage People in a Business Unit](/en/guides/manage-bu-people)
 - [A Business Unit](/en/screens/business-unit-detail)
 - [Cluster](/en/screens/cluster)
 - [Licenses](/en/screens/licences)

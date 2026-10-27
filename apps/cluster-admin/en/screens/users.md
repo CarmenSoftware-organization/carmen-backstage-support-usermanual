@@ -91,6 +91,9 @@ Click **...** on their row, then **Make Admin** or **Make User**. A message conf
 
 ## Related guides
 
+- [Invite a User to a Business Unit](/en/guides/invite-user)
+- [Manage People in a Business Unit](/en/guides/manage-bu-people)
+- [Manage Seats](/en/guides/manage-seats)
 - [A Business Unit](/en/screens/business-unit-detail)
 - [Licenses](/en/screens/licences)
 - [Glossary](/en/glossary)

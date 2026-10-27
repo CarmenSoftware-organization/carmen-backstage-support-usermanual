@@ -47,6 +47,8 @@
 
 ## คู่มือที่เกี่ยวข้อง
 
+- [ดูไลเซนส์และวันหมดอายุ](/guides/licences)
+- [จัดการที่นั่ง (Seat)](/guides/manage-seats)
 - [หน้าหน่วยธุรกิจ](/screens/business-unit-detail)
 - [ผู้ใช้งาน](/screens/users)
 - [อภิธานศัพท์](/glossary)
