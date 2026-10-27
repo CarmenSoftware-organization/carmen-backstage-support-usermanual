@@ -95,9 +95,10 @@ Hotel-group staff, not technical, who never see the Backstage side. Style guide 
 
 The capture creates its own demo data and never shoots real customer data:
 
-- Create a `MANUAL-DEMO-` cluster with one or two BUs, seat/licence records and a few demo users (extend `capture/demo-data.ts`; it already has `createDemoUser`, `addDemoUserToCluster`, `addDemoSeatLicense`).
-- **Shoot as a plain cluster admin, never as the Super Admin test user** (my call, from checking the app): a Super Admin has `adminScope.all`, so `/cluster-admin` shows a picker of *every* customer's cluster (`src/pages/clusterAdmin/ClusterAdminEntry.tsx`) and the view may expose powers a hotel-group admin lacks. Instead the capture, logged in as the Super Admin, creates a `MANUAL-DEMO-` user, sets a random password generated at run time via `PUT /api-system/user/:id/reset-password` (never written to disk or logs), adds it to the demo cluster with role `admin` (`addDemoUserToCluster(..., 'admin')`), then logs in as that user for the Cluster Admin shots. With exactly one administered cluster the app goes straight in, so no picker and no other customers' names appear. Builder verifies this login works on DEV (e.g. Keycloak sync); if it does not, stop and report rather than shooting as the Super Admin.
-- Remove everything at the end via the existing `cleanupDemoData()` sweep (extend it to whatever new record types are created: the demo user's cluster membership, notes, etc.) and verify 0 left, as done for the previous round. No real account is changed.
+- Demo records needed for the guides (users to invite, seats to give) are `MANUAL-DEMO-` records created in ZEBRA (extend `capture/demo-data.ts`; it already has `createDemoUser`, `addDemoUserToCluster`, `addDemoSeatLicense`).
+- **Shoot as a real non-super-admin cluster admin, never as the Super Admin test user.** A Super Admin has `adminScope.all`, so `/cluster-admin` lists *every* customer's cluster (`src/pages/clusterAdmin/ClusterAdminEntry.tsx`) and the view may expose powers a hotel-group admin lacks.
+- **Account (the user decided):** the DEV account in `.env` as `CLUSTER_ADMIN_EMAIL` / `CLUSTER_ADMIN_PASSWORD` (never committed, never in docs/code). Verified 2026-10-28: not super admin, admin of two clusters — `CHG | Cluster Hotel Group` and `ZEBRA | ZEBRA`. Both are test data and may appear in pictures for external readers (the user confirmed). Because it administers two clusters, `/cluster-admin` shows the cluster picker first — document that picker in Getting Started; shoot all other screens inside **ZEBRA**.
+- **Changing ZEBRA is allowed (the user confirmed)**, but keep it reversible: guides add only `MANUAL-DEMO-` users/records (invite, seat, role change, remove act on those), and cleanup removes them and any seat/membership they took, then verifies 0 left. Do not edit ZEBRA's existing BUs, users or settings. The demo cluster from earlier is not needed for the Cluster Admin site (the Super Admin still creates demo records through the API where the cluster admin cannot).
 - Separate Playwright project(s) (e.g. `cluster-screens-th/en`, `cluster-guides-th/en`) and output folder (`site-cluster/public/screenshots/{th,en}/`).
 - Feature flags: the four `cluster_admin_*` flags are switched to active by the existing `capture/flags.ts` run like every other flag and restored afterwards; all four screens are documented (my call). The support manual's Feature Flags page lists the new keys (`cluster_admin_*`, `ai_providers`, renamed `backstage_*`).
 
@@ -105,7 +106,7 @@ The capture creates its own demo data and never shoots real customer data:
 
 - Thai and English for every page in both sites; `check:parity` enforces it.
 - Labels exactly as on screen (`th.ts` / `en.ts`).
-- Capture runs against DEV (`https://dev.blueledgers.com:9902`) with the existing `.env` setup; one test user (`TEST_USER_EMAIL`, a Super Admin). Capture changes DEV (feature flags, demo records) and must restore/clean up afterwards.
+- Capture runs against DEV (`https://dev.blueledgers.com:9902`) with the existing `.env` setup; a Super Admin test user (`TEST_USER_EMAIL`) for the support site and API setup, plus the cluster-admin account (`CLUSTER_ADMIN_EMAIL`) for the Cluster Admin site. Capture changes DEV (feature flags, demo records) and must restore/clean up afterwards.
 - No credentials committed.
 - Work on branch `feature/manual-refresh-cluster-admin`; no tests written beyond the existing check scripts (user preference).
 
