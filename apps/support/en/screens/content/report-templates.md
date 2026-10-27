@@ -23,6 +23,10 @@ A template's page (view mode)
 
 ![A template's page: Template Info on the left and the Dialog XML tab on the right](/screenshots/en/report-templates-detail.png)
 
+The Export XML tab
+
+![The Export XML tab of a list-type template, with the warning box under the editor](/screenshots/en/report-templates-export-xml.png)
+
 The new template form
 
 ![The New Report Template form and the editor toolbar](/screenshots/en/report-templates-form.png)
@@ -48,7 +52,10 @@ The new template form
 - **Right side:** three editor tabs and a preview tab. The number beside each tab name is the line count.
   - **Dialog XML:** the filter window users fill in before opening the report, e.g. a date range or a vendor. <!-- plain-ok -->
   - **Content XML:** the layout of the report or document itself. <!-- plain-ok -->
-  - **Export XML:** the data layout used when a user clicks Export data. <!-- plain-ok -->
+  - **Export XML:** the data layout used when a user clicks Export data. It says which columns the exported file has and in what order. <!-- plain-ok -->
+    - If a column points to a data field that is not in the Content XML, a yellow warning box appears under the editor. It says the field will be **empty** in the exported file. The box also warns about other problems, such as a column with no header, or no columns at all.
+    - These warnings do not stop you from saving, but fix them first. Otherwise users get a file with blank cells.
+    - Use this tab for list-type templates that have **Export data** switched on.
   - **Preview:** a mock-up of the filter window built from the Dialog XML. Its controls are disabled and hold no real data — it only shows how the window will look. <!-- plain-ok -->
 - **Editor toolbar:** in edit mode there are **Upload** (load a file from your computer), **Format** (tidy the indentation), **Copy**, **Download** and **Clear**. In view mode there are only **Copy** and **Download**. Below the editor it says **Valid XML** or points to the line with the error. <!-- plain-ok -->
 
@@ -66,8 +73,8 @@ The new template form
 | **Standard** | The template's tag | List type only. Ticked = **Standard** tag, unticked = **Custom** tag. |
 | **Default for this report group** | The document's default layout | Form type only. Each group can have one default. If another template in the group is already the default, saving fails — change it on [Form Groups](/en/screens/content/form-groups) instead. |
 | **Active** | Turns the template on or off | When off, hotel users do not see it |
-| **Run report** | Shows the button to open the report in the report list | List type only |
-| **Export data** | Shows the Export data button | List type only. Needs an Export XML too. If both are off, the report does not appear in the report list at all. <!-- plain-ok --> |
+| **Run report** | Shows the Run Report button in the report list | List type only |
+| **Export data** | Shows the Export data button | List type only. Needs an Export XML too. If it is on but there is no Export XML yet, the screen warns that the button stays hidden. If both are off, the screen says this template is hidden from the report list. <!-- plain-ok --> |
 
 **Business Unit Scope and Calculation Method** (list type only — form templates always apply to every business unit)
 

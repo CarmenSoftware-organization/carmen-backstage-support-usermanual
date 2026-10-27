@@ -1,5 +1,6 @@
 // Single source for page slugs and on-screen labels (from carmen-backstage src/i18n th.ts / en.ts).
-// Screen Reference order follows carmen-backstage src/components/nav/platformNav.ts.
+// Screen Reference order follows carmen-backstage src/components/nav/backstageNav.ts
+// (Tenant Migrations, Tenant Seed Data and Data Import are sub-rows under Business Units; the AI group page is added later).
 
 export type Lang = 'th' | 'en'
 export type Kind = 'guide' | 'screen' | 'info'

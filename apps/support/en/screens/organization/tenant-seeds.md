@@ -2,7 +2,7 @@
 
 ## Where to find it and what it is for
 
-Left menu, group **Organization** > **Tenant Seed Data**. The screen's heading reads **Tenant seed data**.
+Left menu, group **Organization** > **Business Units** > **Tenant Seed Data**. The screen's heading reads **Tenant seed data**.
 
 A **tenant** is each hotel's own database. **Seed data** is the basic starting data that every hotel's database must have before the hotel starts using the system. The system groups this data into several sets.
 

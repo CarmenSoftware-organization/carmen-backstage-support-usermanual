@@ -129,6 +129,14 @@ export const SHOTS: Shot[] = [
   { slug: 'clusters-list', path: '/clusters' },
   { slug: 'clusters-form', path: '/clusters/new' },
   { slug: 'clusters-detail', path: '/clusters', openFirstRow: true },
+  {
+    slug: 'clusters-notes',
+    path: '/clusters',
+    openFirstRow: true,
+    prepare: async (page) => {
+      await tab(page, /^(Notes|บันทึก)/).click()
+    },
+  },
   { slug: 'business-units-list', path: '/business-units' },
   { slug: 'business-units-form', path: '/business-units/new', maskOptional: BU_DB_CONNECTION },
   { slug: 'business-units-detail', path: '/business-units', openFirstRow: true, maskOptional: BU_DB_CONNECTION },
@@ -140,6 +148,24 @@ export const SHOTS: Shot[] = [
     prepare: async (page) => {
       await tab(page, /^(Technical|เทคนิค)/).click()
       await scrollToMiddle(page, '#database_pool_id')
+    },
+  },
+  {
+    slug: 'business-units-notes',
+    path: '/business-units',
+    openFirstRow: true,
+    maskOptional: BU_DB_CONNECTION,
+    prepare: async (page) => {
+      await tab(page, /^(Notes|บันทึก)/).click()
+    },
+  },
+  {
+    slug: 'business-units-licenses-seats',
+    path: '/business-units',
+    openFirstRow: true,
+    maskOptional: BU_DB_CONNECTION,
+    prepare: async (page) => {
+      await tab(page, /^(Licenses|ไลเซนส์)/).click()
     },
   },
   { slug: 'tenant-migrations-list', path: '/tenant-migrations' },
@@ -172,6 +198,14 @@ export const SHOTS: Shot[] = [
   { slug: 'report-templates-list', path: '/report-templates' },
   { slug: 'report-templates-form', path: '/report-templates/new' },
   { slug: 'report-templates-detail', path: '/report-templates', openFirstRow: true },
+  {
+    slug: 'report-templates-export-xml',
+    path: '/report-templates',
+    openFirstRow: true,
+    prepare: async (page) => {
+      await tab(page, /^Export XML/).click()
+    },
+  },
   { slug: 'form-groups-list', path: '/report-form-groups' },
   { slug: 'dashboard-templates-list', path: '/dashboard-templates' },
   { slug: 'news-list', path: '/news' },

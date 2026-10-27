@@ -2,7 +2,7 @@
 
 ## Where to find it and what it is for
 
-Left menu, group **Organization** > **Data Import**. The screen's heading reads **Tenant Data Import**.
+Left menu, group **Organization** > **Business Units** > **Data Import**. The screen's heading reads **Tenant Data Import**.
 
 Use this screen to load a hotel's master data from a prepared Excel file called **Preconfig.xlsx** into the database of one **business unit** (a business unit is one hotel or branch) at a time, instead of entering every record by hand. Data you can load includes, for example:
 

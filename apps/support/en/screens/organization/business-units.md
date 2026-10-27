@@ -24,6 +24,14 @@ A business unit's page, General tab
 
 The Technical tab (the database connection values are hidden in this manual; the real values show on screen)
 
+The Notes tab
+
+![A business unit's Notes tab: the note box, the list of notes and the All files panel](/screenshots/en/business-units-notes.png)
+
+The Licenses tab, User Licenses (seats)
+
+![A business unit's Licenses tab: the User Licenses box with the seat summary and the hotel's subscriptions](/screenshots/en/business-units-licenses-seats.png)
+
 ![The Technical tab: Configuration, Database Connection, Tenant Migrations and Tenant Seed Data](/screenshots/en/business-units-technical.png)
 
 ## What you can do here
@@ -40,7 +48,7 @@ The Technical tab (the database connection values are hidden in this manual; the
 
 **A business unit's page**
 
-The page is split into tabs. A new business unit has the first four tabs; after it is created, the **Users** and **Licenses** tabs appear too.
+The page is split into tabs. A new business unit has the first four tabs; after it is created, the **Users** and **Licenses** tabs appear too, and the **Notes** tab is last if you may view notes. The tab order is General, Location, Formats, Technical, Users, Licenses, Notes.
 
 - **Header:** the hotel's name (click to change it), the status badge **Active** / **Inactive**, and the **HQ** badge (the business unit that is the cluster's head office). Click a badge to switch it.
 - **General:** details, calculation settings, and branding (logo and avatar).
@@ -48,7 +56,8 @@ The page is split into tabs. A new business unit has the first four tabs; after 
 - **Formats:** how dates, times and numbers are shown.
 - **Technical:** comment attachments, extra configuration, the database connection, and boxes that check the hotel's database. This part is for the technical team.
 - **Users:** who can access this hotel, with their **BU Role** and **BU Status**. You can add, edit and remove users.
-- **Licenses:** **User Licenses** (seats — how many users this hotel can have), the hotel's subscriptions, and **Interface licenses** (rights to connect to other systems). Seats are managed on [Licenses](/en/screens/license/licenses); the **Manage licences** and **New subscription** buttons take you there.
+- **Licenses:** **User Licenses** (seats — how many users this hotel can have), the hotel's subscriptions, and **Interface licenses** (rights to connect to other systems). Seats are managed on [Licenses](/en/screens/license/licenses); the **Manage licences** and **New subscription** buttons take you there. This tab shows these boxes one after another; it is not split into sub-tabs.
+- **Notes:** internal notes about this hotel. Only staff can see them; customers cannot. The number beside the tab name is the number of notes. It works like the Notes tab of a cluster. See [Clusters](/en/screens/organization/clusters#notes) (write, edit, delete, attach files, see all files, restore deleted notes and see history).
 
 ## Fields explained
 
@@ -144,6 +153,16 @@ A user with the **Shared** badge is also active in another hotel in the same clu
 
 1. On the **Users** tab, click the remove button on the user's row.
 2. The **Remove User** box asks you to confirm. Confirm. The user's account still exists, but they can no longer access this hotel.
+
+**Write a note about the hotel**
+
+1. Open the business unit's page and click the **Notes** tab.
+2. Type in the **Write a note…** box. You can attach files with **Attach files**. Then click **Post note**.
+3. Edit, delete, restore and see the history of notes the same way as for a cluster. The full steps are in [Clusters](/en/screens/organization/clusters#notes).
+
+**Switch off a user to free a seat**
+
+When you switch off a user's BU Status, or remove them from the hotel, the edit box and the confirmation box tell you the effect on seats, for example **This frees one cluster seat.** or **Still active in another business unit in this cluster, so this frees no cluster seat.** To free the seat of a person who is no longer in the cluster's member list, do it on this **Users** tab. See [The over-quota banner](/en/screens/organization/clusters#seats).
 
 **Delete a business unit**
 

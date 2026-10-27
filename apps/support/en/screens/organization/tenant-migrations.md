@@ -2,7 +2,7 @@
 
 ## Where to find it and what it is for
 
-Left menu, group **Organization** > **Tenant Migrations**. The screen's heading reads **Tenant migrations**.
+Left menu, group **Organization** > **Business Units** > **Tenant Migrations**. The screen's heading reads **Tenant migrations**.
 
 A **tenant** is each hotel's own database: every **business unit** (one hotel or branch) has its own. A **migration** is an update to the database structure so that it matches the latest version of the system.
 

@@ -27,6 +27,8 @@ This page explains how to sign in to Carmen Blue Backstage (the admin app for pl
 
 When it works, you land on the **Dashboard**. See [The Main Screen](./main-screen).
 
+If you had opened a link to another page first, or you have to sign in again because your session timed out, you are taken back to that page after you sign in. You do not need to find it again.
+
 If you leave a box empty, a message appears under it, such as **Username is required** or **Password is required**.
 
 ## Sign in with Google

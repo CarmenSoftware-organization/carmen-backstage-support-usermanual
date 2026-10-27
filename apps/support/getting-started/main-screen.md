@@ -11,13 +11,20 @@
 | กลุ่ม | ใช้ทำอะไร | เมนูในกลุ่ม |
 | --- | --- | --- |
 | (ไม่มีหัวข้อ) | หน้าแรกหลังเข้าสู่ระบบ สรุปสิ่งที่เพิ่งเปลี่ยนแปลง | [Dashboard](/screens/dashboard) |
-| **องค์กร** | ดูแลกลุ่มโรงแรม โรงแรมแต่ละแห่ง ฐานข้อมูลของแต่ละโรงแรม และผู้ใช้งาน | [Clusters](/screens/organization/clusters), [หน่วยธุรกิจ](/screens/organization/business-units), [Tenant Migrations](/screens/organization/tenant-migrations) (อัปเดตโครงสร้างฐานข้อมูลของแต่ละโรงแรม), [Tenant Seed Data](/screens/organization/tenant-seeds) (ข้อมูลตั้งต้นของฐานข้อมูลแต่ละโรงแรม), [นำเข้าข้อมูล](/screens/organization/data-import), [ผู้ใช้งาน](/screens/organization/users) |
+| **องค์กร** | ดูแลกลุ่มโรงแรม โรงแรมแต่ละแห่ง ฐานข้อมูลของแต่ละโรงแรม และผู้ใช้งาน | [Clusters](/screens/organization/clusters), [หน่วยธุรกิจ](/screens/organization/business-units) (มีเมนูย่อยอยู่ใต้ ดูด้านล่างตาราง), [ผู้ใช้งาน](/screens/organization/users) |
 | **จัดการใบอนุญาต** | ดูแลสิ่งที่ลูกค้าซื้อ เช่น จำนวนโรงแรม จำนวนผู้ใช้ และฟีเจอร์ที่ใช้ได้ | [ไลเซนส์](/screens/license/licenses), [โมดูล license](/screens/license/license-modules) (ชุดฟีเจอร์ที่ขายรวมกัน), [ฟีเจอร์ที่ขายได้](/screens/license/license-features) |
 | **เนื้อหา** | ดูแลแม่แบบรายงาน แดชบอร์ด ข่าว และประกาศที่ส่งถึงผู้ใช้ | [เทมเพลตรายงาน](/screens/content/report-templates), [กลุ่มฟอร์ม](/screens/content/form-groups), [แม่แบบแดชบอร์ด](/screens/content/dashboard-templates), [ข่าวสาร](/screens/content/news), [ประกาศ](/screens/content/broadcasts) |
 | **การวิเคราะห์** | ดูว่ามีการใช้งานระบบมากน้อยแค่ไหน | [สถิติการใช้งาน](/screens/analytics/usage-analytics), [บันทึกกิจกรรม](/screens/analytics/activity-events) |
 | **งานตามเวลา** | งานที่ระบบทำเองตามเวลาที่ตั้งไว้ | [งานตามเวลา](/screens/scheduling/scheduled-jobs) |
 | **Backstage** | ตั้งค่าตัวระบบ และกำหนดว่าใครทำอะไรได้ | [ตั้งค่า](/screens/backstage/backstage-config), [ตั้งค่าอีเมล](/screens/backstage/email-settings), [แอปพลิเคชัน](/screens/backstage/applications), [บทบาท](/screens/backstage/backstage-roles), [ผู้ใช้](/screens/backstage/user-backstage), [ผู้ดูแลระบบสูงสุด](/screens/backstage/super-admins), [สวิตช์ฟีเจอร์](/screens/backstage/feature-flags) |
+| **AI** | ตั้งค่าส่วนที่ใช้ปัญญาประดิษฐ์ช่วยงาน | **ใบขอซื้อ** (ชื่อเต็มคือ AI Providers ใบขอซื้อ — ผู้ให้บริการ AI ที่ใช้กับใบขอซื้อ) |
 | **ฐานข้อมูล** | เครื่องมือดูแลฐานข้อมูล ใช้เมื่อจำเป็นเท่านั้น | [Migration Backstage](/screens/database/backstage-migrations), [SQL Workbench](/screens/database/sql-workbench), [Database Pools](/screens/database/database-pools) |
+
+เมนูย่อยใต้ **หน่วยธุรกิจ** เป็นงานเกี่ยวกับฐานข้อมูลของโรงแรมแต่ละแห่ง แสดงเยื้องเข้าไปใต้ชื่อ **หน่วยธุรกิจ** ในเมนูซ้าย
+
+- [Tenant Migrations](/screens/organization/tenant-migrations): อัปเดตโครงสร้างฐานข้อมูลของแต่ละโรงแรม
+- [Tenant Seed Data](/screens/organization/tenant-seeds): ข้อมูลตั้งต้นของฐานข้อมูลแต่ละโรงแรม
+- [นำเข้าข้อมูล](/screens/organization/data-import): นำเข้าข้อมูลเข้าฐานข้อมูลของโรงแรม
 
 คำศัพท์ในตารางนี้อธิบายไว้ที่ [อภิธานศัพท์](../glossary)
 
