@@ -92,6 +92,10 @@ export const screenGroups: GroupDef[] = [
     ],
   },
   {
+    th: 'AI', en: 'AI',
+    items: [screen('ai/purchase-request-ai-providers', 'AI Providers ใบขอซื้อ', 'Purchase Request AI Providers')],
+  },
+  {
     th: 'ฐานข้อมูล', en: 'Database',
     items: [
       screen('database/backstage-migrations', 'Migration Backstage', 'Backstage Migrations'),

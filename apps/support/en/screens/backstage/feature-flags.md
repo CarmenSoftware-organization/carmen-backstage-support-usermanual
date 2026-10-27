@@ -26,7 +26,7 @@ These switches change only what this admin app shows. They do not stop anything 
 
 ## What you can do here
 
-- **Read the states:** menu items are grouped in the same order as the left menu (**Organization**, **License Management**, **Content** and so on), plus the **AI** group (the **Purchase Request** item, for Purchase Request AI Providers) and the **Cluster administration** group, which holds the Cluster admins' menu items (**Cluster**, **Business Units**, **Users**, **Licenses**). Under each name is the menu item's English code.
+- **Read the states:** menu items are grouped in the same order as the left menu (**Organization**, **License Management**, **Content** and so on), plus the **AI** group (the [**Purchase Request**](/en/screens/ai/purchase-request-ai-providers) item, for Purchase Request AI Providers) and the **Cluster administration** group, which holds the Cluster admins' menu items (**Cluster**, **Business Units**, **Users**, **Licenses**). Under each name is the menu item's English code.
 - **Change a state:** click **Active**, **Coming soon** or **Hidden** in the menu item's row.
 - **Save:** click **Save Changes** at the top right. Changes do not take effect until you save. If you leave the page before saving, the system warns you. See [Unsaved-changes warning](/en/getting-started/common-actions#unsaved-changes).
 - **Remove unknown keys:** if there is an **Unknown keys** card (saved values for menu items this version of the program no longer has), click **Remove** and confirm, then click **Save Changes**. The removal happens when you save.

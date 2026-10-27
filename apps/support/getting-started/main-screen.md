@@ -17,7 +17,7 @@
 | **การวิเคราะห์** | ดูว่ามีการใช้งานระบบมากน้อยแค่ไหน | [สถิติการใช้งาน](/screens/analytics/usage-analytics), [บันทึกกิจกรรม](/screens/analytics/activity-events) |
 | **งานตามเวลา** | งานที่ระบบทำเองตามเวลาที่ตั้งไว้ | [งานตามเวลา](/screens/scheduling/scheduled-jobs) |
 | **Backstage** | ตั้งค่าตัวระบบ และกำหนดว่าใครทำอะไรได้ | [ตั้งค่า](/screens/backstage/backstage-config), [ตั้งค่าอีเมล](/screens/backstage/email-settings), [แอปพลิเคชัน](/screens/backstage/applications), [บทบาท](/screens/backstage/backstage-roles), [ผู้ใช้](/screens/backstage/user-backstage), [ผู้ดูแลระบบสูงสุด](/screens/backstage/super-admins), [สวิตช์ฟีเจอร์](/screens/backstage/feature-flags) |
-| **AI** | ตั้งค่าส่วนที่ใช้ปัญญาประดิษฐ์ช่วยงาน | **ใบขอซื้อ** (ชื่อเต็มคือ AI Providers ใบขอซื้อ — ผู้ให้บริการ AI ที่ใช้กับใบขอซื้อ) |
+| **AI** | ตั้งค่าส่วนที่ใช้ปัญญาประดิษฐ์ช่วยงาน | [ใบขอซื้อ](/screens/ai/purchase-request-ai-providers) (ชื่อเต็มคือ AI Providers ใบขอซื้อ — ผู้ให้บริการ AI ที่ใช้กับใบขอซื้อ) |
 | **ฐานข้อมูล** | เครื่องมือดูแลฐานข้อมูล ใช้เมื่อจำเป็นเท่านั้น | [Migration Backstage](/screens/database/backstage-migrations), [SQL Workbench](/screens/database/sql-workbench), [Database Pools](/screens/database/database-pools) |
 
 เมนูย่อยใต้ **หน่วยธุรกิจ** เป็นงานเกี่ยวกับฐานข้อมูลของโรงแรมแต่ละแห่ง แสดงเยื้องเข้าไปใต้ชื่อ **หน่วยธุรกิจ** ในเมนูซ้าย

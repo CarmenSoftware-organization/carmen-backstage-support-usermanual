@@ -17,7 +17,7 @@ The left menu takes you to every screen in the app. Menu items are grouped. Each
 | **Analytics** | How much the system is being used | [Usage Analytics](/en/screens/analytics/usage-analytics), [Activity Events](/en/screens/analytics/activity-events) |
 | **Scheduling** | Jobs the system runs by itself at set times | [Scheduled Jobs](/en/screens/scheduling/scheduled-jobs) |
 | **Backstage** | Settings for the app itself, and who can do what | [Backstage Config](/en/screens/backstage/backstage-config), [Email Settings](/en/screens/backstage/email-settings), [Applications](/en/screens/backstage/applications), [Backstage Roles](/en/screens/backstage/backstage-roles), [Backstage Users](/en/screens/backstage/user-backstage), [Super Admins](/en/screens/backstage/super-admins), [Feature Flags](/en/screens/backstage/feature-flags) |
-| **AI** | Settings for the parts of the system that use AI | **Purchase Request** (full name: Purchase Request AI Providers, the AI providers used for purchase requests) |
+| **AI** | Settings for the parts of the system that use AI | [Purchase Request](/en/screens/ai/purchase-request-ai-providers) (full name: Purchase Request AI Providers, the AI providers used for purchase requests) |
 | **Database** | Database tools. Use them only when needed | [Backstage Migrations](/en/screens/database/backstage-migrations), [SQL Workbench](/en/screens/database/sql-workbench), [Database Pools](/en/screens/database/database-pools) |
 
 The sub-items under **Business Units** are jobs on each hotel's database. They appear indented below **Business Units** in the left menu.

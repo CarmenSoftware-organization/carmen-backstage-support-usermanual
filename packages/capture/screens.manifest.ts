@@ -251,6 +251,19 @@ export const SHOTS: Shot[] = [
   { slug: 'super-admins-list', path: '/backstage/super-admins' },
   { slug: 'feature-flags-list', path: '/backstage/features' },
 
+  // ── AI ─────────────────────────────────────────────────────────────
+  // The edit dialog has no secret input (name, code, icon, URL template, prompt, switches, order),
+  // so nothing needs masking. The list shows only the host name of each URL.
+  { slug: 'ai-providers-list', path: '/purchase-request-ai-providers' },
+  {
+    slug: 'ai-providers-form',
+    path: '/purchase-request-ai-providers',
+    prepare: async (page) => {
+      // Edit = pencil icon at the end of the first row (aria-label "Edit" / "แก้ไข"). Nothing is saved.
+      await openDialog(page, EDIT)
+    },
+  },
+
   // ── Database ───────────────────────────────────────────────────────
   { slug: 'backstage-migrations-overview', path: '/backstage/migrations' },
   { slug: 'sql-workbench', path: '/sql-workbench' },
