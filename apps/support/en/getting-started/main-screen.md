@@ -16,13 +16,13 @@ The left menu takes you to every screen in the app. Menu items are grouped. Each
 | **Content** | Report and dashboard templates, news, and notifications sent to users | [Report Templates](/en/screens/content/report-templates), [Form Groups](/en/screens/content/form-groups), [Dashboard Templates](/en/screens/content/dashboard-templates), [News](/en/screens/content/news), [Broadcasts](/en/screens/content/broadcasts) |
 | **Analytics** | How much the system is being used | [Usage Analytics](/en/screens/analytics/usage-analytics), [Activity Events](/en/screens/analytics/activity-events) |
 | **Scheduling** | Jobs the system runs by itself at set times | [Scheduled Jobs](/en/screens/scheduling/scheduled-jobs) |
-| **Platform** | Settings for the app itself, and who can do what | [Platform Config](/en/screens/platform/platform-config), [Email Settings](/en/screens/platform/email-settings), [Applications](/en/screens/platform/applications), [Platform Roles](/en/screens/platform/platform-roles), [Platform Users](/en/screens/platform/platform-users), [Super Admins](/en/screens/platform/super-admins), [Feature Flags](/en/screens/platform/feature-flags) |
-| **Database** | Database tools. Use them only when needed | [Platform Migrations](/en/screens/database/platform-migrations), [SQL Workbench](/en/screens/database/sql-workbench), [Database Pools](/en/screens/database/database-pools) |
+| **Backstage** | Settings for the app itself, and who can do what | [Backstage Config](/en/screens/backstage/backstage-config), [Email Settings](/en/screens/backstage/email-settings), [Applications](/en/screens/backstage/applications), [Backstage Roles](/en/screens/backstage/backstage-roles), [Backstage Users](/en/screens/backstage/user-backstage), [Super Admins](/en/screens/backstage/super-admins), [Feature Flags](/en/screens/backstage/feature-flags) |
+| **Database** | Database tools. Use them only when needed | [Backstage Migrations](/en/screens/database/backstage-migrations), [SQL Workbench](/en/screens/database/sql-workbench), [Database Pools](/en/screens/database/database-pools) |
 
 The terms in this table are explained in the [Glossary](../glossary).
 
 ::: tip Why are some menu items missing?
-You only see the items your role allows. **Super Admins** and **Platform Migrations** are shown only to super admins (people who can do everything in the system). Items switched off on [Feature Flags](/en/screens/platform/feature-flags) (the switches that decide whether each menu item is shown) are either not shown at all, or shown faded with a **Coming soon** badge and cannot be clicked.
+You only see the items your role allows. **Super Admins** and **Backstage Migrations** are shown only to super admins (people who can do everything in the system). Items switched off on [Feature Flags](/en/screens/backstage/feature-flags) (the switches that decide whether each menu item is shown) are either not shown at all, or shown faded with a **Coming soon** badge and cannot be clicked.
 :::
 
 ### Collapse and expand the menu
@@ -58,7 +58,7 @@ Click your name in the top-right corner to open the user menu.
 ![The user menu in the top-right corner](/screenshots/en/profile-menu-open.png)
 
 - The top shows your name and email.
-- **Cluster Admin view**: switches to a smaller set of screens for looking after only the Cluster (hotel group) you are responsible for. It appears only if you are an admin of a cluster. Inside that view, this item changes to **Platform Admin view**, which brings you back to the main screen.
+- **Cluster Admin view**: switches to a smaller set of screens for looking after only the Cluster (hotel group) you are responsible for. It appears only if you are an admin of a cluster. Inside that view, this item changes to **Backstage Admin view**, which brings you back to the main screen.
 - **Profile**: view and change your own details and password. See [Profile](/en/screens/profile).
 - **Log out**: sign out.
 

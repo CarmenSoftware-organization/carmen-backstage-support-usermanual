@@ -211,7 +211,7 @@ const softDeletePath = (path: string, r: Row): string =>
   path === 'cluster-licenses' ? `/api-system/clusters/${r.cluster_id}/licenses/${r.id}` :
   path === 'business-unit-licenses' ? `/api-system/business-units/${r.business_unit_id}/licenses/${r.id}` :
   path === 'interface-licenses' ? `/api-system/business-units/${r.business_unit_id}/interface-licenses/${r.id}` :
-  `/api-system/platform/subscriptions/${r.id}`
+  `/api-system/backstage/subscriptions/${r.id}`
 
 /**
  * Deletes every user, business unit, cluster and licence feature group whose name (users:
@@ -250,10 +250,10 @@ export async function cleanupDemoData(opts: { dryRun?: boolean } = {}): Promise<
   const users = await find('user', '/api-system/user', isDemoUser)
   const bus = await find('business unit', '/api-system/business-units', (b) => isDemoName(b.name))
   const clusters = await find('cluster', '/api-system/clusters', (c) => isDemoName(c.name))
-  const groups = await find('feature group', '/api-system/platform/license-feature-groups', (g) => isDemoName(g.name))
+  const groups = await find('feature group', '/api-system/backstage/license-feature-groups', (g) => isDemoName(g.name))
   const licences: { kind: string; path: string; live: Row[]; dead: Row[] }[] = []
   for (const { kind, path } of LICENCE_KINDS) {
-    const base = `/api-system/platform/${path}`
+    const base = `/api-system/backstage/${path}`
     const live = await find(kind, base, isDemoLicence)
     const liveIds = new Set(live.map((r) => r.id))
     let dead: Row[] = []
@@ -285,9 +285,9 @@ export async function cleanupDemoData(opts: { dryRun?: boolean } = {}): Promise<
     await report('user', '/api-system/user', users, ['username', 'email'])
     await report('business unit', '/api-system/business-units', bus, ['name'])
     await report('cluster', '/api-system/clusters', clusters, ['name'])
-    await report('feature group', '/api-system/platform/license-feature-groups', groups, ['name', 'code'])
+    await report('feature group', '/api-system/backstage/license-feature-groups', groups, ['name', 'code'])
     for (const { kind, path, live, dead } of licences) {
-      await report(kind, `/api-system/platform/${path}`, live, ['license_number', 'subscription_number', 'cluster_name'])
+      await report(kind, `/api-system/backstage/${path}`, live, ['license_number', 'subscription_number', 'cluster_name'])
       for (const r of dead) console.log(`[demo-data] dry-run WOULD DELETE ${kind} (soft-deleted): ${label(r)} / ${r.cluster_name}`)
     }
     return { deleted: [], left }
@@ -295,7 +295,7 @@ export async function cleanupDemoData(opts: { dryRun?: boolean } = {}): Promise<
 
   // Licences first: they hang off the demo clusters / business units.
   for (const { kind, path, live, dead } of licences) {
-    const hard = (r: Row) => api('DELETE', `/api-system/platform/${path}/${r.id}/hard`)
+    const hard = (r: Row) => api('DELETE', `/api-system/backstage/${path}/${r.id}/hard`)
     await sweep(kind, live, async (r) => {
       await api('DELETE', softDeletePath(path, r))
       await hard(r)
@@ -305,7 +305,7 @@ export async function cleanupDemoData(opts: { dryRun?: boolean } = {}): Promise<
   await sweep('user', users, (u) => api('DELETE', `/api-system/user/${u.id}/hard`))
   await sweep('business unit', bus, (b) => api('DELETE', `/api-system/business-units/${b.id}`))
   await sweep('cluster', clusters, (c) => api('DELETE', `/api-system/clusters/${c.id}`))
-  await sweep('feature group', groups, (g) => api('DELETE', `/api-system/platform/license-feature-groups/${g.id}`))
+  await sweep('feature group', groups, (g) => api('DELETE', `/api-system/backstage/license-feature-groups/${g.id}`))
 
   console.log(`[demo-data] deleted ${deleted.length}:${deleted.map((d) => `\n  - ${d}`).join('')}`)
   console.log(`[demo-data] left ${left.length}:${left.map((d) => `\n  - ${d}`).join('')}`)

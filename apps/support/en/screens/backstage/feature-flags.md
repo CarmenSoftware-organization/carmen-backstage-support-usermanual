@@ -2,10 +2,10 @@
 
 ## Where to find it and what it is for
 
-Left menu, group **Platform** > **Feature Flags**
+Left menu, group **Backstage** > **Feature Flags**
 
 ::: tip Who sees this screen
-This menu item is shown only to Super Admins and to people whose role includes the permission to manage feature flags. In the system's starting setup, only the Platform Admin role has that permission. Other users do not see the menu item. If they open the link directly, they get the [Access Denied screen](/en/getting-started/common-actions#access-denied).
+This menu item is shown only to Super Admins and to people whose role includes the permission to manage feature flags. In the system's starting setup, only the Backstage Admin role has that permission. Other users do not see the menu item. If they open the link directly, they get the [Access Denied screen](/en/getting-started/common-actions#access-denied).
 :::
 
 **Feature Flags** (controls for how each menu item appears) are used to hide or disable menu items that are not ready yet. These settings apply to **everyone** who uses this admin app — including Super Admins and you — not to one role.
@@ -26,7 +26,7 @@ These switches change only what this admin app shows. They do not stop anything 
 
 ## What you can do here
 
-- **Read the states:** menu items are grouped in the same order as the left menu (**Organization**, **License Management**, **Content** and so on), plus the **Cluster administration** group, which holds the Cluster admins' menu items. Under each name is the menu item's English code.
+- **Read the states:** menu items are grouped in the same order as the left menu (**Organization**, **License Management**, **Content** and so on), plus the **AI** group (the **Purchase Request** item, for Purchase Request AI Providers) and the **Cluster administration** group, which holds the Cluster admins' menu items (**Cluster**, **Business Units**, **Users**, **Licenses**). Under each name is the menu item's English code.
 - **Change a state:** click **Active**, **Coming soon** or **Hidden** in the menu item's row.
 - **Save:** click **Save Changes** at the top right. Changes do not take effect until you save. If you leave the page before saving, the system warns you. See [Unsaved-changes warning](/en/getting-started/common-actions#unsaved-changes).
 - **Remove unknown keys:** if there is an **Unknown keys** card (saved values for menu items this version of the program no longer has), click **Remove** and confirm, then click **Save Changes**. The removal happens when you save.
@@ -61,7 +61,7 @@ Other users who have the app open may still see the old menu until they reload t
 :::
 
 - **Coming soon** and **Hidden** do not stop work in the background. Scheduled jobs or other programs that use that menu item's data keep working as usual.
-- Changes on this screen do not change anyone's permissions. To stop certain people from seeing a menu item, change their [Platform Roles](/en/screens/platform/platform-roles) instead.
+- Changes on this screen do not change anyone's permissions. To stop certain people from seeing a menu item, change their [Backstage Roles](/en/screens/backstage/backstage-roles) instead.
 
 ## Related guides
 

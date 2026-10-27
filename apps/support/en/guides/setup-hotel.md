@@ -10,7 +10,7 @@ This guide takes a new customer from nothing to a first staff member who has acc
 - a **Subscription** (the hotel's usage contract, which says which features it may use) for that hotel
 - one staff member in the cluster and in the business unit, each with a role
 
-**Who can do this:** a super admin, or someone whose Platform Role (the set of permissions that says what you may do) lets them manage Clusters, Business Units and Licenses.
+**Who can do this:** a super admin, or someone whose Backstage Role (the set of permissions that says what you may do) lets them manage Clusters, Business Units and Licenses.
 
 **What you need first**
 

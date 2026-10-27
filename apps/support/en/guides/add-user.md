@@ -11,7 +11,7 @@ This guide takes you through creating an account for a new staff member, up to t
 
 The guide also shows how to change the name, and how to switch an account off for a while.
 
-**Who can do this:** a super admin, or someone whose Platform Role (the set of permissions that says what you may do) lets them manage Users and Clusters.
+**Who can do this:** a super admin, or someone whose Backstage Role (the set of permissions that says what you may do) lets them manage Users and Clusters.
 
 **What you need first**
 

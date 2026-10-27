@@ -2,7 +2,7 @@
 
 ## Where to find it and what it is for
 
-Left menu, group **Platform** > **Applications** (the screen heading says **Application Management**)
+Left menu, group **Backstage** > **Applications** (the screen heading says **Application Management**)
 
 An **application** is a program allowed to connect to Carmen Blue, such as the Carmen Blue website the hotels use, a mobile app, a point-of-sale (POS) terminal, or an outside system that sends data in. Every program needs its own entry on this screen. Without one, the system does not accept connections from that program.
 

@@ -56,25 +56,25 @@ Some Thai screen labels vary. For example, the Thai menu item for Licenses (**�
 | ประวัติการเปลี่ยนแปลง | **Change history** | The history of who changed a record, what they changed and when. Not the same as Activity Events. See [Common Actions](/en/getting-started/common-actions#activity-trail). |
 | งานตามเวลา | **Scheduled Jobs** | Jobs the system runs by itself at set times, such as producing reports, sending notifications or clearing out old data. See [Scheduled Jobs](/en/screens/scheduling/scheduled-jobs). |
 
-## Platform: settings and permissions
+## Backstage: settings and permissions
 
 | Thai label | English label | Meaning |
 | --- | --- | --- |
-| ตั้งค่า, ตั้งค่า Platform | **Platform Config** | Settings for the whole system, such as user invitations, password resets and expiry warnings. Changes take effect without reinstalling the system. See [Platform Config](/en/screens/platform/platform-config). |
-| ตั้งค่าอีเมล | **Email Settings** | The sender details the system uses to send email, and which sender each type of email uses. See [Email Settings](/en/screens/platform/email-settings). |
-| แอปพลิเคชัน | **Applications** | Programs allowed to connect to Carmen Blue, such as a website or a mobile app. See [Applications](/en/screens/platform/applications). |
+| ตั้งค่า, ตั้งค่า Backstage | **Backstage Config** | Settings for the whole system, such as user invitations, password resets and expiry warnings. Changes take effect without reinstalling the system. See [Backstage Config](/en/screens/backstage/backstage-config). |
+| ตั้งค่าอีเมล | **Email Settings** | The sender details the system uses to send email, and which sender each type of email uses. See [Email Settings](/en/screens/backstage/email-settings). |
+| แอปพลิเคชัน | **Applications** | Programs allowed to connect to Carmen Blue, such as a website or a mobile app. See [Applications](/en/screens/backstage/applications). |
 | App ID | **App ID** | The ID of each application. The system uses it to know which program a request comes from. |
-| บทบาท | **Platform Roles** | A set of permissions that says what the people holding the role can do in this admin app. See [Platform Roles](/en/screens/platform/platform-roles). |
+| บทบาท | **Backstage Roles** | A set of permissions that says what the people holding the role can do in this admin app. See [Backstage Roles](/en/screens/backstage/backstage-roles). |
 | สิทธิ์ | **Permission** | Being allowed to do one thing on one screen, such as view, create, edit or delete. A role groups many permissions together. |
-| ผู้ใช้, ผู้ใช้ Platform | **Platform Users** | People who have been given a role, so they can use this admin app. See [Platform Users](/en/screens/platform/platform-users). |
-| ผู้ดูแลระบบสูงสุด | **Super Admins** | People who can do everything in the system, with no permission checks. See [Super Admins](/en/screens/platform/super-admins). |
-| สวิตช์ฟีเจอร์ | **Feature Flags** | Controls how each menu item appears: **Active** (works normally), **Coming soon** (visible but cannot be clicked) or **Hidden** (not shown at all). See [Feature Flags](/en/screens/platform/feature-flags). |
+| ผู้ใช้, ผู้ใช้ Backstage | **Backstage Users** | People who have been given a role, so they can use this admin app. See [Backstage Users](/en/screens/backstage/user-backstage). |
+| ผู้ดูแลระบบสูงสุด | **Super Admins** | People who can do everything in the system, with no permission checks. See [Super Admins](/en/screens/backstage/super-admins). |
+| สวิตช์ฟีเจอร์ | **Feature Flags** | Controls how each menu item appears: **Active** (works normally), **Coming soon** (visible but cannot be clicked) or **Hidden** (not shown at all). See [Feature Flags](/en/screens/backstage/feature-flags). |
 
 ## Database
 
 | Thai label | English label | Meaning |
 | --- | --- | --- |
-| Migration แพลตฟอร์ม | **Platform Migrations** | Updating the structure of the central database that all clusters share. Super admins only. See [Platform Migrations](/en/screens/database/platform-migrations). |
+| Migration Backstage | **Backstage Migrations** | Updating the structure of the central database that all clusters share. Super admins only. See [Backstage Migrations](/en/screens/database/backstage-migrations). |
 | SQL Workbench | **SQL Workbench** | A tool for giving commands directly to one hotel's database. Use it only when needed. See [SQL Workbench](/en/screens/database/sql-workbench). |
 | Database Pools, Database Pool | **Database Pools** | The connection details for the machines that hold hotel databases. Several business units can share one. See [Database Pools](/en/screens/database/database-pools). |
 

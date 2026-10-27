@@ -2,7 +2,7 @@
 
 Most screens in the app work the same way. This page explains the shared parts once. The Screen Reference pages link back here instead of repeating them.
 
-The examples on this page use the [Users](/en/screens/organization/users) screen, but other screens work the same way. You may see more or fewer buttons, depending on the screen and your role (Platform Role — the set of permissions that says what you can do).
+The examples on this page use the [Users](/en/screens/organization/users) screen, but other screens work the same way. You may see more or fewer buttons, depending on the screen and your role (Backstage Role — the set of permissions that says what you can do).
 
 ## List screens {#lists}
 
@@ -137,13 +137,13 @@ If you open a screen your role does not allow, you see **Access Denied** with th
 - Click **Go Back** to return to the previous page.
 - Click **Go to Dashboard** to go to the first page.
 
-If you need this screen, ask a Super Admin to add the permission to your role. See [Platform Roles](/en/screens/platform/platform-roles).
+If you need this screen, ask a Super Admin to add the permission to your role. See [Backstage Roles](/en/screens/backstage/backstage-roles).
 
 ## Coming soon screen {#coming-soon}
 
 Some menu items are faded, carry a **Coming soon** badge and cannot be clicked. If you open such a screen from a link, you see **Coming soon** with the message **This feature is still being built. It will appear here once it is ready.**
 
-These screens are set on [Feature Flags](/en/screens/platform/feature-flags). It is not a problem with your permissions.
+These screens are set on [Feature Flags](/en/screens/backstage/feature-flags). It is not a problem with your permissions.
 
 ## Page not found {#not-found}
 

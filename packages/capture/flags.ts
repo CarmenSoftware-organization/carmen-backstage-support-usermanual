@@ -25,7 +25,7 @@ export type FeatureStateMap = Record<string, FeatureState>
 /** What to do when DEV flags were changed by someone else after this run set them. */
 export type OnConflict = 'refuse' | 'keep-theirs' | 'overwrite'
 
-const ENDPOINT = '/api-system/platform/feature-flags'
+const ENDPOINT = '/api-system/backstage/feature-flags'
 const appliedPath = (): string => join(dirname(PATHS.flagsOriginal), 'flags-applied.json')
 
 const LOGIN_EXPIRED =

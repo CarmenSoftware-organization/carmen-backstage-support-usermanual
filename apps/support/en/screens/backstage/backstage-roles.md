@@ -1,32 +1,32 @@
-# Platform Roles
+# Backstage Roles
 
 ## Where to find it and what it is for
 
-Left menu, group **Platform** > **Platform Roles**
+Left menu, group **Backstage** > **Backstage Roles**
 
-A **role** (Platform Role — a set of permissions that says what the people holding it can do in this admin app). For example, a "Support Staff" role might only view data, while "Platform Admin" can do almost everything.
+A **role** (Backstage Role — a set of permissions that says what the people holding it can do in this admin app). For example, a "Support Staff" role might only view data, while "Backstage Admin" can do almost everything.
 
-Use this screen to create and edit roles: to decide which **permissions** (permission to do one thing on one screen, such as view, create, edit or delete) a role includes. Giving a role to a person is done on [Platform Users](/en/screens/platform/platform-users).
+Use this screen to create and edit roles: to decide which **permissions** (permission to do one thing on one screen, such as view, create, edit or delete) a role includes. Giving a role to a person is done on [Backstage Users](/en/screens/backstage/user-backstage).
 
-The flow in short: create the role here → give it to people on **Platform Users** → they see the menus and buttons the role allows.
+The flow in short: create the role here → give it to people on **Backstage Users** → they see the menus and buttons the role allows.
 
 ## Screenshot
 
 The list
 
-![The Platform Roles screen with the broadest roles summary and the table of roles](/screenshots/en/platform-roles-list.png)
+![The Backstage Roles screen with the broadest roles summary and the table of roles](/screenshots/en/backstage-roles-list.png)
 
 Adding a role
 
-![The new role screen with permissions grouped by menu and Settings on the right](/screenshots/en/platform-roles-form.png)
+![The new role screen with permissions grouped by menu and Settings on the right](/screenshots/en/backstage-roles-form.png)
 
 A role's screen
 
-![The Security Officer role screen with granted permissions as coloured buttons and a warning that it can grant itself more access](/screenshots/en/platform-roles-detail.png)
+![The Security Officer role screen with granted permissions as coloured buttons and a warning that it can grant itself more access](/screenshots/en/backstage-roles-detail.png)
 
 The Permission Catalog
 
-![The Permission Catalog screen listing every permission with a description](/screenshots/en/platform-roles-permissions.png)
+![The Permission Catalog screen listing every permission with a description](/screenshots/en/backstage-roles-permissions.png)
 
 ## What you can do here
 
@@ -83,7 +83,7 @@ Permissions are grouped like the left menu. Each row is one screen (such as **Cl
 3. Under **Permissions**, click **read** for each screen the team needs to see.
 4. Add other buttons only for work the team must do, such as **update** on **Users**.
 5. Click **Create Role**.
-6. Go to [Platform Users](/en/screens/platform/platform-users) to give this role to the team.
+6. Go to [Backstage Users](/en/screens/backstage/user-backstage) to give this role to the team.
 
 **Remove a permission from a role**
 
@@ -95,7 +95,7 @@ Permissions are grouped like the left menu. Each row is one screen (such as **Cl
 ## Cautions
 
 ::: warning Permission changes affect everyone with the role
-When you save, everyone who holds this role gains or loses those permissions at the same time. Before removing permissions, check on [Platform Users](/en/screens/platform/platform-users) who holds the role.
+When you save, everyone who holds this role gains or loses those permissions at the same time. Before removing permissions, check on [Backstage Users](/en/screens/backstage/user-backstage) who holds the role.
 :::
 
 ::: warning Deleting a role
@@ -103,12 +103,12 @@ The confirmation box warns that deleting cannot be undone. Deleted roles are cou
 :::
 
 - Watch for permissions flagged with **Can grant itself more access:** — holders of that role can edit roles or give roles to themselves. Give it only to people you trust.
-- Super Admins do not need roles, because they can already do everything. See [Super Admins](/en/screens/platform/super-admins).
+- Super Admins do not need roles, because they can already do everything. See [Super Admins](/en/screens/backstage/super-admins).
 
 ## Related guides
 
 There is no step-by-step guide for this screen yet. See the related pages:
 
-- [Platform Users](/en/screens/platform/platform-users)
+- [Backstage Users](/en/screens/backstage/user-backstage)
 - [Access Denied screen](/en/getting-started/common-actions#access-denied)
 - [Common Actions](/en/getting-started/common-actions)

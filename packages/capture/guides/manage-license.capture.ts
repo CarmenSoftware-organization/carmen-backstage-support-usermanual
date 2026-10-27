@@ -49,7 +49,7 @@ test.describe.serial('manage-license', () => {
     await page.locator('#end_date').fill(isoDate(365))
     await snap(page, `${G}-04-subscription-form-filled`)
 
-    await expectWrite(page, 'POST', '/api-system/platform/subscriptions', () =>
+    await expectWrite(page, 'POST', '/api-system/backstage/subscriptions', () =>
       button(main(page), L('Create Subscription', 'สร้างสัญญา')).click(),
     )
     await page.waitForURL('**/licenses/subscriptions/*/edit')
@@ -63,7 +63,7 @@ test.describe.serial('manage-license', () => {
     await scrollToMiddle(page, 'input[type="checkbox"][aria-label="Full Access"]')
     await snap(page, `${G}-06-subscription-groups-picked`)
 
-    await expectWrite(page, 'PUT', /\/api-system\/platform\/subscriptions\/[^/]+\/groups/, () =>
+    await expectWrite(page, 'PUT', /\/api-system\/backstage\/subscriptions\/[^/]+\/groups/, () =>
       button(page.locator('.unsaved-bar'), L('Save Changes', 'บันทึกการแก้ไข')).click(),
     )
     await successToast(page)
@@ -152,7 +152,7 @@ test.describe.serial('manage-license', () => {
     await scrollToMiddle(page, 'main #code')
     await snap(page, `${G}-16-feature-group-form-filled`)
 
-    await expectWrite(page, 'POST', '/api-system/platform/license-feature-groups', () =>
+    await expectWrite(page, 'POST', '/api-system/backstage/license-feature-groups', () =>
       button(main(page), L('Save Changes', 'บันทึกการแก้ไข')).click(),
     )
     await successToast(page)

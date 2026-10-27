@@ -6,7 +6,7 @@ Left menu, group **Scheduling** > **Scheduled Jobs**
 
 **Scheduled jobs** (work the system does by itself at set times), such as producing a report every morning, sending notifications or clearing out old data every night. Use this screen to see which jobs exist, which are running, when each last ran and when it runs next — and to create, edit, stop or run a job right now.
 
-Some jobs are created by another program for one business unit (hotel), such as a report a user scheduled in the Carmen Blue website. For these, the **Owner** column shows that program's name. Jobs created on this screen show **Platform**.
+Some jobs are created by another program for one business unit (hotel), such as a report a user scheduled in the Carmen Blue website. For these, the **Owner** column shows that program's name. Jobs created on this screen show **Backstage**.
 
 ## Screenshot
 

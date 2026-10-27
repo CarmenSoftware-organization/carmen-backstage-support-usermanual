@@ -188,11 +188,11 @@ export const SHOTS: Shot[] = [
   { slug: 'scheduled-jobs-form', path: '/cronjobs/new' },
 
   // ── Platform ───────────────────────────────────────────────────────
-  { slug: 'platform-config-overview', path: '/platform/configs' },
-  { slug: 'email-settings-list', path: '/platform/email-settings', maskOptional: SMTP_PASSWORD },
+  { slug: 'backstage-config-overview', path: '/backstage/configs' },
+  { slug: 'email-settings-list', path: '/backstage/email-settings', maskOptional: SMTP_PASSWORD },
   {
     slug: 'email-settings-form',
-    path: '/platform/email-settings',
+    path: '/backstage/email-settings',
     maskOptional: SMTP_PASSWORD,
     prepare: async (page) => {
       await button(page, EDIT).click()
@@ -202,23 +202,23 @@ export const SHOTS: Shot[] = [
   },
   {
     slug: 'email-settings-test-dialog',
-    path: '/platform/email-settings',
+    path: '/backstage/email-settings',
     prepare: (page) => openDialog(page, /^(Send test email|ส่งเมลทดสอบ)$/),
   },
   { slug: 'applications-list', path: '/applications' },
   { slug: 'applications-form', path: '/applications/new', maskOptional: APP_SECRET },
   { slug: 'applications-detail', path: '/applications', openFirstRow: true, maskOptional: APP_SECRET },
-  { slug: 'platform-roles-list', path: '/platform/roles' },
-  { slug: 'platform-roles-form', path: '/platform/roles/new' },
-  { slug: 'platform-roles-detail', path: '/platform/roles', openFirstRow: true },
-  { slug: 'platform-roles-permissions', path: '/platform/category-permissions' },
-  { slug: 'platform-users-list', path: '/platform/user-platform' },
-  { slug: 'platform-users-detail', path: '/platform/user-platform', openFirstRow: true },
-  { slug: 'super-admins-list', path: '/platform/super-admins' },
-  { slug: 'feature-flags-list', path: '/platform/features' },
+  { slug: 'backstage-roles-list', path: '/backstage/roles' },
+  { slug: 'backstage-roles-form', path: '/backstage/roles/new' },
+  { slug: 'backstage-roles-detail', path: '/backstage/roles', openFirstRow: true },
+  { slug: 'backstage-roles-permissions', path: '/backstage/category-permissions' },
+  { slug: 'user-backstage-list', path: '/backstage/user-backstage' },
+  { slug: 'user-backstage-detail', path: '/backstage/user-backstage', openFirstRow: true },
+  { slug: 'super-admins-list', path: '/backstage/super-admins' },
+  { slug: 'feature-flags-list', path: '/backstage/features' },
 
   // ── Database ───────────────────────────────────────────────────────
-  { slug: 'platform-migrations-overview', path: '/platform/migrations' },
+  { slug: 'backstage-migrations-overview', path: '/backstage/migrations' },
   { slug: 'sql-workbench', path: '/sql-workbench' },
   {
     // Choosing a BU only loads its list of tables; nothing is run (the Run button is never pressed).
@@ -233,7 +233,7 @@ export const SHOTS: Shot[] = [
       await page.waitForTimeout(800)
     },
   },
-  { slug: 'database-pools-list', path: '/platform/database-pools', mask: POOL_LIST_CONNECTION },
-  { slug: 'database-pools-form', path: '/platform/database-pools/new', mask: POOL_FORM_SECRETS },
-  { slug: 'database-pools-detail', path: '/platform/database-pools', openFirstRow: true, mask: POOL_DETAIL_CONNECTION },
+  { slug: 'database-pools-list', path: '/backstage/database-pools', mask: POOL_LIST_CONNECTION },
+  { slug: 'database-pools-form', path: '/backstage/database-pools/new', mask: POOL_FORM_SECRETS },
+  { slug: 'database-pools-detail', path: '/backstage/database-pools', openFirstRow: true, mask: POOL_DETAIL_CONNECTION },
 ]

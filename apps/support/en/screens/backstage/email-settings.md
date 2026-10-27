@@ -2,7 +2,7 @@
 
 ## Where to find it and what it is for
 
-Left menu, group **Platform** > **Email Settings**
+Left menu, group **Backstage** > **Email Settings**
 
 This screen sets who the system sends email as, and through which email server. It has two parts:
 
@@ -111,5 +111,5 @@ The test email goes out as soon as you click the button.
 
 There is no step-by-step guide for this screen yet. See the related pages:
 
-- [Platform Config](/en/screens/platform/platform-config) (email links and notification recipients)
+- [Backstage Config](/en/screens/backstage/backstage-config) (email links and notification recipients)
 - [Common Actions](/en/getting-started/common-actions)

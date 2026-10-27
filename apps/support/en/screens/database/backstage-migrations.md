@@ -1,8 +1,8 @@
-# Platform Migrations
+# Backstage Migrations
 
 ## Where to find it and what it is for
 
-Left menu, group **Database** > **Platform Migrations**. The screen's heading reads **Platform Database Migrations**.
+Left menu, group **Database** > **Backstage Migrations**. The screen's heading reads **Backstage Database Migrations**.
 
 ::: tip Who sees this screen
 This menu item and screen are shown only to **Super Admins** (people who can do everything in the system, with no permission checks). Other users do not see the menu item, even if their role has every permission. If they open the link directly, they get the [Access Denied screen](/en/getting-started/common-actions#access-denied).
@@ -10,9 +10,9 @@ This menu item and screen are shown only to **Super Admins** (people who can do 
 
 A **migration** is an update to the database structure so that it matches the latest version of the system. This screen looks after the system's **central database**: the single database that every **cluster** (a hotel group or company group belonging to one customer) shares. It holds platform-wide data such as permissions, roles, currencies and the default report templates.
 
-**How Platform Migrations differs from Tenant Migrations**
+**How Backstage Migrations differs from Tenant Migrations**
 
-| | Platform Migrations (this screen) | [Tenant Migrations](/en/screens/organization/tenant-migrations) |
+| | Backstage Migrations (this screen) | [Tenant Migrations](/en/screens/organization/tenant-migrations) |
 | --- | --- | --- |
 | What it updates | The one central database | Each hotel's own database (one per **business unit** — one hotel or branch) |
 | Who is affected | Every cluster and every hotel at once | Only the hotel you update |
@@ -24,7 +24,7 @@ Besides updating the structure, this screen also loads **starting data** (the ba
 
 ## Screenshot
 
-![The Platform Database Migrations screen: the status card reading Up to date with the Apply migrations button, the Resolve a stuck migration card, and the Seed data card](/screenshots/en/platform-migrations-overview.png)
+![The Backstage Database Migrations screen: the status card reading Up to date with the Apply migrations button, the Resolve a stuck migration card, and the Seed data card](/screenshots/en/backstage-migrations-overview.png)
 
 ## What you can do here
 
@@ -36,7 +36,7 @@ Besides updating the structure, this screen also loads **starting data** (the ba
 - **Raw Prisma output:** click to expand the system's reply word for word (Prisma is the tool the system uses to update the database). It is there for the technical team.
 - **Apply migrations:** applies every pending update to the central database. You must confirm first. The button works even when the status is already up to date; in that case the system replies **No pending migrations — nothing changed**.
 - **Resolve a stuck migration (advanced):** a collapsed box the technical team uses to fix an update that failed and got stuck. See the **Fields explained** section below.
-- **Seed data** (the card with the **Writes data** label): each row is one set of starting data, such as **ISO currencies**, **App permissions**, **Platform roles**, **Report templates**. Click **Run** to load that set. The system asks you to confirm first. The card says it is safe to run again: data that already exists is skipped.
+- **Seed data** (the card with the **Writes data** label): each row is one set of starting data, such as **ISO currencies**, **App permissions**, **Backstage roles**, **Report templates**. Click **Run** to load that set. The system asks you to confirm first. The card says it is safe to run again: data that already exists is skipped.
 - **Run…** (with three dots): some sets, such as **Role permissions**, are loaded one business unit at a time. Clicking opens a box where you choose the business units first. You can choose more than one.
 - **Drift checks:** this card compares what this version of the system expects with what is actually in the database. **It writes nothing.** Click **Run** and the check starts straight away, with no confirmation.
   - Some row names show English technical words on screen, such as **Check endpoint coverage** and **Check api-system coverage** (an endpoint is a channel an app uses to ask the system for data or send it data; these rows look for channels with no permission check). <!-- plain-ok -->
@@ -58,7 +58,7 @@ This screen has no create or edit form. The only form is the **Resolve a stuck m
 
 **Check whether the central database is fully updated (safe)**
 
-1. Open **Platform Migrations**.
+1. Open **Backstage Migrations**.
 2. Click **Check status**.
 3. Look at the **Status** card. If it says **Up to date**, there is nothing more to do.
 4. If it says **... pending** or **Unknown**, tell the technical team.
@@ -112,7 +112,7 @@ If you close or leave this screen while starting data is loading, the job carrie
 
 - The **Run console** is not saved. When you leave or refresh this screen, all its messages disappear. To keep them, click **Copy all** first.
 - If you see **A platform migration is already running. Try again shortly.**, someone else is running a job. Wait, then click **Check status**. Do not click repeatedly.
-- If you see **The platform migration API is disabled, or you are not a super-admin.**, the system has switched this screen off. A Super Admin can switch it on in [Platform Config](/en/screens/platform/platform-config), field **API status**. Only switch it on when the technical team needs it.
+- If you see **The platform migration API is disabled, or you are not a super-admin.**, the system has switched this screen off. A Super Admin can switch it on in [Backstage Config](/en/screens/backstage/backstage-config), field **API status**. Only switch it on when the technical team needs it.
 
 ## Related guides
 
@@ -120,5 +120,5 @@ There is no step-by-step guide for this screen, because it is the technical team
 
 - [Tenant Migrations](/en/screens/organization/tenant-migrations) updates each hotel's own database
 - [Tenant Seed Data](/en/screens/organization/tenant-seeds) each hotel's starting data
-- [Platform Config](/en/screens/platform/platform-config) switches this screen on or off
-- [Super Admins](/en/screens/platform/super-admins)
+- [Backstage Config](/en/screens/backstage/backstage-config) switches this screen on or off
+- [Super Admins](/en/screens/backstage/super-admins)

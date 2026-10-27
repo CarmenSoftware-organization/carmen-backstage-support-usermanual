@@ -13,7 +13,7 @@ This guide shows how to record what a customer has bought. When you finish, you 
 
 Each part stands on its own. Do only the parts you need.
 
-**Who can do this:** a super admin, or someone whose Platform Role (the set of permissions that says what you may do) lets them manage Licenses and License Feature Groups.
+**Who can do this:** a super admin, or someone whose Backstage Role (the set of permissions that says what you may do) lets them manage Licenses and License Feature Groups.
 
 **What you need first**
 

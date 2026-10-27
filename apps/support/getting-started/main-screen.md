@@ -16,13 +16,13 @@
 | **เนื้อหา** | ดูแลแม่แบบรายงาน แดชบอร์ด ข่าว และประกาศที่ส่งถึงผู้ใช้ | [เทมเพลตรายงาน](/screens/content/report-templates), [กลุ่มฟอร์ม](/screens/content/form-groups), [แม่แบบแดชบอร์ด](/screens/content/dashboard-templates), [ข่าวสาร](/screens/content/news), [ประกาศ](/screens/content/broadcasts) |
 | **การวิเคราะห์** | ดูว่ามีการใช้งานระบบมากน้อยแค่ไหน | [สถิติการใช้งาน](/screens/analytics/usage-analytics), [บันทึกกิจกรรม](/screens/analytics/activity-events) |
 | **งานตามเวลา** | งานที่ระบบทำเองตามเวลาที่ตั้งไว้ | [งานตามเวลา](/screens/scheduling/scheduled-jobs) |
-| **Platform** | ตั้งค่าตัวระบบ และกำหนดว่าใครทำอะไรได้ | [ตั้งค่า](/screens/platform/platform-config), [ตั้งค่าอีเมล](/screens/platform/email-settings), [แอปพลิเคชัน](/screens/platform/applications), [บทบาท](/screens/platform/platform-roles), [ผู้ใช้](/screens/platform/platform-users), [ผู้ดูแลระบบสูงสุด](/screens/platform/super-admins), [สวิตช์ฟีเจอร์](/screens/platform/feature-flags) |
-| **ฐานข้อมูล** | เครื่องมือดูแลฐานข้อมูล ใช้เมื่อจำเป็นเท่านั้น | [Migration แพลตฟอร์ม](/screens/database/platform-migrations), [SQL Workbench](/screens/database/sql-workbench), [Database Pools](/screens/database/database-pools) |
+| **Backstage** | ตั้งค่าตัวระบบ และกำหนดว่าใครทำอะไรได้ | [ตั้งค่า](/screens/backstage/backstage-config), [ตั้งค่าอีเมล](/screens/backstage/email-settings), [แอปพลิเคชัน](/screens/backstage/applications), [บทบาท](/screens/backstage/backstage-roles), [ผู้ใช้](/screens/backstage/user-backstage), [ผู้ดูแลระบบสูงสุด](/screens/backstage/super-admins), [สวิตช์ฟีเจอร์](/screens/backstage/feature-flags) |
+| **ฐานข้อมูล** | เครื่องมือดูแลฐานข้อมูล ใช้เมื่อจำเป็นเท่านั้น | [Migration Backstage](/screens/database/backstage-migrations), [SQL Workbench](/screens/database/sql-workbench), [Database Pools](/screens/database/database-pools) |
 
 คำศัพท์ในตารางนี้อธิบายไว้ที่ [อภิธานศัพท์](../glossary)
 
 ::: tip ทำไมเมนูของฉันมีไม่ครบ
-คุณจะเห็นเฉพาะเมนูที่บทบาทของคุณอนุญาต เมนู **ผู้ดูแลระบบสูงสุด** และ **Migration แพลตฟอร์ม** แสดงเฉพาะผู้ดูแลระบบสูงสุด (Super Admin — ผู้ที่ทำได้ทุกอย่างในระบบ) เท่านั้น ส่วนเมนูที่ถูกปิดด้วย [สวิตช์ฟีเจอร์](/screens/platform/feature-flags) (Feature Flags — ตัวกำหนดว่าแต่ละเมนูจะแสดงหรือไม่) จะไม่แสดงเลย หรือแสดงเป็นสีจางพร้อมป้าย **เร็ว ๆ นี้** และกดไม่ได้
+คุณจะเห็นเฉพาะเมนูที่บทบาทของคุณอนุญาต เมนู **ผู้ดูแลระบบสูงสุด** และ **Migration Backstage** แสดงเฉพาะผู้ดูแลระบบสูงสุด (Super Admin — ผู้ที่ทำได้ทุกอย่างในระบบ) เท่านั้น ส่วนเมนูที่ถูกปิดด้วย [สวิตช์ฟีเจอร์](/screens/backstage/feature-flags) (Feature Flags — ตัวกำหนดว่าแต่ละเมนูจะแสดงหรือไม่) จะไม่แสดงเลย หรือแสดงเป็นสีจางพร้อมป้าย **เร็ว ๆ นี้** และกดไม่ได้
 :::
 
 ### ย่อและขยายเมนู
@@ -58,7 +58,7 @@
 ![เมนูผู้ใช้ที่มุมขวาบน](/screenshots/th/profile-menu-open.png)
 
 - ด้านบนสุดแสดงชื่อและอีเมลของคุณ
-- **มุมมองผู้ดูแล Cluster**: สลับไปหน้าจอแบบย่อ สำหรับดูแลเฉพาะ Cluster (กลุ่มโรงแรม) ที่คุณรับผิดชอบ แสดงเฉพาะเมื่อคุณเป็นผู้ดูแล Cluster ใดอยู่ เมื่ออยู่ในหน้าจอนั้นแล้ว เมนูนี้จะเปลี่ยนเป็น **มุมมองผู้ดูแล Platform** เพื่อกลับมาหน้าจอหลัก
+- **มุมมองผู้ดูแล Cluster**: สลับไปหน้าจอแบบย่อ สำหรับดูแลเฉพาะ Cluster (กลุ่มโรงแรม) ที่คุณรับผิดชอบ แสดงเฉพาะเมื่อคุณเป็นผู้ดูแล Cluster ใดอยู่ เมื่ออยู่ในหน้าจอนั้นแล้ว เมนูนี้จะเปลี่ยนเป็น **มุมมองผู้ดูแล Backstage** เพื่อกลับมาหน้าจอหลัก
 - **โปรไฟล์**: ดูและแก้ข้อมูลของคุณเอง และเปลี่ยนรหัสผ่าน ดู [โปรไฟล์](/screens/profile)
 - **ออกจากระบบ**: ออกจากระบบ
 

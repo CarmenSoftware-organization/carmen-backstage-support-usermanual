@@ -1,16 +1,16 @@
-# Platform Config
+# Backstage Config
 
 ## Where to find it and what it is for
 
-Left menu, group **Platform** > **Platform Config**
+Left menu, group **Backstage** > **Backstage Config**
 
 This screen holds settings that apply to the whole system. Changes take effect without waiting for the technical team to reinstall the program — for example, how long the links in invitation and password-reset emails stay valid, who receives notification email, and whether the system really enforces licenses (the usage rights a customer has bought).
 
-The bar at the top sums up the three most important settings: **License Enforcement**, **Notification Email** and **Platform migration API**.
+The bar at the top sums up the three most important settings: **License Enforcement**, **Notification Email** and **Backstage migration API**.
 
 ## Screenshot
 
-![The Platform Config screen with the status bar at the top and the email-link cards, each with an Edit button](/screenshots/en/platform-config-overview.png)
+![The Backstage Config screen with the status bar at the top and the email-link cards, each with an Edit button](/screenshots/en/backstage-config-overview.png)
 
 ## What you can do here
 
@@ -23,13 +23,13 @@ The bar at the top sums up the three most important settings: **License Enforcem
   - **Licensing:** **License Enforcement** and **Expiring-soon thresholds**
   - **Sign-in:** **Google sign-in**
   - **External API:** the address outside systems use to connect
-  - **Platform Database:** **Platform migration API**
+  - **Backstage Database:** **Backstage migration API**
 
 Who can change what:
 
 - The **Edit** buttons appear only for people whose role allows managing settings.
 - The **License Enforcement** card also needs the permission to manage licenses.
-- The **Platform migration API** card can be changed only by Super Admins (people who can do everything in the system).
+- The **Backstage migration API** card can be changed only by Super Admins (people who can do everything in the system).
 
 ## Fields explained
 
@@ -64,7 +64,7 @@ The defaults are high on purpose, because opening a new hotel and inviting 30–
 | **Sending** | Tick **Send internal notification email** to send notification email, such as reports and business-unit alerts | If off, no notification email is sent at all. System email, such as sign-up and password-reset links, is still sent as usual. |
 | **Recipients** | Recipient addresses, separated by commas | For example `ops@example.com, finance@example.com`. Leave blank so each notification goes to its own recipients. |
 | **CC** | Addresses that get a copy | For example `audit@example.com` |
-| **Subject prefix** | Text added before the email subject | At most 64 characters. Blank = nothing added. The email-server details are not set here — set them on [Email Settings](/en/screens/platform/email-settings). |
+| **Subject prefix** | Text added before the email subject | At most 64 characters. Blank = nothing added. The email-server details are not set here — set them on [Email Settings](/en/screens/backstage/email-settings). |
 
 **License Enforcement**
 
@@ -91,11 +91,11 @@ The defaults are high on purpose, because opening a new hotel and inviting 30–
 | --- | --- | --- |
 | **Base URL** | The main address that outside systems (such as a hotel's accounting system) use to connect to Carmen Blue with a business unit's connection key | Enter the main address only. Do not add `/api/ext` to the end. Leave blank to use the server's default. <!-- plain-ok --> |
 
-**Platform migration API**
+**Backstage migration API**
 
 | Field | What it means | Example / notes |
 | --- | --- | --- |
-| **API status** | Tick **Enable the platform migration API** to let Super Admins update the structure of the central database (the database every Cluster shares) from the [Platform Migrations](/en/screens/database/platform-migrations) screen | Off = that screen cannot run anything, not even for Super Admins. Only Super Admins can change this. |
+| **API status** | Tick **Enable the platform migration API** to let Super Admins update the structure of the central database (the database every Cluster shares) from the [Backstage Migrations](/en/screens/database/backstage-migrations) screen | Off = that screen cannot run anything, not even for Super Admins. Only Super Admins can change this. |
 
 ## Common tasks
 
@@ -123,7 +123,7 @@ To turn it off again, do the same but untick the box. Turning it off has no conf
 When you turn it on, within about 60 seconds every business unit without a subscription covering the features it uses is refused at once, and inviting users beyond the seat count stops working. Check every hotel's subscriptions first. You can turn it off again at once by unticking the box.
 :::
 
-::: warning Platform migration API
+::: warning Backstage migration API
 When it is on, Super Admins can update the structure of the central database for every Cluster from the screen. Such an update affects every hotel at once. Turn it on only when an update is planned, and turn it off when done. This setting takes effect within about a minute, not instantly.
 :::
 
@@ -137,5 +137,5 @@ When it is on, Super Admins can update the structure of the central database for
 Related pages:
 
 - [Licenses](/en/screens/license/licenses)
-- [Email Settings](/en/screens/platform/email-settings)
+- [Email Settings](/en/screens/backstage/email-settings)
 - [Common Actions](/en/getting-started/common-actions)

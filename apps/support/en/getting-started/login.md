@@ -6,7 +6,7 @@ This page explains how to sign in to Carmen Blue Backstage (the admin app for pl
 
 - The web address of Carmen Blue Backstage (ask the team that runs your system).
 - An account: your **Email or username** and your **Password**.
-- Your account must have a **Platform Role** (a set of permissions that says what you can do in this app) or be a **Super Admin** (someone who can do everything). Without one, the app will not let you in. See [Messages you may see](#messages).
+- Your account must have a **Backstage Role** (a set of permissions that says what you can do in this app) or be a **Super Admin** (someone who can do everything). Without one, the app will not let you in. See [Messages you may see](#messages).
 
 ## The sign-in screen
 
@@ -44,7 +44,7 @@ Your Google email must match the email of an existing Carmen Blue Backstage acco
 | Message on screen | What it means | What to do |
 | --- | --- | --- |
 | **Invalid email/username or password.** | The email, username or password is wrong. | Check upper and lower case and your keyboard language, then try again. |
-| **Access denied** followed by **Access Denied. You are not authorized to access this platform.** | Your password is right, but your account has no role in this app yet. | Ask a Super Admin to give you a role on the [Platform Users](/en/screens/platform/platform-users) screen. |
+| **Access denied** followed by **Access Denied. You are not authorized to access this platform.** | Your password is right, but your account has no role in this app yet. | Ask a Super Admin to give you a role on the [Backstage Users](/en/screens/backstage/user-backstage) screen. |
 | **Too many login attempts. Please try again later.** and the button changes to **Please wait** | Too many failed tries in a row, so the app paused sign-in for a while. | Wait a moment, then change any box. The button works again. |
 | **Unable to login. Please try again later.** | The system has a temporary problem. | Wait and try again. If it still fails, tell support. |
 | **No Carmen Blue Backstage account exists for this Google email address.** | The Google email you chose has no account here. | Ask an administrator to add you first, or choose another Google account. |

@@ -1,19 +1,19 @@
-# Platform Users
+# Backstage Users
 
 ## Where to find it and what it is for
 
-Left menu, group **Platform** > **Platform Users** (the screen heading says **User Platform**)
+Left menu, group **Backstage** > **Backstage Users** (the screen heading says **User Backstage**)
 
-This screen shows everyone who holds a **role** (a set of permissions that says what they can do in this admin app), and is where you give or take away roles. People with no role do not appear here and cannot use the Platform admin screens (except Super Admins, who are managed on their own screen).
+This screen shows everyone who holds a **role** (a set of permissions that says what they can do in this admin app), and is where you give or take away roles. People with no role do not appear here and cannot use the Backstage admin screens (except Super Admins, who are managed on their own screen).
 
 The difference between the two screens:
 
-- [Platform Roles](/en/screens/platform/platform-roles) decides **what a role can do**.
+- [Backstage Roles](/en/screens/backstage/backstage-roles) decides **what a role can do**.
 - This screen decides **who has which role**, and over what scope.
 
 There are two **scopes**:
 
-- **Platform-wide:** the role applies to every Cluster and every business unit.
+- **Backstage-wide:** the role applies to every Cluster and every business unit.
 - **Specific cluster:** the role applies only inside the chosen Cluster (one customer's group of hotels).
 
 The user's account must exist before you can give a role. If it does not, create it on [Users](/en/screens/organization/users) first.
@@ -22,17 +22,17 @@ The user's account must exist before you can give a role. If it does not, create
 
 The list
 
-![The User Platform screen with the holders summary and the table of users with their roles and scope](/screenshots/en/platform-users-list.png)
+![The User Backstage screen with the holders summary and the table of users with their roles and scope](/screenshots/en/user-backstage-list.png)
 
 A user's screen
 
-![One user's screen with the Reaches the entire platform section, Roles & Scope, and Membership](/screenshots/en/platform-users-detail.png)
+![One user's screen with the Reaches the entire platform section, Roles & Scope, and Membership](/screenshots/en/user-backstage-detail.png)
 
 ## What you can do here
 
 **The list**
 
-- **See the overview:** the number of **holders**, split into **Platform-wide** and **Cluster-scoped**, and the total number of **Assignments**. If any deactivated accounts still hold roles, there is a warning.
+- **See the overview:** the number of **holders**, split into **Backstage-wide** and **Cluster-scoped**, and the total number of **Assignments**. If any deactivated accounts still hold roles, there is a warning.
 - **Search** and **filter** by status, **Role** and **Scope**. See [Search](/en/getting-started/common-actions#search) and [Filters](/en/getting-started/common-actions#filters).
 - **Read the table:** **User** (name and email), **Roles & scope** and **Granted** (with who granted it).
 - **Row menu** (the `⋯` button): **Manage roles** (opens the user's screen) and **Revoke all access**. See [Row menu](/en/getting-started/common-actions#row-actions).
@@ -55,7 +55,7 @@ Granting, adding, removing and revoking roles **take effect as soon as you confi
 | --- | --- | --- |
 | **User** (required) | The person who gets the role | Search by name or email |
 | **Roles** (required) | The roles to give | You can choose several. Roles the user already has show **Already granted**. |
-| **Scope** | How widely the role applies | **Platform-wide** or **A specific cluster**. Every role in this request gets the same scope. |
+| **Scope** | How widely the role applies | **Backstage-wide** or **A specific cluster**. Every role in this request gets the same scope. |
 | **Cluster** (required for a specific cluster) | The Cluster where the role applies | |
 
 **The Add Role box** (from a user's screen)
@@ -63,7 +63,7 @@ Granting, adding, removing and revoking roles **take effect as soon as you confi
 | Field | What it means | Example / notes |
 | --- | --- | --- |
 | **Role** (required) | The role to add | One role at a time |
-| **Scope** | **Platform-wide** or **Specific cluster** | |
+| **Scope** | **Backstage-wide** or **Specific cluster** | |
 | **Cluster** (required for a specific cluster) | The Cluster where the role applies | |
 
 ## Common tasks
@@ -98,7 +98,7 @@ Granting and removing roles take effect as soon as you confirm. There is no Save
 
 - Removing roles does not delete the user's account, and does not take the user out of the Clusters or business units they belong to.
 - **Self-granted** means that person gave the role to their own account. Check that this was intended.
-- Super Admins are managed on [Super Admins](/en/screens/platform/super-admins), not here.
+- Super Admins are managed on [Super Admins](/en/screens/backstage/super-admins), not here.
 
 ## Related guides
 
@@ -106,6 +106,6 @@ Granting and removing roles take effect as soon as you confirm. There is no Save
 
 Related pages:
 
-- [Platform Roles](/en/screens/platform/platform-roles)
+- [Backstage Roles](/en/screens/backstage/backstage-roles)
 - [Users](/en/screens/organization/users)
 - [Common Actions](/en/getting-started/common-actions)
