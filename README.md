@@ -7,6 +7,7 @@ Screenshots are captured automatically from the live DEV app. Style rules:
 | Folder | What it is |
 |---|---|
 | `apps/support` | Support manual (our support team). Thai is the root, English under `en/`. |
+| `apps/cluster-admin` | Cluster Admin manual (hotel-group staff who look after their own cluster). Separate site, same layout. |
 | `packages/capture` | Playwright capture harness shared by the sites |
 | `packages/checks` | Checks run from inside each app: Thai/English parity, plain language, links |
 | `packages/theme` | Shared VitePress theme and search tokenizer |
@@ -18,6 +19,7 @@ Each app builds on its own into `apps/<app>/.vitepress/dist/`, so each can be de
 ```
 bun install
 bun run dev:support                         # preview at http://localhost:5173 (English: /en/)
+bunx turbo run dev --filter=@manual/cluster-admin
 bunx turbo run build --filter=@manual/support # build one site
 bun run build                               # build every site
 bun run check         # typecheck + per app: build, Thai/English parity, plain language, links
@@ -121,3 +123,35 @@ A shot fails instead of saving when the page shows Access Denied, Coming soon, 4
 still loading. Shots that show secrets (app secret, database connection, database pool,
 SMTP password) declare masks in `packages/capture/screens.manifest.ts`; a required mask that matches
 nothing also fails the shot. Failure details land in `packages/capture/results/` (gitignored).
+
+## Cluster Admin site (`apps/cluster-admin`)
+
+Readers are hotel-group staff, so this site must never show support-only screens:
+`check:leak` fails the build if it mentions SQL Workbench, Super Admin, Database Pool or a
+`/backstage/` path. Anything a cluster admin cannot do themselves links to `getting-help` — the
+one place to fill in the real support channel later.
+
+Its screenshots are taken as a **cluster admin, never as the Super Admin** (a Super Admin's
+Cluster Admin view lists every customer's cluster). Add to `.env`:
+
+```
+CLUSTER_ADMIN_EMAIL=...        # a DEV cluster admin that is not a Super Admin
+CLUSTER_ADMIN_PASSWORD=...
+# CLUSTER_ADMIN_CLUSTER_CODE=ZEBRA   (default) the test cluster the shots are taken in
+```
+
+Global setup refuses to start if that login administers every cluster or is not an admin of the
+test cluster.
+
+- `bun run capture:cluster` — Screen Reference + guide shots for this site (both languages).
+  Shots go to `apps/cluster-admin/public/screenshots/<lang>/`; manifest and guides live in
+  `packages/capture/cluster/`.
+
+What it changes in the test cluster (ZEBRA on DEV): the guides add `MANUAL-DEMO-` users with the
+Super Admin login and give them a seat in ZEBRA (FIFO), change their role, release and restore
+their seat, then remove and permanently delete them (a seat is only freed once the user is gone).
+The invite guide sends one invitation to a `manual-demo-…@example.com` address and revokes it at
+once, because a pending invitation also holds a seat. ZEBRA's real members, business units and
+settings are never changed. Revoked demo invitations stay in ZEBRA's invitation history — the API
+cannot delete them, and they hold no seat. The cleanup sweep (`bun run capture:cleanup-demo`)
+also removes demo members and pending demo invitations in ZEBRA left by a killed run.
