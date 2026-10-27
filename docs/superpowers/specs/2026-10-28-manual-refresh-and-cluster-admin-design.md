@@ -34,7 +34,30 @@ Two deliverables:
 - Language that is hard to understand or too technical (the existing anti-goal in `docs/style-guide.md`) — even stricter for the Cluster Admin site, whose readers are not technical.
 - Promising hotel-group readers they can do something the app does not let them do.
 
-## Part 1 — Support manual refresh (`site/`)
+## Part 0 — Repo becomes a Turborepo (the user decided)
+
+Why (the user's words): so each site can be **built and deployed separately, clearly**.
+
+Layout (folder names are my call):
+
+```
+apps/
+  support/        ← support manual (moved from site/ with git mv, history kept)
+  cluster-admin/  ← new Cluster Admin manual
+packages/
+  capture/        ← shared Playwright capture harness (moved from capture/)
+  checks/         ← shared check scripts (moved from scripts/): parity, plain language, anchors
+  theme/          ← shared VitePress theme bits, only if both sites really share them
+docs/             ← stays at the root (style guide, specs, plans)
+```
+
+- Package manager stays **bun** (workspaces); add `turbo` with tasks `build`, `check`, `dev`, `typecheck`. `turbo run build --filter=support` (or `cluster-admin`) builds one site alone, into that app's own output folder, so each can later become its own hosting project. Deploy itself stays out of scope.
+- Each app owns its screenshots (`apps/<app>/public/screenshots/{th,en}/`) and its capture Playwright projects; `packages/capture` holds the shared login, flags, demo-data and API code. Capture is **not** a cached turbo task (it changes DEV) — run it explicitly per app.
+- `.env` stays at the repo root and is read by `packages/capture` as today; `.auth/`, `.capture-state/` likewise.
+- Do the move first, as its own commit(s), and prove nothing changed for the support site (same `check` result, same built pages) before any content edits.
+- README rewritten for the new commands.
+
+## Part 1 — Support manual refresh (`apps/support`, formerly `site/`)
 
 Changes found in the app since the baseline (from `git log` / `git diff 5b8c3b28 origin/main` in `carmen-backstage`):
 
@@ -58,10 +81,10 @@ Page slugs/files are renamed to match the new names (e.g. `platform-roles.md` �
 
 ## Part 2 — Cluster Admin manual (new site)
 
-### Site setup (my call)
+### Site setup
 
-- Same repo, second VitePress site in **`site-cluster/`** (Thai root, English under `site-cluster/en/`, same pattern as `site/`).
-- Shares the capture tooling, the check scripts and the style guide; builds and outputs separately so no support page can leak in. The checks run on both sites (`bun run check` covers both).
+- The `apps/cluster-admin` app (Part 0): VitePress, Thai root, English under `en/`, same pattern as the support site.
+- Uses `packages/capture`, `packages/checks` and the style guide; builds separately so no support page can leak in. `turbo run check` covers both apps.
 - Branding/title: "Carmen Blue — Cluster Admin manual" (exact title: builder's call, matching the app's wording for this view).
 
 ### Readers and tone
@@ -99,7 +122,7 @@ The capture creates its own demo data and never shoots real customer data:
 - **Shoot as a real non-super-admin cluster admin, never as the Super Admin test user.** A Super Admin has `adminScope.all`, so `/cluster-admin` lists *every* customer's cluster (`src/pages/clusterAdmin/ClusterAdminEntry.tsx`) and the view may expose powers a hotel-group admin lacks.
 - **Account (the user decided):** the DEV account in `.env` as `CLUSTER_ADMIN_EMAIL` / `CLUSTER_ADMIN_PASSWORD` (never committed, never in docs/code). Verified 2026-10-28: not super admin, admin of two clusters — `CHG | Cluster Hotel Group` and `ZEBRA | ZEBRA`. Both are test data and may appear in pictures for external readers (the user confirmed). Because it administers two clusters, `/cluster-admin` shows the cluster picker first — document that picker in Getting Started; shoot all other screens inside **ZEBRA**.
 - **Changing ZEBRA is allowed (the user confirmed)**, but keep it reversible: guides add only `MANUAL-DEMO-` users/records (invite, seat, role change, remove act on those), and cleanup removes them and any seat/membership they took, then verifies 0 left. Do not edit ZEBRA's existing BUs, users or settings. The demo cluster from earlier is not needed for the Cluster Admin site (the Super Admin still creates demo records through the API where the cluster admin cannot).
-- Separate Playwright project(s) (e.g. `cluster-screens-th/en`, `cluster-guides-th/en`) and output folder (`site-cluster/public/screenshots/{th,en}/`).
+- Separate Playwright project(s) (e.g. `cluster-screens-th/en`, `cluster-guides-th/en`) and output folder (`apps/cluster-admin/public/screenshots/{th,en}/`).
 - Feature flags: the four `cluster_admin_*` flags are switched to active by the existing `capture/flags.ts` run like every other flag and restored afterwards; all four screens are documented (my call). The support manual's Feature Flags page lists the new keys (`cluster_admin_*`, `ai_providers`, renamed `backstage_*`).
 
 ## Constraints
@@ -112,6 +135,6 @@ The capture creates its own demo data and never shoots real customer data:
 
 ## Left to the builder
 
-- How to make the check scripts handle two sites (parameterise vs duplicate).
+- How the check scripts take the app to check (argument, cwd, or per-app config).
 - Exact order of work and how to split commits/PRs.
 - Wording of each page, within the style guide.
