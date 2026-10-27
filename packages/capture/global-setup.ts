@@ -1,6 +1,6 @@
 // Logs in to DEV, saves the session, then snapshots feature flags and turns them all on.
 import { chromium } from '@playwright/test'
-import { mkdirSync, writeFileSync } from 'node:fs'
+import { mkdirSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname } from 'node:path'
 import { CAPTURE, HAS_CLUSTER_ADMIN, IGNORE_HTTPS_ERRORS, PATHS, addBypassHeaderRoute, clusterAdminLogin } from './env.ts'
 import { cleanupDemoData, findAdminCluster } from './demo-data.ts'
@@ -53,6 +53,11 @@ export default async function globalSetup(): Promise<void> {
   }
   // Only a run that took the snapshot may restore it in teardown — never a stale file.
   process.env.CAPTURE_FLAGS_OWNED = '1'
+  if (!HAS_CLUSTER_ADMIN) {
+    // No cluster-admin login this run: drop a session/cluster saved by an earlier run so nothing can use it.
+    rmSync(PATHS.clusterAdminAuthState, { force: true })
+    rmSync(PATHS.adminCluster, { force: true })
+  }
   if (HAS_CLUSTER_ADMIN) {
     // Refuses a Super Admin login or a login that is not an admin of the test cluster.
     const cluster = await findAdminCluster()

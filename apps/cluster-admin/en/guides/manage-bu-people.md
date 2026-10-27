@@ -22,6 +22,10 @@ A message **Role updated** appears and the **Cluster Role** column changes.
 **Remove** takes the person out of the whole Cluster, not just one Business Unit. Check the name in the question before you confirm.
 :::
 
+::: tip If you need the seat back
+Removing someone may not give their seat back to the Cluster straight away. If you are removing them to make room for someone new, first **Release seat** for them (see [Manage Seats](/en/guides/manage-seats)), then remove them. If the seat count still does not go down, [contact Carmen support](/en/getting-help).
+:::
+
 1. Click **...** at the end of their row.
 2. Click **Remove**.
 3. Read the question, for example Remove "name" from this cluster? If it is the right person, click **Remove**. If not, click **Cancel**.
