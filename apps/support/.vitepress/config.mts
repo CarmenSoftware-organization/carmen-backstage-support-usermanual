@@ -1,5 +1,5 @@
 import { defineConfig, type DefaultTheme } from 'vitepress'
-import { miniSearchOptions } from './search-options.mts'
+import { miniSearchOptions } from '@manual/theme/search-options.mts'
 import { dashboard, gettingStarted, guides, profile, screenGroups, type Lang, type PageDef } from './nav-data.mts'
 
 const link = (lang: Lang, slug: string) => (lang === 'th' ? `/${slug}` : `/en/${slug}`)

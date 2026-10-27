@@ -8,7 +8,18 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowImportingTsExtensions": true,
-    "types": ["node"]
+    "types": [
+      "node"
+    ]
   },
-  "include": ["scripts/**/*.ts", "capture/**/*.ts", "site/.vitepress/*.mts", "site/.vitepress/theme/*.ts"]
+  "include": [
+    "packages/**/*.ts",
+    "packages/**/*.mts",
+    "apps/*/.vitepress/*.mts",
+    "apps/*/.vitepress/theme/*.ts"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "packages/capture/results"
+  ]
 }

@@ -13,7 +13,7 @@
 //     · the CLI ('refuse') stops unless run with --force ('overwrite').
 // - The saved files are deleted only after a GET confirms the restore.
 //
-// CLI: `bun capture/flags.ts restore [--force]` (or `bun run capture:restore-flags [-- --force]`).
+// CLI: `bun packages/capture/flags.ts restore [--force]` (or `bun run capture:restore-flags [-- --force]`).
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -157,7 +157,7 @@ const isCli = process.argv[1] && fileURLToPath(import.meta.url) === process.argv
 if (isCli) {
   const [cmd, ...rest] = process.argv.slice(2)
   if (cmd !== 'restore' || rest.some((a) => a !== '--force')) {
-    console.error('Usage: bun capture/flags.ts restore [--force]')
+    console.error('Usage: bun packages/capture/flags.ts restore [--force]')
     process.exit(2)
   }
   restoreFlags({ onConflict: rest.includes('--force') ? 'overwrite' : 'refuse' }).catch((err: unknown) => {

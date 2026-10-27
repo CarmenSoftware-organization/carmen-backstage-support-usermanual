@@ -5,7 +5,7 @@ export type Lang = 'th' | 'en'
 export type Kind = 'guide' | 'screen' | 'info'
 
 export interface PageDef {
-  /** path under site/ (and site/en/), no extension */
+  /** path under the app folder (and its en/), no extension */
   slug: string
   kind: Kind
   th: string

@@ -5,7 +5,7 @@ import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import type { BrowserContext } from '@playwright/test'
 
-const ROOT = fileURLToPath(new URL('..', import.meta.url))
+const ROOT = fileURLToPath(new URL('../..', import.meta.url))
 
 /** Parses dotenv text: `KEY=VALUE`, optional `export`, quotes, `#` comments.
  *  Copied from carmen-backstage-e2e/scripts/lib/parse-env.mjs (not imported on purpose). */
@@ -85,5 +85,11 @@ export const PATHS = {
   root: ROOT,
   authState: resolve(ROOT, '.auth/state.json'),
   flagsOriginal: resolve(ROOT, '.capture-state/flags-original.json'),
-  screenshots: resolve(ROOT, 'site/public/screenshots'),
+}
+
+export type App = 'support' | 'cluster-admin'
+
+/** `<repo>/apps/<app>/public/screenshots` — each app owns its screenshots. */
+export function screenshotsDir(app: App): string {
+  return resolve(ROOT, 'apps', app, 'public', 'screenshots')
 }

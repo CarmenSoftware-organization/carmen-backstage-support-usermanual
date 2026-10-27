@@ -1,0 +1,17 @@
+{
+  "name": "@manual/support",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev .",
+    "build": "vitepress build .",
+    "preview": "vitepress preview .",
+    "check:parity": "bun ../../packages/checks/check-parity.ts",
+    "check:plain": "bun ../../packages/checks/check-plain-language.ts",
+    "check:anchors": "bun ../../packages/checks/check-anchors.ts",
+    "check": "bun run check:parity && bun run check:plain && bun run check:anchors"
+  },
+  "dependencies": {
+    "@manual/theme": "workspace:*"
+  }
+}

@@ -1,8 +1,8 @@
 // Read-only screen shots for Getting Started and the Screen Reference pages.
 // Nothing here saves a form: /new pages and edit modes are only opened, never submitted.
 //
-// Slug = file name under site/public/screenshots/<lang>/. Screen Reference shots are
-// `<page>-<view>` where <page> is the page slug in site/.vitepress/nav-data.mts.
+// Slug = file name under apps/support/public/screenshots/<lang>/. Screen Reference shots are
+// `<page>-<view>` where <page> is the page slug in apps/support/.vitepress/nav-data.mts.
 // Routes come from carmen-backstage src/App.tsx. Labels are matched in both UI languages.
 import type { Page } from '@playwright/test'
 import { scrollToMiddle } from './guides/ui.ts'

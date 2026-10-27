@@ -312,8 +312,8 @@ export async function cleanupDemoData(opts: { dryRun?: boolean } = {}): Promise<
   return { deleted, left }
 }
 
-// `bun capture/demo-data.ts cleanup` — run the cleanup by hand (e.g. after a killed run).
-// `bun capture/demo-data.ts cleanup --dry-run` only lists what would be deleted.
+// `bun packages/capture/demo-data.ts cleanup` — run the cleanup by hand (e.g. after a killed run).
+// `bun packages/capture/demo-data.ts cleanup --dry-run` only lists what would be deleted.
 if (process.argv[1]?.endsWith('demo-data.ts') && process.argv[2] === 'cleanup') {
   await cleanupDemoData({ dryRun: process.argv.includes('--dry-run') })
 }

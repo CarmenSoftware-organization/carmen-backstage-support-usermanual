@@ -1,7 +1,7 @@
 // Flags developer jargon in prose. Add <!-- plain-ok --> to a line when the screen itself shows the term.
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { SITE, listMarkdown } from './lib.ts'
+import { LABEL, SITE, listMarkdown } from './lib.ts'
 
 const BANNED: RegExp[] = [
   /\btb_\w+/i,
@@ -28,7 +28,7 @@ for (const f of files) {
     if (inFence || line.includes('<!-- plain-ok -->')) return
     for (const re of BANNED) {
       const m = line.match(re)
-      if (m) violations.push(`site/${f}:${i + 1}: "${m[0]}" matches ${re}`)
+      if (m) violations.push(`${LABEL}/${f}:${i + 1}: "${m[0]}" matches ${re}`)
     }
   })
 }

@@ -2,13 +2,15 @@
 import { test as base, type Page } from '@playwright/test'
 import { mkdirSync } from 'node:fs'
 import { join } from 'node:path'
-import { PATHS, addBypassHeaderRoute } from './env.ts'
+import { addBypassHeaderRoute, screenshotsDir, type App } from './env.ts'
 
 export type Lang = 'th' | 'en'
-export type CaptureOptions = { lang: Lang }
+/** `app` picks which site's screenshots folder the shots go to. */
+export type CaptureOptions = { lang: Lang; app: App }
 
 export const test = base.extend<CaptureOptions & { uiPrefs: void }>({
   lang: ['th', { option: true }],
+  app: ['support', { option: true }],
   uiPrefs: [
     async ({ context, lang }, use) => {
       await addBypassHeaderRoute(context)
@@ -124,7 +126,7 @@ async function redact(page: Page, selectors: string[]): Promise<void> {
 }
 
 /**
- * Saves site/public/screenshots/<lang>/<slug>.png after checking the screen.
+ * Saves apps/<app>/public/screenshots/<lang>/<slug>.png after checking the screen.
  * Every `mask` selector must match at least one visible element, so a renamed field
  * can never let a secret through unmasked. `maskOptional` selectors are masked when present.
  */
@@ -133,7 +135,8 @@ export async function shoot(
   slug: string,
   opts: { mask?: string[]; maskOptional?: string[]; fullPage?: boolean; allowLogin?: boolean } = {},
 ): Promise<void> {
-  const lang = (test.info().project.use as Partial<CaptureOptions>).lang ?? 'th'
+  const use = test.info().project.use as Partial<CaptureOptions>
+  const lang = use.lang ?? 'th'
   await settle(page)
   if (!opts.allowLogin && /^\/login(\/|$)/.test(new URL(page.url()).pathname)) {
     throw new Error('wrong screen: redirected to /login (session expired?)')
@@ -155,7 +158,7 @@ export async function shoot(
   const all = [...(opts.mask ?? []), ...(opts.maskOptional ?? [])]
   if (all.length) await redact(page, all)
   await page.mouse.move(1, 1).catch(() => {})
-  const dir = join(PATHS.screenshots, lang)
+  const dir = join(screenshotsDir(use.app ?? 'support'), lang)
   mkdirSync(dir, { recursive: true })
   await page.screenshot({
     path: join(dir, `${slug}.png`),
