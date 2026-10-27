@@ -12,6 +12,12 @@
         "vitepress": "1.6.3",
       },
     },
+    "apps/cluster-admin": {
+      "name": "@manual/cluster-admin",
+      "dependencies": {
+        "@manual/theme": "workspace:*",
+      },
+    },
     "apps/support": {
       "name": "@manual/support",
       "dependencies": {
@@ -134,6 +140,8 @@
     "@manual/capture": ["@manual/capture@workspace:packages/capture"],
 
     "@manual/checks": ["@manual/checks@workspace:packages/checks"],
+
+    "@manual/cluster-admin": ["@manual/cluster-admin@workspace:apps/cluster-admin"],
 
     "@manual/support": ["@manual/support@workspace:apps/support"],
 
