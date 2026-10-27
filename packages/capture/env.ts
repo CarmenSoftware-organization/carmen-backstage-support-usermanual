@@ -58,6 +58,24 @@ export const CAPTURE: { baseUrl: string; apiBase: string; appId: string; email: 
   password: required('TEST_USER_PASSWORD', 'Set it in carmen-backstage-e2e/.env (or the file named by CAPTURE_ENV_FILE).'),
 }
 
+/** Which DEV login a call or a Playwright project uses. */
+export type Account = 'super' | 'clusterAdmin'
+
+/**
+ * The cluster-admin login for the Cluster Admin manual (not a Super Admin — see the trail
+ * learning on why). Read only when a cluster project or the ZEBRA cleanup needs it.
+ */
+export function clusterAdminLogin(): { email: string; password: string } {
+  const hint = "Set it in this repo's .env (see .env.example)."
+  return { email: required('CLUSTER_ADMIN_EMAIL', hint), password: required('CLUSTER_ADMIN_PASSWORD', hint) }
+}
+
+/** True when the cluster-admin login is configured (cluster projects and the ZEBRA sweep are skipped otherwise). */
+export const HAS_CLUSTER_ADMIN = Boolean(process.env.CLUSTER_ADMIN_EMAIL && process.env.CLUSTER_ADMIN_PASSWORD)
+
+/** Code of the test cluster the Cluster Admin shots are taken in. Demo records there are swept by cleanup. */
+export const ADMIN_CLUSTER_CODE = process.env.CLUSTER_ADMIN_CLUSTER_CODE || 'ZEBRA'
+
 /** Optional gateway rate-limit bypass header (same token the e2e suite uses). Empty when unset. */
 export function extraHeaders(): Record<string, string> {
   const token = process.env.CAPTURE_RATE_LIMIT_BYPASS_TOKEN || process.env.E2E_RATE_LIMIT_BYPASS_TOKEN
@@ -84,6 +102,9 @@ export async function addBypassHeaderRoute(context: BrowserContext): Promise<voi
 export const PATHS = {
   root: ROOT,
   authState: resolve(ROOT, '.auth/state.json'),
+  clusterAdminAuthState: resolve(ROOT, '.auth/cluster-admin.json'),
+  /** `{ id, name, code }` of ADMIN_CLUSTER_CODE, written by global setup for the cluster projects. */
+  adminCluster: resolve(ROOT, '.capture-state/admin-cluster.json'),
   flagsOriginal: resolve(ROOT, '.capture-state/flags-original.json'),
 }
 

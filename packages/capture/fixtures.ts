@@ -1,12 +1,17 @@
 // Playwright fixtures for capture: UI language per project, light theme, and shoot().
 import { test as base, type Page } from '@playwright/test'
-import { mkdirSync } from 'node:fs'
+import { mkdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { addBypassHeaderRoute, screenshotsDir, type App } from './env.ts'
+import { PATHS, addBypassHeaderRoute, screenshotsDir, type App } from './env.ts'
 
 export type Lang = 'th' | 'en'
 /** `app` picks which site's screenshots folder the shots go to. */
 export type CaptureOptions = { lang: Lang; app: App }
+
+/** The test cluster global setup picked for the Cluster Admin shots (`/cluster-admin/<id>/…`). */
+export function adminCluster(): { id: string; name: string; code: string } {
+  return JSON.parse(readFileSync(PATHS.adminCluster, 'utf8'))
+}
 
 export const test = base.extend<CaptureOptions & { uiPrefs: void }>({
   lang: ['th', { option: true }],

@@ -5,7 +5,8 @@
 // licenseFeatureGroupService,clusterLicenseService,businessUnitLicenseService,
 // businessUnitInterfaceLicenseService,subscriptionService}.ts.
 import { test } from '@playwright/test'
-import { api } from './api.ts'
+import { api, apiJson } from './api.ts'
+import { ADMIN_CLUSTER_CODE, HAS_CLUSTER_ADMIN } from './env.ts'
 
 export const DEMO_PREFIX = 'MANUAL-DEMO'
 const NAME_PREFIX = `${DEMO_PREFIX}-`
@@ -91,6 +92,10 @@ type Row = {
   bu_name?: string
   deleted_at?: string | null
   audit?: { deleted?: { at?: string } }
+  /** Invitation state, e.g. `pending`. */
+  status?: string
+  /** Cluster member: the seat with one link (BU membership row) per business unit. */
+  seat?: { links?: Row[] }
 }
 
 // ── Prerequisite records, created straight through the API ───────────────────────────
@@ -164,6 +169,28 @@ export async function addDemoSeatLicense(buId: string, seats = 5): Promise<void>
 /** Makes `userId` a member of `clusterId` with a cluster role. */
 export async function addDemoUserToCluster(userId: string, clusterId: string, role = 'user'): Promise<void> {
   await api('POST', '/api-system/user/clusters', { user_id: userId, cluster_id: clusterId, role, is_active: true })
+}
+
+/** Makes `userId` a member of business unit `buId` (the cluster membership must exist first). */
+export async function addDemoUserToBusinessUnit(userId: string, buId: string, role: 'admin' | 'user' = 'user'): Promise<void> {
+  await api('POST', '/api-system/user/business-units', { user_id: userId, business_unit_id: buId, role })
+}
+
+/**
+ * The cluster with `code` among the clusters the cluster-admin login administers.
+ * Refuses a login that administers every cluster (a Super Admin): its Cluster Admin view lists
+ * every customer's cluster, which must never reach the hotel-group manual.
+ */
+export async function findAdminCluster(code: string = ADMIN_CLUSTER_CODE): Promise<{ id: string; name: string; code: string }> {
+  const body = await apiJson<{ data?: Row[]; summary?: { all?: boolean } }>(
+    'GET', '/api-system/me/admin-clusters?page=1&perpage=100', undefined, 'clusterAdmin',
+  )
+  if (body.summary?.all) {
+    throw new Error('CLUSTER_ADMIN_EMAIL administers every cluster (Super Admin) — use a plain cluster admin for the Cluster Admin shots.')
+  }
+  const c = (body.data ?? []).find((r) => r.code === code)
+  if (!c) throw new Error(`CLUSTER_ADMIN_EMAIL is not an admin of cluster ${code}.`)
+  return { id: c.id, name: c.name ?? code, code }
 }
 
 // ── Cleanup ───────────────────────────────────────────────────────────────────────
@@ -266,6 +293,9 @@ export async function cleanupDemoData(opts: { dryRun?: boolean } = {}): Promise<
   }
 
   if (opts.dryRun) {
+    await sweepAdminCluster(async (kind, rows) => {
+      for (const r of rows) console.log(`[demo-data] dry-run WOULD REMOVE ${kind}: ${label(r)}`)
+    }, left)
     // Log what would be deleted, plus near misses (mention manual-demo in any case but do not
     // match the strict rule) so the filter can be checked against DEV without deleting anything.
     const loose = (v: unknown): boolean => typeof v === 'string' && v.toLowerCase().includes('manual-demo')
@@ -302,6 +332,9 @@ export async function cleanupDemoData(opts: { dryRun?: boolean } = {}): Promise<
     })
     await sweep(`${kind} (soft-deleted)`, dead, hard)
   }
+  // Demo people inside the real test cluster (ZEBRA): BU memberships (seats) and the cluster
+  // membership first, then pending invitations — so the cluster's seat counts are back to before.
+  await sweepAdminCluster(sweep, left)
   await sweep('user', users, (u) => api('DELETE', `/api-system/user/${u.id}/hard`))
   await sweep('business unit', bus, (b) => api('DELETE', `/api-system/business-units/${b.id}`))
   await sweep('cluster', clusters, (c) => api('DELETE', `/api-system/clusters/${c.id}`))
@@ -310,6 +343,45 @@ export async function cleanupDemoData(opts: { dryRun?: boolean } = {}): Promise<
   console.log(`[demo-data] deleted ${deleted.length}:${deleted.map((d) => `\n  - ${d}`).join('')}`)
   console.log(`[demo-data] left ${left.length}:${left.map((d) => `\n  - ${d}`).join('')}`)
   return { deleted, left }
+}
+
+type Sweep = (kind: string, rows: Row[], del: (r: Row) => Promise<unknown>) => Promise<void>
+
+/**
+ * In ADMIN_CLUSTER_CODE (looked up with the Super Admin login, by code), removes every demo
+ * user's business-unit memberships and cluster membership, and revokes pending invitations to
+ * demo e-mails. Real members and their seats are never touched (demo = demoEmail() shape).
+ */
+async function sweepAdminCluster(sweep: Sweep, left: string[]): Promise<void> {
+  if (!HAS_CLUSTER_ADMIN) return
+  let clusterId: string | undefined
+  try {
+    const all = await listAll(`/api-system/clusters?search=${encodeURIComponent(ADMIN_CLUSTER_CODE)}`)
+    clusterId = all.find((c) => c.code === ADMIN_CLUSTER_CODE && alive(c))?.id
+    if (!clusterId) return void left.push(`cluster ${ADMIN_CLUSTER_CODE}: not found — demo memberships there not checked`)
+  } catch (e) {
+    return void left.push(`cluster ${ADMIN_CLUSTER_CODE}: could not look up (${errText(e)}) — check DEV by hand`)
+  }
+  const isDemoEmail = (v: unknown): boolean => typeof v === 'string' && DEMO_EMAIL_RE.test(v)
+  let members: Row[] = []
+  let invitations: Row[] = []
+  try {
+    const r = await api<Row[] | { data?: Row[] }>('GET', `/api-system/user/clusters/${clusterId}`)
+    members = (Array.isArray(r) ? r : (r.data ?? [])).filter((m) => isDemoEmail(m.email))
+  } catch (e) {
+    left.push(`${ADMIN_CLUSTER_CODE} members: could not list (${errText(e)}) — check DEV by hand`)
+  }
+  try {
+    invitations = (await listAll(`/api-system/clusters/${clusterId}/invitations`))
+      .filter((i) => isDemoEmail(i.email) && (i.status === undefined || i.status === 'pending'))
+  } catch (e) {
+    left.push(`${ADMIN_CLUSTER_CODE} invitations: could not list (${errText(e)}) — check DEV by hand`)
+  }
+  const links: Row[] = members.flatMap((m) =>
+    ((m.seat?.links ?? []) as Row[]).map((l) => ({ ...l, name: `${m.email} in ${l.bu_name}` })))
+  await sweep(`${ADMIN_CLUSTER_CODE} BU membership`, links, (l) => api('DELETE', `/api-system/user/business-units/${l.id}`))
+  await sweep(`${ADMIN_CLUSTER_CODE} membership`, members.map((m) => ({ ...m, name: m.email })), (m) => api('DELETE', `/api-system/user/clusters/${m.id}`))
+  await sweep(`${ADMIN_CLUSTER_CODE} invitation`, invitations.map((i) => ({ ...i, name: i.email })), (i) => api('DELETE', `/api-system/clusters/${clusterId}/invitations/${i.id}`))
 }
 
 // `bun packages/capture/demo-data.ts cleanup` — run the cleanup by hand (e.g. after a killed run).

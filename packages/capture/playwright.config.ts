@@ -21,9 +21,15 @@ export default defineConfig<CaptureOptions>({
     screenshot: 'only-on-failure',
   },
   projects: [
-    { name: 'screens-th', testMatch: /screens\.capture\.ts/, use: { lang: 'th' } },
-    { name: 'screens-en', testMatch: /screens\.capture\.ts/, use: { lang: 'en' } },
-    { name: 'guides-th', testMatch: /guides\/.*\.capture\.ts/, use: { lang: 'th' } },
-    { name: 'guides-en', testMatch: /guides\/.*\.capture\.ts/, use: { lang: 'en' } },
+    // Support manual (Super Admin session from global setup).
+    { name: 'support-screens-th', testMatch: /screens\.capture\.ts$/, testIgnore: /\/cluster\//, use: { lang: 'th' } },
+    { name: 'support-screens-en', testMatch: /screens\.capture\.ts$/, testIgnore: /\/cluster\//, use: { lang: 'en' } },
+    { name: 'support-guides-th', testMatch: /\/guides\/.*\.capture\.ts$/, testIgnore: /\/cluster\//, use: { lang: 'th' } },
+    { name: 'support-guides-en', testMatch: /\/guides\/.*\.capture\.ts$/, testIgnore: /\/cluster\//, use: { lang: 'en' } },
+    // Cluster Admin manual: the cluster-admin session, never the Super Admin one.
+    ...(['th', 'en'] as const).flatMap((lang) => [
+      { name: `cluster-screens-${lang}`, testMatch: /\/cluster\/screens\.capture\.ts$/, use: { lang, app: 'cluster-admin' as const, storageState: PATHS.clusterAdminAuthState } },
+      { name: `cluster-guides-${lang}`, testMatch: /\/cluster\/guides\/.*\.capture\.ts$/, use: { lang, app: 'cluster-admin' as const, storageState: PATHS.clusterAdminAuthState } },
+    ]),
   ],
 })

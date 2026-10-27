@@ -1,9 +1,9 @@
 // Logs in to DEV, saves the session, then snapshots feature flags and turns them all on.
 import { chromium } from '@playwright/test'
-import { mkdirSync } from 'node:fs'
+import { mkdirSync, writeFileSync } from 'node:fs'
 import { dirname } from 'node:path'
-import { CAPTURE, IGNORE_HTTPS_ERRORS, PATHS, addBypassHeaderRoute } from './env.ts'
-import { cleanupDemoData } from './demo-data.ts'
+import { CAPTURE, HAS_CLUSTER_ADMIN, IGNORE_HTTPS_ERRORS, PATHS, addBypassHeaderRoute, clusterAdminLogin } from './env.ts'
+import { cleanupDemoData, findAdminCluster } from './demo-data.ts'
 import { restoreFlags, snapshotAndEnableFlags } from './flags.ts'
 
 export default async function globalSetup(): Promise<void> {
@@ -21,6 +21,24 @@ export default async function globalSetup(): Promise<void> {
     })
     mkdirSync(dirname(PATHS.authState), { recursive: true })
     await page.context().storageState({ path: PATHS.authState })
+
+    if (HAS_CLUSTER_ADMIN) {
+      // Second, separate session for the Cluster Admin manual. A cluster admin does not land on
+      // /dashboard (one cluster → straight in, several → the cluster picker), so wait to leave /login.
+      const { email, password } = clusterAdminLogin()
+      const ca = await browser.newContext({ ignoreHTTPSErrors: IGNORE_HTTPS_ERRORS })
+      await addBypassHeaderRoute(ca)
+      const caPage = await ca.newPage()
+      await caPage.goto(`${CAPTURE.baseUrl}/login`)
+      await caPage.fill('input[name="username"]', email)
+      await caPage.fill('input[name="password"]', password)
+      await caPage.click('button[type="submit"]')
+      await caPage.waitForURL((u) => !/^\/login(\/|$)/.test(u.pathname), { timeout: 30_000 }).catch(() => {
+        throw new Error('Cluster-admin login to DEV failed. Check CLUSTER_ADMIN_EMAIL / CLUSTER_ADMIN_PASSWORD.')
+      })
+      await ca.storageState({ path: PATHS.clusterAdminAuthState })
+      await ca.close()
+    }
   } finally {
     await browser.close()
   }
@@ -35,6 +53,13 @@ export default async function globalSetup(): Promise<void> {
   }
   // Only a run that took the snapshot may restore it in teardown — never a stale file.
   process.env.CAPTURE_FLAGS_OWNED = '1'
+  if (HAS_CLUSTER_ADMIN) {
+    // Refuses a Super Admin login or a login that is not an admin of the test cluster.
+    const cluster = await findAdminCluster()
+    mkdirSync(dirname(PATHS.adminCluster), { recursive: true })
+    writeFileSync(PATHS.adminCluster, JSON.stringify(cluster, null, 2))
+    console.log(`[cluster-admin] shots are taken in ${cluster.code} (${cluster.name})`)
+  }
   // Leftover MANUAL-DEMO records of an earlier run that never reached teardown (killed run).
   // Runs only after the flag step passed, so a refused start still changes nothing.
   // Anything it cannot remove is only listed; a failure never stops the run.

@@ -2,16 +2,21 @@
   "name": "carmen-backstage-support-usermanual",
   "private": true,
   "type": "module",
-  "workspaces": ["apps/*", "packages/*"],
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "packageManager": "bun@1.4.2",
   "scripts": {
     "build": "turbo run build",
     "dev:support": "turbo run dev --filter=@manual/support",
     "typecheck": "tsc --noEmit",
     "check": "tsc --noEmit && turbo run check",
-    "capture:screens": "playwright test -c packages/capture/playwright.config.ts --project=screens-th --project=screens-en",
-    "capture:guides": "playwright test -c packages/capture/playwright.config.ts --project=guides-th --project=guides-en",
     "capture": "playwright test -c packages/capture/playwright.config.ts",
+    "capture:support": "playwright test -c packages/capture/playwright.config.ts --project=\"support-*\"",
+    "capture:screens": "playwright test -c packages/capture/playwright.config.ts --project=support-screens-th --project=support-screens-en",
+    "capture:guides": "playwright test -c packages/capture/playwright.config.ts --project=support-guides-th --project=support-guides-en",
+    "capture:cluster": "playwright test -c packages/capture/playwright.config.ts --project=\"cluster-*\"",
     "capture:restore-flags": "bun packages/capture/flags.ts restore",
     "capture:cleanup-demo": "bun packages/capture/demo-data.ts cleanup"
   },
