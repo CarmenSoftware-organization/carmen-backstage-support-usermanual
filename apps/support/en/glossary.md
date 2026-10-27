@@ -26,12 +26,13 @@ Some Thai screen labels vary. For example, the Thai menu item for Licenses (**�
 | Thai label | English label | Meaning |
 | --- | --- | --- |
 | ไลเซนส์, ใบอนุญาต, license | **License**, Licenses, License Management | What a customer has bought, such as the number of hotels, the number of users, the features they can use, and connections to outside systems. See [Licenses](/en/screens/license/licenses). |
-| สัญญา | **Subscription** | A business unit's usage contract. It has a start and end date and says which feature groups the business unit can use. |
+| สัญญา | **Subscription** | A business unit's usage contract. It has a start and end date and says which modules the business unit can use. |
 | ที่นั่ง, ไลเซนส์ที่นั่ง | **Seats**, Seat license | How many users one business unit may have. |
 | โควตา BU | **BU Quota** | How many business units one cluster may create. |
 | ใบสิทธิ์ interface | **Interface license** | Permission for a business unit to connect to an outside system, such as a point-of-sale system, a hotel management system or an accounting system. |
-| กลุ่มสิทธิ์ license | **License Feature Groups** | Ready-made bundles of features, picked when selling a subscription or an interface license. See [License Feature Groups](/en/screens/license/license-feature-groups). |
-| ทั่วไป / Interface (kind of feature group) | **Standard** / **Interface** | Standard groups are sold on subscriptions. Interface groups are sold on interface licenses. |
+| โมดูล license | **Module**, License Modules (formerly License Feature Group) | A ready-made set of features, picked when selling a subscription or an interface license. See [License Modules](/en/screens/license/license-modules). |
+| ทั่วไป / Interface (kind of module) | **Standard** / **Interface** | Standard modules are sold on subscriptions. Interface modules are sold on interface licenses. |
+| หมวดฟีเจอร์ | **Feature area** | The top level of the feature list, such as Accounting. Each area holds many features. Picking a feature in a module also adds its feature area. See [License Features](/en/screens/license/license-features). |
 | ฟีเจอร์ที่ขายได้, feature | **License Features** | Each capability of Carmen Blue that can be sold to customers. The system builds the list itself; you only choose whether each one can be sold yet. See [License Features](/en/screens/license/license-features). |
 | ความจุรวมทั้งระบบ, fleet | **Fleet capacity** | All clusters added together: how much has been used out of what was bought. |
 | ใกล้เต็ม | **Near limit** | Almost everything that was bought is already in use. |

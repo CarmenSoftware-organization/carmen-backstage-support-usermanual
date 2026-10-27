@@ -53,7 +53,7 @@ export const screenGroups: GroupDef[] = [
     th: 'จัดการใบอนุญาต', en: 'License Management',
     items: [
       screen('license/licenses', 'ไลเซนส์', 'Licenses'),
-      screen('license/license-feature-groups', 'กลุ่มสิทธิ์ license', 'License Feature Groups'),
+      screen('license/license-modules', 'โมดูล license', 'License Modules'),
       screen('license/license-features', 'ฟีเจอร์ที่ขายได้', 'License Features'),
     ],
   },

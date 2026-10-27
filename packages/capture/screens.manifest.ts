@@ -163,9 +163,9 @@ export const SHOTS: Shot[] = [
       await page.goto(`/licenses/bu-quota/new?cluster=${clusterId}`)
     },
   },
-  { slug: 'license-feature-groups-list', path: '/license-feature-groups' },
-  { slug: 'license-feature-groups-form', path: '/license-feature-groups/new' },
-  { slug: 'license-feature-groups-detail', path: '/license-feature-groups', openFirstRow: true },
+  { slug: 'license-modules-list', path: '/license-modules' },
+  { slug: 'license-modules-form', path: '/license-modules/new' },
+  { slug: 'license-modules-detail', path: '/license-modules', openFirstRow: true },
   { slug: 'license-features-list', path: '/license-features' },
 
   // ── Content ────────────────────────────────────────────────────────

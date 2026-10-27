@@ -137,12 +137,12 @@ test.describe.serial('manage-license', () => {
     await snap(page, `${G}-14-interface-added`)
   })
 
-  test('feature group', async ({ page }) => {
-    await go(page, '/license-feature-groups')
-    await snap(page, `${G}-15-feature-groups-list`)
+  test('module', async ({ page }) => {
+    await go(page, '/license-modules')
+    await snap(page, `${G}-15-modules-list`)
 
-    await button(main(page), L('New group', 'สร้างกลุ่ม')).click()
-    await page.waitForURL('**/license-feature-groups/new')
+    await button(main(page), L('New module', 'สร้างโมดูล')).click()
+    await page.waitForURL('**/license-modules/new')
     await page.waitForLoadState('networkidle').catch(() => {})
     const form = main(page)
     await form.getByRole('textbox', { name: L('Code', 'รหัส') }).fill(demoCode('G'))
@@ -150,13 +150,13 @@ test.describe.serial('manage-license', () => {
     await form.getByRole('spinbutton').first().fill('999')
     await form.getByRole('button', { name: /^(Select all in Report|เอาทั้งหมดใน (Report|รายงาน))$/ }).first().click()
     await scrollToMiddle(page, 'main #code')
-    await snap(page, `${G}-16-feature-group-form-filled`)
+    await snap(page, `${G}-16-module-form-filled`)
 
     await expectWrite(page, 'POST', '/api-system/backstage/license-feature-groups', () =>
       button(main(page), L('Save Changes', 'บันทึกการแก้ไข')).click(),
     )
     await successToast(page)
-    await snap(page, `${G}-17-feature-group-created`)
+    await snap(page, `${G}-17-module-created`)
   })
 })
 

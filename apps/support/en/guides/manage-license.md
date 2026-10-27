@@ -5,20 +5,20 @@
 This guide shows how to record what a customer has bought. When you finish, you will be able to:
 
 - open the licence status (what the customer has bought) of a **Cluster** (one customer's group of hotels)
-- create a **Subscription** (the usage contract of one hotel) and pick the feature bundles the customer bought
+- create a **Subscription** (the usage contract of one hotel) and pick the modules the customer bought
 - add **Seats** (how many users a hotel may have)
 - add **BU quota** (how many hotels a cluster may create)
 - add an **Interface license** (permission for a hotel to connect to an outside system, such as an accounting system)
-- create a new **License Feature Group** (a ready-made bundle of features to pick when selling)
+- create a new **License Module** (a ready-made set of features to pick when selling)
 
 Each part stands on its own. Do only the parts you need.
 
-**Who can do this:** a super admin, or someone whose Backstage Role (the set of permissions that says what you may do) lets them manage Licenses and License Feature Groups.
+**Who can do this:** a super admin, or someone whose Backstage Role (the set of permissions that says what you may do) lets them manage Licenses and License Modules.
 
 **What you need first**
 
 - The cluster and the Business Unit (one hotel or branch) must already exist. If not, see [Set Up a New Hotel](/en/guides/setup-hotel).
-- The details from the purchase order or contract: amounts, start and end dates, the purchase order number, and the feature bundles bought.
+- The details from the purchase order or contract: amounts, start and end dates, the purchase order number, and the modules bought.
 
 ::: tip Names in the pictures
 The pictures in this guide use sample names that start with `MANUAL-DEMO-`. In real use you will see the customer's real names, such as "Grand Hotel Group" and "Grand Hotel Bangkok".
@@ -39,7 +39,7 @@ The pictures in this guide use sample names that start with `MANUAL-DEMO-`. In r
 
    You can also open this page from the cluster's own page, with the **Manage licences** button.
 
-### Part 2: Create a subscription and pick its feature bundles {#subscription}
+### Part 2: Create a subscription and pick its modules {#subscription}
 
 1. Click the **Subscriptions** tab, then click **Add subscription**.
 
@@ -54,9 +54,9 @@ The pictures in this guide use sample names that start with `MANUAL-DEMO-`. In r
 
    ![The new subscription's page](/screenshots/en/guide-manage-license-05-subscription-created.png)
 
-5. In the **Purchased groups** box, tick the feature bundles the customer bought, for example **Full Access**. The number next to each name is how many features it holds. The bottom bar shows **Unsaved changes**.
+5. In the **Purchased modules** box, tick the modules the customer bought, for example **Full Access**. The number next to each name is how many features it holds. The bottom bar shows **Unsaved changes**.
 
-   ![Feature bundles ticked, not saved yet](/screenshots/en/guide-manage-license-06-subscription-groups-picked.png)
+   ![Modules ticked, not saved yet](/screenshots/en/guide-manage-license-06-subscription-groups-picked.png)
 
 6. Click **Save Changes**. The message **Changes saved successfully** appears.
 
@@ -113,7 +113,7 @@ The **Cancel license** button on a quota licence's row stops that licence from g
    ![A business unit's Licenses tab](/screenshots/en/guide-manage-license-12-bu-licenses-tab.png)
 
 3. Click **Add interface license**.
-4. In **Feature group**, pick the system to connect to, for example **Interface Carmen GL**. This list only shows Interface-kind groups that are on sale.
+4. In **Module**, pick the system to connect to, for example **Interface Carmen GL**. This list only shows Interface-kind modules that are on sale.
 5. Pick the start and end dates, or choose **No expiry**. **Reference No.** and **Note** are optional.
 
    ![The completed Add interface license form](/screenshots/en/guide-manage-license-13-interface-form-filled.png)
@@ -125,49 +125,49 @@ The **Cancel license** button on a quota licence's row stops that licence from g
 
 An interface license only works while the hotel's main contract is active. If the main contract expires, the connection is switched off, even if the interface license's own dates have not ended.
 
-### Part 6: Create a new License Feature Group {#feature-group}
+### Part 6: Create a new Module {#module}
 
-There is no button to copy a group. If you need a bundle that is like an existing one, create a new group and pick the features yourself.
+There is no button to copy a module. If you need a module that is like an existing one, create a new module and pick the features yourself.
 
-1. In the left menu, click **License Feature Groups**. The **License Catalog** page opens on the **Bundles** tab.
+1. In the left menu, click **License Modules**. The **License Catalog** page opens on the **Modules** tab.
 
-   ![The License Catalog page, Bundles tab](/screenshots/en/guide-manage-license-15-feature-groups-list.png)
+   ![The License Catalog page, Modules tab](/screenshots/en/guide-manage-license-15-modules-list.png)
 
-2. Click **New group**.
-3. Enter the group's **Code**. The code can't be changed after the group is created.
-4. Choose the **Kind**: **Standard** for bundles sold on the main contract, or **Interface** for interface licenses. The kind can only be set when you create the group.
+2. Click **New module**.
+3. Enter the module's **Code**. The code can't be changed after the module is created.
+4. Choose the **Kind**: **Standard** for modules sold on the main contract, or **Interface** for interface licenses. The kind can only be set when you create the module.
 5. Enter the **Name**, and a **Description** if you like.
-6. Enter the **Sort order**: where this bundle sits on the sales form. Lower numbers come first. Use a number no other group uses.
-7. Under **Status**, choose **On sale** if the bundle should be available for new contracts, or **Withdrawn**.
-8. In **Features in this group**, tick the features you want, or click **Select all in** followed by a section name to take the whole section. The number at the top right shows how many features you have picked.
+6. Enter the **Sort order**: where this module sits on the sales form. Lower numbers come first. Use a number no other module uses.
+7. Under **Status**, choose **On sale** if the module should be available for new contracts, or **Withdrawn**.
+8. In **Features in this module**, tick the features you want, or click **Select all in** followed by a section name to take the whole section. The number at the top right shows how many features you have picked.
 
-   ![The completed new group form](/screenshots/en/guide-manage-license-16-feature-group-form-filled.png)
+   ![The completed new module form](/screenshots/en/guide-manage-license-16-module-form-filled.png)
 
-9. Click **Save Changes** in the bottom bar. The message **Group created** appears.
+9. Click **Save Changes** in the bottom bar. The message **Module created** appears.
 
-   ![The new group's page after saving](/screenshots/en/guide-manage-license-17-feature-group-created.png)
+   ![The new module's page after saving](/screenshots/en/guide-manage-license-17-module-created.png)
 
 ## Check that it worked
 
 - On the cluster's licence page, the summary bar shows the hotels, seats and contracts the customer bought.
 - The business unit's **Licenses** tab shows the subscription and the interface license with **Active** status.
 - The BU quota licence you want to count has **Active** status, not **Superseded**.
-- A new group that is **On sale** appears in the subscription's **Purchased groups** box (Standard kind), or in the **Feature group** list of an interface license (Interface kind).
+- A new module that is **On sale** appears in the subscription's **Purchased modules** box (Standard kind), or in the **Module** list of an interface license (Interface kind).
 
 ## Troubleshooting
 
 - **A new BU quota licence shows Superseded:** another licence that started later is still the one in use, or the new licence starts on the day the cluster was created. See the note at the end of Part 4.
 - **A subscription was created for the wrong business unit:** subscriptions can't be moved. Create a new subscription for the right business unit.
-- **"No active interface group to sell — create one under License Feature Groups first":** create a group of the **Interface** kind with **On sale** status first (Part 6).
+- **"No active interface module to sell — create one under License Modules first":** create a module of the **Interface** kind with **On sale** status first (Part 6).
 - **An interface license says its dates are valid but the main contract has ended:** renew the hotel's main contract first. The interface comes back on after that.
-- **Orange text under Sort order saying another group already holds this order:** change it to a number no other group uses.
-- **A group's code or kind is wrong:** these can't be changed after the group is created. Create a new, correct group and set the wrong one to **Withdrawn**.
+- **Orange text under Sort order saying another module already holds this order:** change it to a number no other module uses.
+- **A module's code or kind is wrong:** these can't be changed after the module is created. Create a new, correct module and set the wrong one to **Withdrawn**.
 - **A button in this guide is missing, or you see Access Denied:** see [Access Denied screen](/en/getting-started/common-actions#access-denied).
 
 ## Related screens
 
 - [Licenses](/en/screens/license/licenses)
-- [License Feature Groups](/en/screens/license/license-feature-groups)
+- [License Modules](/en/screens/license/license-modules)
 - [License Features](/en/screens/license/license-features)
 - [Business Units](/en/screens/organization/business-units)
 - [Clusters](/en/screens/organization/clusters)

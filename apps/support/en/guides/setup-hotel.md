@@ -18,7 +18,7 @@ This guide takes a new customer from nothing to a first staff member who has acc
 - The hotel's name, for example "Grand Hotel Bangkok"
 - How many hotels the customer bought, and when that quota expires (if it does)
 - How many users the customer bought, and the contract dates
-- The contract's start and end dates, and the feature bundles the customer bought, for example **Full Access**
+- The contract's start and end dates, and the modules the customer bought, for example **Full Access**
 - An account for the staff member. If there isn't one yet, create it first with [Add a User](/en/guides/add-user).
 
 ::: tip Names in the pictures
@@ -97,7 +97,7 @@ The pictures in this guide use sample names that start with `MANUAL-DEMO-`. When
 
 This part is required. The subscription says which Carmen Blue features the hotel may use. If the hotel has no active subscription, then once licence checking is switched on, the hotel's users are refused when they use those features.
 
-1. Create a subscription for the hotel and tick the feature bundles the customer bought, following [Manage a License, Part 2: Create a subscription and pick its feature bundles](/en/guides/manage-license#subscription).
+1. Create a subscription for the hotel and tick the modules the customer bought, following [Manage a License, Part 2: Create a subscription and pick its modules](/en/guides/manage-license#subscription).
 2. Come back and continue with Part 5.
 
 ### Part 5: Put the staff member in the cluster and the hotel
@@ -157,7 +157,7 @@ Both screens have a **Check** button that changes nothing. You can safely use it
 - **The staff member can't be found in Add User to Cluster:** the account may not exist yet. Create it first with [Add a User](/en/guides/add-user).
 - **The staff member can't be found in Add User to Business Unit:** add them to the cluster first (Part 5, steps 1–6).
 - **You can't add the user to the business unit because there are no free seats:** add a seat licence for the hotel first (Part 3).
-- **The hotel's users are refused when they use a feature:** check that the hotel has an active subscription that includes the feature bundle they need (Part 4).
+- **The hotel's users are refused when they use a feature:** check that the hotel has an active subscription that includes the module they need (Part 4).
 - **A menu or button in this guide is missing, or you see Access Denied:** your role may not cover this work. See [Access Denied screen](/en/getting-started/common-actions#access-denied).
 
 ## Related screens

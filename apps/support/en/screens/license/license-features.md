@@ -6,7 +6,7 @@ Left menu, group **License Management** > **License Features**. The **License Ca
 
 A **feature** (one capability of Carmen Blue, such as the accounts payable page or the accounts receivable page) is the smallest thing that can be sold. The system builds the feature list itself from the program, so you cannot add or delete features here. The only thing you set is each feature's **state**: still sellable, closed to new sales, or hidden.
 
-Features are sold to customers through [License Feature Groups](/en/screens/license/license-feature-groups) (ready-made bundles), not one at a time.
+Features are sold to customers through [License Modules](/en/screens/license/license-modules) (ready-made sets of features), not one at a time.
 
 ## Screenshot
 
@@ -17,7 +17,7 @@ Features are sold to customers through [License Feature Groups](/en/screens/lice
 - **Search** by key or name. See [Search](/en/getting-started/common-actions#search).
 - **Filter by state:** click the **All states**, **Sellable**, **Closed** or **Hidden** card. Each card shows how many features are in that state.
 - **Export** to a CSV file. See [Export to a CSV file](/en/getting-started/common-actions#export).
-- **Read the list:** features are grouped by area (module), e.g. Accounting. The area's heading row is itself a feature. Each row shows the name, the **key** (the feature's internal name, used when talking to the technical team) and a description. Nested features are indented under their parent.
+- **Read the list:** features are grouped by **Feature area**, e.g. Accounting. The area's heading row is itself a feature. Each row shows the name, the **key** (the feature's internal name, used when talking to the technical team) and a description. Nested features are indented under their parent.
 - **See how many hotels use it:** a number such as "4 BU" is how many business units hold this feature today. Point at the number to read the explanation.
 - **Change the state:** click **Sellable**, **Closed** or **Hidden** at the end of the row. It saves at once and shows **State updated** — there is no separate Save.
 
@@ -27,8 +27,8 @@ This screen has no form, only three states:
 
 | State | What it means | Effect on customers |
 | --- | --- | --- |
-| **Sellable** | Sold as normal | Can be added to any group |
-| **Closed** | No longer sold to new customers | Groups that already contain it keep it, but it cannot be added to a group. Customers who already bought it keep using it. |
+| **Sellable** | Sold as normal | Can be added to any module |
+| **Closed** | No longer sold to new customers | Modules that already contain it keep it, but it cannot be added to a module. Customers who already bought it keep using it. |
 | **Hidden** | Removed from the catalogue | The feature's menu disappears for every business unit that holds it, including customers who already paid. Their users can no longer open that page. |
 
 ## Common tasks
@@ -63,6 +63,6 @@ The hide confirmation says to set it back to "Active"; the button you actually c
 
 ## Related guides
 
-- [Manage a License](/en/guides/manage-license) — Part 6 creates a group and picks its features
-- [License Feature Groups](/en/screens/license/license-feature-groups)
+- [Manage a License](/en/guides/manage-license) — Part 6 creates a module and picks its features
+- [License Modules](/en/screens/license/license-modules)
 - [Licenses](/en/screens/license/licenses)

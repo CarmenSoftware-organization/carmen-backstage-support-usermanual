@@ -6,7 +6,7 @@ Left menu, group **License Management** > **Licenses**
 
 A customer's **licenses** (what the customer has bought) come in several kinds. This screen brings them all together:
 
-- **Subscription** (the contract for one business unit, with a start date, an end date and the feature bundles bought)
+- **Subscription** (the contract for one business unit, with a start date, an end date and the modules bought)
 - **Seat license** (how many users one business unit can have)
 - **BU quota** (how many business units, or hotels, one **cluster** can create — a cluster is one customer's hotel group)
 - **Interface license** (permission for a business unit to connect to an outside system, such as an accounting system)
@@ -40,6 +40,9 @@ The Add BU quota license form
   - **By cluster:** one row per cluster with BU quota, seats, the quota expiry date and status
   - **By subscription:** every subscription of every cluster, with an **Add Subscription** button
   - **By seat license**, **By BU quota**, **By interface license:** every license of that kind, with a summary band of counts by status at the top
+- **Sort by days left:** the **Days Left** column on the **By cluster**, **By seat license**, **By BU quota** and **By interface license** tabs shows how many days remain before the end date. Click the column heading to sort. The first click puts the licenses that end soonest at the top. Licenses with no expiry show a dash, and licenses already past their end date show how many days ago they expired.
+- **Find licenses that end soon:** on the **By seat license**, **By BU quota** and **By interface license** tabs, the summary band has an **Expiring soon** card with a count. Click it to list only those licenses. You can also open **Filters** and choose **Expiring soon**. Both show only active licenses that end within the warning period.
+- **Read the subscription list:** the **By subscription** tab has a **Modules** column (the codes of the modules each subscription includes; point at it to see their names and the number of features) and a **Days Left** column you can sort in the same way.
 - **Search** clusters by name or code, or licenses by license number or reference. See [Search](/en/getting-started/common-actions#search).
 - **Filter** the **By cluster** tab by status and **Licence state** (**No licence**, **Over BU limit**, **Seats full**), or turn on **Quota expiring**. When you pick more than one, a cluster must match all of them. See [Filters](/en/getting-started/common-actions#filters).
 - **Export** the list to a CSV file. See [Export to a CSV file](/en/getting-started/common-actions#export).
@@ -55,7 +58,7 @@ The Add BU quota license form
 
 **A subscription's page or a license's page**
 
-- **Subscription:** change the dates and status in the **Amend contract** box, pick feature bundles in **Purchased groups**, and the **Delete** button at the bottom.
+- **Subscription:** change the dates and status in the **Amend contract** box, pick modules in **Purchased modules**, and the **Delete** button at the bottom.
 - **Seat / BU quota / interface license:** change the amount, coverage period and reference in **Amend this license**. A BU quota license has a **Cancel license** button at the bottom. An interface license has a **Delete** button at the bottom.
 
 ## Fields explained
@@ -76,7 +79,7 @@ Fields marked `*` on screen are required. The system numbers subscriptions and l
 | --- | --- | --- |
 | **Start Date**, **End Date** | The contract period | Change them in **Amend contract** |
 | **Status** | The contract's status | **Active**, **Inactive** or **Expired** |
-| **Purchased groups** | The feature bundles the customer bought | Tick as many as needed. The number beside each name is how many features it holds. See [License Feature Groups](/en/screens/license/license-feature-groups). |
+| **Purchased modules** | The modules the customer bought | Tick as many as needed. The number beside each name is how many features it holds. See [License Modules](/en/screens/license/license-modules). |
 
 **The seat, BU quota and interface license forms**
 
@@ -86,13 +89,13 @@ Fields marked `*` on screen are required. The system numbers subscriptions and l
 | **License Number** | The license's number | Assigned automatically when you save |
 | **Seats** (required, seat license) | How many users this license buys | e.g. `10`. Several active seat licenses for the same hotel add up. |
 | **BU quota** (required, BU quota license) | The total number of business units the cluster may have | e.g. `3`. Licenses do not add up — only one counts. See Cautions. |
-| **Feature group** (required, interface license) | The outside system to connect to | Only **Interface** groups that are **On sale** are listed |
+| **Module** (required, interface license) | The outside system to connect to | Only **Interface** modules that are **On sale** are listed |
 | **Reference No.** | A number from the purchase paperwork | Optional, e.g. a purchase order number |
 | **Has an end date** / **No expiry** | Whether the license ends | On BU quota and interface licenses. A seat license always needs an end date. |
 | **Start Date** (required), **End Date** | The coverage period | **End Date** is required when **Has an end date** is chosen |
 | **Note** | Extra notes | Optional; on BU quota and interface licenses |
 
-After a license is created, only the amount (or feature group), the coverage period and the reference can change. The owner and the license number cannot. A cancelled license can no longer be changed — issue a new one instead.
+After a license is created, only the amount (or module), the coverage period and the reference can change. The owner and the license number cannot. A cancelled license can no longer be changed — issue a new one instead.
 
 ## Common tasks
 
@@ -106,7 +109,7 @@ There are screenshots in [Manage a License, Part 1](/en/guides/manage-license#op
 
 **Add a license**
 
-- Subscription and feature bundles: [Manage a License, Part 2](/en/guides/manage-license#subscription)
+- Subscription and modules: [Manage a License, Part 2](/en/guides/manage-license#subscription)
 - Seats: [Manage a License, Part 3](/en/guides/manage-license#seats)
 - BU quota: [Manage a License, Part 4](/en/guides/manage-license#bu-quota)
 - Interface license (added from the business unit's **Licenses** tab): [Manage a License, Part 5](/en/guides/manage-license#interface)
