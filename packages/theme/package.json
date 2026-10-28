@@ -1,0 +1,9 @@
+{
+  "name": "@manual/theme",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./index.ts",
+    "./search-options.mts": "./search-options.mts"
+  }
+}

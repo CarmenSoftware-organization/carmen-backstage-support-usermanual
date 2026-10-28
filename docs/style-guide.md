@@ -54,7 +54,7 @@ Generic behavior (search, filters, CSV, view/edit mode) is explained once in Get
   ```
 
 - Do not re-explain generic behavior (search, filters, CSV export, view and edit mode). Link to `getting-started/common-actions` instead.
-- Screenshots live at `site/public/screenshots/<lang>/<slug>.png` and are referenced as `![...](/screenshots/th/clusters-list.png)`. The language folder must match the page language.
+- Screenshots live at `apps/<app>/public/screenshots/<lang>/<slug>.png` and are referenced as `![...](/screenshots/th/clusters-list.png)`. The language folder must match the page language.
 - If the screen itself shows a technical term, you may use it. Mark the line with `<!-- plain-ok -->` and explain it in plain words.
 
 ## Plain replacements

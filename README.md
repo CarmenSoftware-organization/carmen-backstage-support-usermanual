@@ -1,37 +1,49 @@
 # Carmen Blue Backstage User Manual
 
-Bilingual user manual for Carmen Blue Backstage superadmins, built with VitePress. Thai is the root
-(`site/`), English lives under `site/en/`. Screenshots are captured automatically from the live
-DEV app. Style rules: [`docs/style-guide.md`](docs/style-guide.md).
+Bilingual user manuals for Carmen Blue Backstage, built with VitePress in a Turborepo (bun workspaces).
+Screenshots are captured automatically from the live DEV app. Style rules:
+[`docs/style-guide.md`](docs/style-guide.md).
+
+| Folder | What it is |
+|---|---|
+| `apps/support` | Support manual (our support team). Thai is the root, English under `en/`. |
+| `apps/cluster-admin` | Cluster Admin manual (hotel-group staff who look after their own cluster). Separate site, same layout. |
+| `packages/capture` | Playwright capture harness shared by the sites |
+| `packages/checks` | Checks run from inside each app: Thai/English parity, plain language, links |
+| `packages/theme` | Shared VitePress theme and search tokenizer |
+
+Each app builds on its own into `apps/<app>/.vitepress/dist/`, so each can be deployed separately.
 
 ## Quick start
 
 ```
 bun install
-bun run docs:dev      # preview at http://localhost:5173 (English: /en/)
-bun run docs:build    # production build
-bun run check         # typecheck + Thai/English parity + plain-language check + build
+bun run dev:support                         # preview at http://localhost:5173 (English: /en/)
+bunx turbo run dev --filter=@manual/cluster-admin
+bunx turbo run build --filter=@manual/support # build one site
+bun run build                               # build every site
+bun run check         # typecheck + per app: build, Thai/English parity, plain language, links
 ```
 
 ## Adding a page (both languages)
 
 Every page must exist in Thai and English; `bun run check` fails otherwise.
 
-1. Add the entry (slug, Thai label, English label) to `site/.vitepress/nav-data.mts`. The sidebar
+1. Add the entry (slug, Thai label, English label) to `apps/<app>/.vitepress/nav-data.mts`. The sidebar
    and page lists are generated from it. Screen Reference order follows `carmen-backstage`
-   `src/components/nav/platformNav.ts`.
-2. Create the Thai page at `site/<slug>.md` and the English page at `site/en/<slug>.md`.
+   `src/components/nav/backstageNav.ts`.
+2. Create the Thai page at `apps/<app>/<slug>.md` and the English page at `apps/<app>/en/<slug>.md`.
 3. Reference screenshots as `/screenshots/th/<name>.png` in Thai pages and
    `/screenshots/en/<name>.png` in English pages (the check rejects a mismatched language or a
-   missing file). To capture a new shot, add it to `capture/screens.manifest.ts` (or a guide in
-   `capture/guides/`) and run the capture below.
+   missing file). To capture a new shot, add it to `packages/capture/screens.manifest.ts` (or a guide in
+   `packages/capture/guides/`) and run the capture below.
 4. Follow the style guide (plain language, on-screen labels exactly as in the app), then run
    `bun run check`.
 
 ## Screenshots (capture from DEV)
 
 Screenshots are taken from the live DEV app (`https://dev.blueledgers.com:9902`) with Playwright,
-once with the app in Thai and once in English, into `site/public/screenshots/th/` and `/en/`.
+once with the app in Thai and once in English, into `apps/<app>/public/screenshots/th/` and `/en/`.
 
 Setup (once):
 
@@ -84,7 +96,7 @@ still there. Then run `bun run capture:restore-flags` again.
 ### How-to Guide shots write to DEV
 
 `bun run capture:guides` drives the real forms and saves them, in Thai and in English
-(`capture/guides/*.capture.ts`). Every record it creates is named
+(`packages/capture/guides/*.capture.ts`). Every record it creates is named
 `MANUAL-DEMO-<kind>-<th|en>-<yyyyMMddHHmm>` (users: the same in lower case, `@example.com`),
 so runs never collide. Shot names are `guide-<guide>-<NN>-<step>.png`.
 
@@ -109,5 +121,37 @@ Typed passwords are masked in the shots.
 
 A shot fails instead of saving when the page shows Access Denied, Coming soon, 404 or is
 still loading. Shots that show secrets (app secret, database connection, database pool,
-SMTP password) declare masks in `capture/screens.manifest.ts`; a required mask that matches
-nothing also fails the shot. Failure details land in `capture/results/` (gitignored).
+SMTP password) declare masks in `packages/capture/screens.manifest.ts`; a required mask that matches
+nothing also fails the shot. Failure details land in `packages/capture/results/` (gitignored).
+
+## Cluster Admin site (`apps/cluster-admin`)
+
+Readers are hotel-group staff, so this site must never show support-only screens:
+`check:leak` fails the build if it mentions SQL Workbench, Super Admin, Database Pool or a
+`/backstage/` path. Anything a cluster admin cannot do themselves links to `getting-help` — the
+one place to fill in the real support channel later.
+
+Its screenshots are taken as a **cluster admin, never as the Super Admin** (a Super Admin's
+Cluster Admin view lists every customer's cluster). Add to `.env`:
+
+```
+CLUSTER_ADMIN_EMAIL=...        # a DEV cluster admin that is not a Super Admin
+CLUSTER_ADMIN_PASSWORD=...
+# CLUSTER_ADMIN_CLUSTER_CODE=ZEBRA   (default) the test cluster the shots are taken in
+```
+
+Global setup refuses to start if that login administers every cluster or is not an admin of the
+test cluster.
+
+- `bun run capture:cluster` — Screen Reference + guide shots for this site (both languages).
+  Shots go to `apps/cluster-admin/public/screenshots/<lang>/`; manifest and guides live in
+  `packages/capture/cluster/`.
+
+What it changes in the test cluster (ZEBRA on DEV): the guides add `MANUAL-DEMO-` users with the
+Super Admin login and give them a seat in ZEBRA (FIFO), change their role, release and restore
+their seat, then remove and permanently delete them (a seat is only freed once the user is gone).
+The invite guide sends one invitation to a `manual-demo-…@example.com` address and revokes it at
+once, because a pending invitation also holds a seat. ZEBRA's real members, business units and
+settings are never changed. Revoked demo invitations stay in ZEBRA's invitation history — the API
+cannot delete them, and they hold no seat. The cleanup sweep (`bun run capture:cleanup-demo`)
+also removes demo members and pending demo invitations in ZEBRA left by a killed run.
